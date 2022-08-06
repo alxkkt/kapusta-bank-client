@@ -1,0 +1,33 @@
+:root {
+  --text-color-strong: rgba(0, 0, 0, 1);
+  --text-color-faded: rgba(82, 85, 95, 0.7);
+  --base-grey-color: rgba(
+    82,
+    85,
+    95,
+    1
+  ); // same for summary table color, calender icon, delete icon, and almost all other icons
+  --accent-color: rgba(255, 117, 29, 1);
+  --accent-color-faded: rgba(255, 218, 192, 1); // for graphic elements
+  --logo-background-color: rgba(251, 124, 47, 0.2);
+  --main-green-color: rgba(64, 121, 70, 1);
+  --main-red-color: rgba(231, 25, 46, 1);
+  --main-white-color: rgba(255, 255, 255, 1); // same for balance input borders
+  --main-background-color: rgba(
+    245,
+    246,
+    251,
+    1
+  ); // same color for table row borders, button borders, product input layout, summary background
+  --input-placeholder-color: rgba(199, 204, 220, 1);
+  --logout-icon-fill: rgba(203, 204, 208, 1);
+  --tooltip-background-gradient: linear-gradient(
+    117.84deg,
+    rgba(29, 52, 106, 1) 2.84%,
+    rgba(3, 22, 52, 1) 67.28%
+  );
+  --active-tab-color: rgba(254, 254, 254, 1);
+  --passive-tab-color: rgba(250, 251, 253, 1);
+}
+
+// roboto 400, 500, 700, 900
