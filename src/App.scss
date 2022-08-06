@@ -1,8 +1,11 @@
 body {
-  font-family: Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  font-family: Roboto, sans-serif;
+
   scroll-behavior: smooth;
+
   background-color: var(--main-white-color);
 }
 
