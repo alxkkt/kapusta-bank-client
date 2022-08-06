@@ -1,7 +1,12 @@
 import './App.scss';
+import MyRoutes from './Routes';
 
 const App = () => {
-  return <div>Hello World!</div>;
+  return (
+    <div>
+      <MyRoutes />
+    </div>
+  );
 };
 
 export default App;

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const instance = axios.create({
-  //   baseURL: 'https://protest-backend.goit.global',
+  baseURL: 'https://kapusta-backend-proj.herokuapp.com/api',
 });
 
 const addToken = accessToken => {
@@ -13,7 +13,7 @@ const removeToken = () => {
 };
 
 export const signup = async body => {
-  const { data } = await instance.post('/auth/register', body);
+  const { data } = await instance.post('/auth/signup', body);
 
   return data;
 };
@@ -28,7 +28,7 @@ export const login = async body => {
 export const getCurrent = async accessToken => {
   addToken(accessToken);
   try {
-    const { data } = await instance.get('/user');
+    const { data } = await instance.get('/auth/current');
 
     return data;
   } catch (error) {

@@ -1,0 +1,11 @@
+// import icons from '../../../images';
+
+const Icon = ({ name, width, height, className }) => {
+  return (
+    <svg width={width} height={height} className={className}>
+      <use href={Icons + `#${name}`}></use>
+    </svg>
+  );
+};
+
+export default Icon;

@@ -27,7 +27,7 @@ const authSlice = createSlice({
       loading: false,
       error: payload,
     }),
-    // ---Login
+    //  Login
     [login.pending]: (store, _) => ({ ...store, loading: true, error: null }),
     [login.fulfilled]: (store, { payload }) => ({
       ...store,
@@ -40,7 +40,7 @@ const authSlice = createSlice({
       loading: false,
       error: payload,
     }),
-    //----Get Current
+    //  Get Current
     [getCurrentUser.pending]: (store, _) => ({
       ...store,
       loading: true,
@@ -58,7 +58,7 @@ const authSlice = createSlice({
       error: payload,
       accessToken: '',
     }),
-    //---Logout
+    //  Logout
     [logout.pending]: store => ({
       ...store,
       loading: true,
