@@ -1,0 +1,67 @@
+.form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 80px;
+}
+
+.input {
+    padding-left: 20px;
+    width: 280px;
+    height: 44px;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 0.02em;
+
+    background-color: transparent;
+    border: 2px solid #FFFF;
+    border-radius: 22px 22px 0px 0px;
+}
+
+.input::placeholder {
+    color: #C7CCDC;
+}
+
+.select {
+    composes: input;
+    margin-bottom: 32px;
+    color: #C7CCDC;
+    border-radius: 0px 0px 22px 22px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+}
+
+img {
+    width: 20px;
+    height: 20px;
+}
+
+.sum {
+    composes: input;
+    width: 125px;
+    text-align: right;
+    font-weight: 700;
+    border-radius: 22px 0px 0px 22px;
+}
+
+.sum::placeholder {
+    color: black;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 0.02em;
+}
+
+.decoration {
+    composes: input;
+    padding: 12px 20px 20px 12px;
+    height: 44px;
+    width: 60px;
+    border-radius: 0px 22px 22px 0px;
+}

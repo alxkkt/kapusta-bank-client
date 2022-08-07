@@ -6,6 +6,7 @@ import PrivateRoute from 'shared/components/PrivateRoute';
 
 const AuthPage = lazy(() => import('./pages/AuthPage'));
 const HomePage = lazy(() => import('./pages/HomePage'));
+const AddTransactionPage = lazy(() => import('./pages/AddTransactionPage'));
 
 const MyRoutes = () => {
   return (
@@ -16,6 +17,7 @@ const MyRoutes = () => {
         </Route>
         <Route>
           <Route path="/" element={<HomePage />} />
+          <Route path="/addtransaction" element={<AddTransactionPage />} />
         </Route>
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

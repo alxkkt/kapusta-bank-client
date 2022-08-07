@@ -1,9 +1,10 @@
 
 
-.homePage {
+.section {
     padding-top: 45px;
+    background-color: #F5F6FB;
 }
-.hidden {
+.title {
     position: absolute;
     white-space: nowrap;
     width: 1px;
@@ -38,4 +39,25 @@ color: var(--text-color-faded);
 .img {
     width: 14px;
     height: 14px;
+}
+
+.link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    width: 200px;
+    height: 44px;
+    
+    color: #FFFF;
+    background-color: var(--accent-color);
+
+    border-radius: 22px 22px 22px 22px;
+        cursor: pointer;
+}
+
+.link:visited {
+color: #FFFF;
 }
