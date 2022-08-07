@@ -1,7 +1,9 @@
 
 
 .section {
+    margin-bottom: 40px;
     padding-top: 45px;
+    padding-bottom: 40px;
     background-color: #F5F6FB;
 }
 .title {
@@ -50,6 +52,11 @@ color: var(--text-color-faded);
     text-align: center;
     width: 200px;
     height: 44px;
+
+    font-weight: 700;
+        font-size: 12px;
+        line-height: 14px;
+        letter-spacing: 0.02em;
     
     color: #FFFF;
     background-color: var(--accent-color);
@@ -60,4 +67,9 @@ color: var(--text-color-faded);
 
 .link:visited {
 color: #FFFF;
+}
+
+.datePicker {
+    display: block;
+    margin: 0 auto
 }

@@ -21,6 +21,14 @@ const AddTransactionForm = () => {
           <img src={Calculator} alt="Calculator" />
         </div>
       </div>
+      <div className={styles.containerBtn}>
+        <button className={styles.inputBtn} type="submit">
+          INPUT
+        </button>
+        <button className={styles.clearBtn} type="button">
+          CLEAR
+        </button>
+      </div>
     </form>
   );
 };
