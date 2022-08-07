@@ -1,0 +1,41 @@
+
+
+.homePage {
+    padding-top: 45px;
+}
+.hidden {
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    border: 0;
+    padding: 0;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    margin: -1px;
+}
+
+.reports {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    margin-bottom: 43px;
+    
+}
+
+.description {
+    margin-right: 20px;
+color: var(--text-color-faded);
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.17;
+    letter-spacing: 0.04em;
+}
+
+.img {
+    width: 14px;
+    height: 14px;
+}

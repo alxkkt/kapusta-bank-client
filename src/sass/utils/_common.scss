@@ -23,7 +23,7 @@ ol {
   padding: 0;
 }
 
-a {
+a, Link {
   text-decoration: none;
 
   &:visited {
@@ -35,3 +35,4 @@ img {
   display: block;
   max-width: 100%;
 }
+
