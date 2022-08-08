@@ -32,8 +32,8 @@ export const getCurrentUser = createAsyncThunk(
   async (_, { rejectWithValue, getState }) => {
     try {
       const { user } = getState();
-      const { accessToken } = user;
-      const data = await services.getCurrent(accessToken);
+      const { token } = user;
+      const data = await services.getCurrent(token);
 
       return data;
     } catch (error) {
@@ -43,7 +43,7 @@ export const getCurrentUser = createAsyncThunk(
   {
     condition: (_, { getState }) => {
       const { user } = getState();
-      if (!user.accessToken) {
+      if (!user.token) {
         return false;
       }
     },

@@ -4,7 +4,7 @@ import { signup, login, getCurrentUser, logout } from './auth-operations';
 
 const initialState = {
   userData: {},
-  accessToken: '',
+  token: '',
   isLogin: false,
   loading: false,
   error: null,
@@ -56,7 +56,7 @@ const authSlice = createSlice({
       ...store,
       loading: false,
       error: payload,
-      accessToken: '',
+      token: '',
     }),
     //  Logout
     [logout.pending]: store => ({
@@ -66,7 +66,7 @@ const authSlice = createSlice({
     }),
     [logout.fulfilled]: (store, { payload }) => ({
       userData: {},
-      accessToken: '',
+      token: '',
       isLogin: false,
       loading: false,
       error: null,

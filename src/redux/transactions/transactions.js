@@ -4,6 +4,15 @@ export const transactionsApi = createApi({
   reducerPath: 'transactionsApi',
   baseQuery: fetchBaseQuery({
     baseUrl: 'https://kapusta-backend-proj.herokuapp.com/api/transactions',
+    prepareHeaders: (headers, { getState }) => {
+      const token = getState().auth.token;
+
+      if (token) {
+        headers.set('authorization', `Bearer ${token}`);
+      }
+
+      return headers;
+    },
   }),
   tagTypes: ['transactions'],
   endpoints: builder => ({
