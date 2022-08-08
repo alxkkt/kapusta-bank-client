@@ -8,7 +8,6 @@ import CalendarImg from '../../shared/images/png/Calendar.png';
 const Calendar = ({ onChange, startDate }) => {
   return (
     <>
-      {' '}
       <img className={styles.img} src={CalendarImg} alt="calendar" />
       <DatePicker
         className={styles.datePicker}
