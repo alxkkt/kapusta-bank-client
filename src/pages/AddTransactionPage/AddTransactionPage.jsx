@@ -7,12 +7,14 @@ import Back from '../../shared/images/png/Back.png';
 
 const AddTransactionPage = () => {
   return (
-    <section className={styles.section}>
-      <Link className={styles.link} to="/">
-        <img className={styles.img} src={Back} alt="Back" />
-      </Link>
-      <AddTransactionForm />
-    </section>
+    <div className="container">
+      <section className={styles.section}>
+        <Link className={styles.link} to="/">
+          <img className={styles.img} src={Back} alt="Back" />
+        </Link>
+        <AddTransactionForm />
+      </section>
+    </div>
   );
 };
 

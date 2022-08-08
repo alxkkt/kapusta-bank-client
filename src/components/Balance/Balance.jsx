@@ -4,7 +4,7 @@ const Balance = () => {
     <>
       <p className={styles.balance}>Balance:</p>
       <form className={styles.form} action="">
-        <input className={styles.input} name="balance" value="00.00 UAH" />
+        <input className={styles.input} name="balance" placeholder="00.00UAH" />
         <button className={styles.button} type="submit">
           CONFIRM
         </button>
