@@ -6,18 +6,20 @@ import PrivateRoute from 'shared/components/PrivateRoute';
 
 const AuthPage = lazy(() => import('./pages/AuthPage'));
 const HomePage = lazy(() => import('./pages/HomePage'));
+const AddTransactionPage = lazy(() => import('./pages/AddTransactionPage'));
 const ReportsPage = lazy(() => import('./pages/ReportsPage'));
 
 const MyRoutes = () => {
   return (
-    <Suspense fallback={<p>Please wait for some magic to happen</p>}>
+    <Suspense fallback={<p>Please wait for some magic to be happened</p>}>
       <Routes>
         <Route element={<PublicRoute />}>
           <Route path="auth" element={<AuthPage />} />
         </Route>
-        <Route element={<PrivateRoute />}>
+        <Route>
           <Route path="/" element={<HomePage />} />
           <Route path="reports" element={<ReportsPage />} />
+          <Route path="/addtransaction" element={<AddTransactionPage />} />
         </Route>
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
