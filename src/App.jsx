@@ -2,10 +2,10 @@ import './App.scss';
 import MyRoutes from './Routes';
 
 const App = () => {
-  return (
+  z
     <div className="App">
       <MyRoutes />
-    </div>
+    </>
   );
 };
 

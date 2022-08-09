@@ -1,0 +1,46 @@
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+
+  width: 14px;
+  height: 14px;
+
+  cursor: pointer;
+}
+
+.element {
+  width: 3px;
+  background-color: var(--text-color-strong);
+
+  &:nth-child(1) {
+    height: 10px;
+  }
+
+  &:nth-child(2) {
+    height: 14px;
+  }
+
+  &:nth-child(3) {
+    height: 6px;
+  }
+}
+
+.wrapper:hover .element,
+.wrapper:focus .element {
+  background-color: var(--accent-color);
+
+  &:nth-child(1) {
+    height: 14px;
+  }
+
+  &:nth-child(2) {
+    height: 5px;
+  }
+
+  &:nth-child(3) {
+    height: 11px;
+  }
+
+  transition: all 250ms ease-in-out;
+}
