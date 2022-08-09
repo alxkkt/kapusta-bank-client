@@ -1,7 +1,15 @@
+import React from 'react';
+import Header from '../../components/Header';
+
 // import styles from './AuthPage.module.scss';
+import '../../sass/main.scss';
 
 const AuthPage = () => {
-  return <div>Auth Page</div>;
+  return (
+    <div className="container">
+      <Header />
+    </div>
+  );
 };
 
 export default AuthPage;
