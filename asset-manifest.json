@@ -1,10 +1,10 @@
 {
   "files": {
     "main.css": "/kapusta-bank-client/static/css/main.fa71b80e.css",
-    "main.js": "/kapusta-bank-client/static/js/main.730e2672.js",
+    "main.js": "/kapusta-bank-client/static/js/main.09812722.js",
     "static/js/91.2a4b989f.chunk.js": "/kapusta-bank-client/static/js/91.2a4b989f.chunk.js",
     "static/css/76.ab2f1124.chunk.css": "/kapusta-bank-client/static/css/76.ab2f1124.chunk.css",
-    "static/js/76.3af79f86.chunk.js": "/kapusta-bank-client/static/js/76.3af79f86.chunk.js",
+    "static/js/76.5c50fe82.chunk.js": "/kapusta-bank-client/static/js/76.5c50fe82.chunk.js",
     "static/css/257.d35d1069.chunk.css": "/kapusta-bank-client/static/css/257.d35d1069.chunk.css",
     "static/js/257.a59f6de1.chunk.js": "/kapusta-bank-client/static/js/257.a59f6de1.chunk.js",
     "static/js/171.2cc24128.chunk.js": "/kapusta-bank-client/static/js/171.2cc24128.chunk.js",
@@ -12,10 +12,10 @@
     "static/js/44.b9dfe89d.chunk.js": "/kapusta-bank-client/static/js/44.b9dfe89d.chunk.js",
     "index.html": "/kapusta-bank-client/index.html",
     "main.fa71b80e.css.map": "/kapusta-bank-client/static/css/main.fa71b80e.css.map",
-    "main.730e2672.js.map": "/kapusta-bank-client/static/js/main.730e2672.js.map",
+    "main.09812722.js.map": "/kapusta-bank-client/static/js/main.09812722.js.map",
     "91.2a4b989f.chunk.js.map": "/kapusta-bank-client/static/js/91.2a4b989f.chunk.js.map",
     "76.ab2f1124.chunk.css.map": "/kapusta-bank-client/static/css/76.ab2f1124.chunk.css.map",
-    "76.3af79f86.chunk.js.map": "/kapusta-bank-client/static/js/76.3af79f86.chunk.js.map",
+    "76.5c50fe82.chunk.js.map": "/kapusta-bank-client/static/js/76.5c50fe82.chunk.js.map",
     "257.d35d1069.chunk.css.map": "/kapusta-bank-client/static/css/257.d35d1069.chunk.css.map",
     "257.a59f6de1.chunk.js.map": "/kapusta-bank-client/static/js/257.a59f6de1.chunk.js.map",
     "171.2cc24128.chunk.js.map": "/kapusta-bank-client/static/js/171.2cc24128.chunk.js.map",
@@ -24,6 +24,6 @@
   },
   "entrypoints": [
     "static/css/main.fa71b80e.css",
-    "static/js/main.730e2672.js"
+    "static/js/main.09812722.js"
   ]
 }
