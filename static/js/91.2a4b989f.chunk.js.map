@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/91.2a4b989f.chunk.js","mappings":"+LAMA,EAJiB,WACf,OAAO,sCACR,C","sources":["pages/AuthPage/AuthPage.jsx"],"sourcesContent":["// import styles from './AuthPage.module.scss';\n\nconst AuthPage = () => {\n  return <div>Auth Page</div>;\n};\n\nexport default AuthPage;\n"],"names":[],"sourceRoot":""}

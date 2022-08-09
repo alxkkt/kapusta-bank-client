@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkreact_project_template=self.webpackChunkreact_project_template||[]).push([[91],{4091:function(e,t,r){r.r(t),r.d(t,{default:function(){return n}});var c=r(3329),n=function(){return(0,c.jsx)("div",{children:"Auth Page"})}}}]);
+//# sourceMappingURL=91.2a4b989f.chunk.js.map

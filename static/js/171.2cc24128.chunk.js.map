@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/171.2cc24128.chunk.js","mappings":"gMAMA,EAJoB,WAClB,OAAO,yCACR,C","sources":["pages/ReportsPage/ReportsPage.jsx"],"sourcesContent":["// import styles from './ReportsPage.module.scss';\n\nconst ReportsPage = () => {\n  return <div>Reports Page</div>;\n};\n\nexport default ReportsPage;\n"],"names":[],"sourceRoot":""}
