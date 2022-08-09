@@ -1,6 +1,7 @@
 .container {
   max-width: 320px;
   padding: 12px 20px;
+  margin: 0 auto;
 
   @include tablet {
     max-width: 768px;

@@ -1,4 +1,4 @@
-import styles from './AuthPage.module.scss';
+// import styles from './AuthPage.module.scss';
 
 const AuthPage = () => {
   return <div>Auth Page</div>;
