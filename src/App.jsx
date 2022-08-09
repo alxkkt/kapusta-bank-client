@@ -3,9 +3,9 @@ import MyRoutes from './Routes';
 
 const App = () => {
   return (
-    <div>
+    <>
       <MyRoutes />
-    </div>
+    </>
   );
 };
 
