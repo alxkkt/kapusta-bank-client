@@ -1,4 +1,4 @@
-import styles from './AuthForm.module.scss';
+// import styles from './AuthForm.module.scss';
 
 const AuthForm = () => {
   return <div>Auth Form</div>;

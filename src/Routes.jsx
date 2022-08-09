@@ -2,7 +2,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 
 import PublicRoute from 'shared/components/PublicRoute';
-import PrivateRoute from 'shared/components/PrivateRoute';
+// import PrivateRoute from 'shared/components/PrivateRoute';
 
 const AuthPage = lazy(() => import('./pages/AuthPage'));
 const HomePage = lazy(() => import('./pages/HomePage'));
