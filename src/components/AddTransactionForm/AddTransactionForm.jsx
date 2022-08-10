@@ -1,6 +1,6 @@
 import styles from './AddTransactionForm.module.scss';
 
-import Calculator from '../../shared/images/png/calculator.png';
+import Icon from 'shared/components/Icon';
 
 const AddTransactionForm = () => {
   return (
@@ -18,7 +18,7 @@ const AddTransactionForm = () => {
       <div className={styles.container}>
         <input className={styles.sum} name="sum" placeholder="00.00UAH" />
         <div className={styles.decoration}>
-          <img src={Calculator} alt="Calculator" />
+          <Icon width={20} height={20} name={`icon-calculator`} />
         </div>
       </div>
       <div className={styles.containerBtn}>

@@ -10,15 +10,14 @@
 }
 
 .form {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 55px;
-    
 }
 
 .input {
-  
     padding-left: 19px;
     text-align: right;
 width: 140px;
@@ -32,6 +31,7 @@ width: 140px;
     background-color: transparent;
     border: 2px solid #FFFF;
     border-radius: 22px 0px 0px 22px;
+    z-index: 2;
 }
 
 input::placeholder {
@@ -58,4 +58,11 @@ input::placeholder {
     background-color: var(--accent-color);
     color: #FFFF;
 
+}
+
+.modal {
+    position: absolute;
+    top: -10%;
+    right: 27%;
+    z-index: 1;
 }

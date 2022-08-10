@@ -1,8 +1,11 @@
+
+
 .datePicker {
     position: relative;
     display: block;
-    text-align: center;
     margin: 0 auto;
+    text-align: center;
+    
     color: #52555F;
     background-color: transparent;
     border: transparent;
@@ -11,9 +14,12 @@
         font-size: 12px;
         line-height: 14px;
         letter-spacing: 0.04em;
+        
 }
 
 .img {
+    display: block;
     position: absolute;
-    left: 44%;
+    right: 54%;
+    
 }

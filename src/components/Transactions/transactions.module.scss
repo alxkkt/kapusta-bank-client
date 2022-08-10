@@ -5,6 +5,10 @@
     margin-bottom: 43px;
 
 }
+.description:hover
+ {
+    color: var(--accent-color);
+}
 
 .description {
     margin-right: 20px;
@@ -15,9 +19,4 @@
     font-size: 12px;
     line-height: 1.17;
     letter-spacing: 0.04em;
-}
-
-.img {
-    width: 14px;
-    height: 14px;
 }
