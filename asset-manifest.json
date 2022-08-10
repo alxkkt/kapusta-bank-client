@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/kapusta-bank-client/static/css/main.fa71b80e.css",
-    "main.js": "/kapusta-bank-client/static/js/main.246ca505.js",
+    "main.js": "/kapusta-bank-client/static/js/main.74057c76.js",
     "static/js/91.2a4b989f.chunk.js": "/kapusta-bank-client/static/js/91.2a4b989f.chunk.js",
     "static/css/573.341cb94a.chunk.css": "/kapusta-bank-client/static/css/573.341cb94a.chunk.css",
     "static/js/573.456c97d5.chunk.js": "/kapusta-bank-client/static/js/573.456c97d5.chunk.js",
@@ -13,7 +13,7 @@
     "static/media/icons.svg": "/kapusta-bank-client/static/media/icons.0e596ad4f9572766149da985c688aa82.svg",
     "index.html": "/kapusta-bank-client/index.html",
     "main.fa71b80e.css.map": "/kapusta-bank-client/static/css/main.fa71b80e.css.map",
-    "main.246ca505.js.map": "/kapusta-bank-client/static/js/main.246ca505.js.map",
+    "main.74057c76.js.map": "/kapusta-bank-client/static/js/main.74057c76.js.map",
     "91.2a4b989f.chunk.js.map": "/kapusta-bank-client/static/js/91.2a4b989f.chunk.js.map",
     "573.341cb94a.chunk.css.map": "/kapusta-bank-client/static/css/573.341cb94a.chunk.css.map",
     "573.456c97d5.chunk.js.map": "/kapusta-bank-client/static/js/573.456c97d5.chunk.js.map",
@@ -25,6 +25,6 @@
   },
   "entrypoints": [
     "static/css/main.fa71b80e.css",
-    "static/js/main.246ca505.js"
+    "static/js/main.74057c76.js"
   ]
 }
