@@ -28,14 +28,23 @@ const Balance = () => {
           placeholder="00.00 UAH"
           minLength={1}
         />
-        {Number(balance) <= 0 && (
-          <img className={styles.modal} src={modal} alt="modal" />
-        )}
 
         <button className={styles.button} type="submit">
           CONFIRM
         </button>
       </form>
+
+      <div className={styles.modalContainer}>
+        <div className={styles.triangle}></div>
+        <div className={styles.tooltipContainer}>
+          <p className={styles.strongSign}>
+            Hello! To get started, enter the current balance of your account!
+          </p>
+          <p className={styles.smallSign}>
+            You can't spend money until you have it :)
+          </p>
+        </div>
+      </div>
     </>
   );
 };
