@@ -1,5 +1,5 @@
 import styles from './AddTransactionForm.module.scss';
-
+import NumberFormat from 'react-number-format';
 import Icon from 'shared/components/Icon';
 
 const AddTransactionForm = () => {
@@ -27,7 +27,18 @@ const AddTransactionForm = () => {
         <option value="Other">Other</option>
       </select>
       <div className={styles.container}>
-        <input className={styles.sum} name="sum" placeholder="00.00UAH" />
+        <NumberFormat
+          className={styles.sum}
+          name="balance"
+          type="text"
+          thousandSeparator=" "
+          decimalSeparator="."
+          decimalScale={2}
+          fixedDecimalScale={true}
+          suffix=" UAH"
+          placeholder="00.00 UAH"
+          minLength={1}
+        />
         <div className={styles.decoration}>
           <Icon width={20} height={20} name={`icon-calculator`} />
         </div>
