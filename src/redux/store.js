@@ -18,7 +18,7 @@ import { transactionsApi } from './transactions/transactions';
 const persistAuthConfig = {
   key: 'auth',
   storage,
-  whiteList: ['accessToken', 'isLogin'],
+  whiteList: ['token'],
 };
 
 const persistedAuthReducer = persistReducer(persistAuthConfig, authReducer);

@@ -1,82 +1,65 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { signup, login, getCurrentUser, logout } from './auth-operations';
+import { signIn, signUp, getCurrentUser, logOut } from './auth-operations';
 
 const initialState = {
-  userData: {},
+  user: {},
   token: '',
-  isLogin: false,
   loading: false,
   error: null,
+  isLogin: false,
 };
 
 const authSlice = createSlice({
   name: 'auth',
   initialState,
   extraReducers: {
-    // Sign up
-    [signup.pending]: (store, _) => ({ ...store, loading: true, error: null }),
-    [signup.fulfilled]: (store, { payload }) => ({
+    //реєстрація нового юзера
+    [signUp.pending]: (store, _) => ({ ...store, loading: true, error: null }),
+    [signUp.fulfilled]: (store, { payload }) => ({
       ...store,
-      isLogin: true,
       loading: false,
       ...payload,
     }),
-    [signup.rejected]: (store, { payload }) => ({
+    [signUp.rejected]: (store, { payload }) => ({
       ...store,
       loading: false,
       error: payload,
     }),
-    //  Login
-    [login.pending]: (store, _) => ({ ...store, loading: true, error: null }),
-    [login.fulfilled]: (store, { payload }) => ({
-      ...store,
-      isLogin: true,
-      loading: false,
-      ...payload,
-    }),
-    [login.rejected]: (store, { payload }) => ({
+
+    //логін юзера
+    [signIn.pending]: (store, _) => ({ ...store, loading: true, error: null }),
+    [signIn.fulfilled]: (store, { payload }) => {
+      const { token, email, totalBalance } = payload;
+      return {
+        ...store,
+        loading: false,
+        isLogin: true,
+        token,
+        userData: { email, totalBalance },
+      };
+    },
+    [signIn.rejected]: (store, { payload }) => ({
       ...store,
       loading: false,
       error: payload,
     }),
-    //  Get Current
-    [getCurrentUser.pending]: (store, _) => ({
-      ...store,
-      loading: true,
-      error: null,
-    }),
+    //перевірка каррент
+    [getCurrentUser]: (store, _) => ({ ...store, loading: true, error: null }),
     [getCurrentUser.fulfilled]: (store, { payload }) => ({
       ...store,
+      loading: false,
       isLogin: true,
-      loading: false,
-      ...payload,
+      userData: payload,
     }),
-    [getCurrentUser.rejected]: (store, { payload }) => ({
-      ...store,
-      loading: false,
-      error: payload,
-      token: '',
-    }),
-    //  Logout
-    [logout.pending]: store => ({
-      ...store,
-      loading: true,
-      error: null,
-    }),
-    [logout.fulfilled]: (store, { payload }) => ({
-      userData: {},
-      token: '',
-      isLogin: false,
-      loading: false,
-      error: null,
-    }),
-    [logout.rejected]: (store, { payload }) => ({
-      ...store,
-      loading: false,
+    [getCurrentUser.rejected]: (_, { payload }) => ({
+      ...initialState,
       error: payload,
     }),
+    //логаут
+    [logOut.pending]: (store, _) => ({ ...store, loading: true, error: null }),
+    [logOut.fulfilled]: () => ({ ...initialState, loading: false }),
+    [logOut.rejected]: () => ({ ...initialState, loading: false }),
   },
 });
-
 export default authSlice.reducer;

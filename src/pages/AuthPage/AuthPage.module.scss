@@ -1,0 +1,28 @@
+.authPage {
+  min-width: 320px;
+  margin: 0 auto;
+  padding: 40px 20px 34px;
+
+  /* background-color: #f5f6fb; */
+  /* background-color: var(--bgc-auth); */
+}
+
+@media screen and (min-width: 480px) {
+  .authPage {
+    width: 480px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .authPage {
+    width: 768px;
+    padding: 80px 115px 70px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .authPage {
+    display: flex;
+    align-items: center;
+    width: 1280px;
+    padding: 100px 125px;
+  }
+}
