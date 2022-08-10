@@ -14,6 +14,17 @@ const AddTransactionForm = () => {
         <option value="" disabled selected>
           Product category
         </option>
+        <option value="Health">Health</option>
+        <option value="Alcohol">Alcohol</option>
+        <option value="Entertainment">Entertainment</option>
+        <option value="Housing">Housing</option>
+        <option value="Technique">Technique</option>
+        <option value="Communal, Communications">
+          Communal, Communications
+        </option>
+        <option value="Sports, Hobbies">Sports, Hobbies</option>
+        <option value="Education">Education</option>
+        <option value="Other">Other</option>
       </select>
       <div className={styles.container}>
         <input className={styles.sum} name="sum" placeholder="00.00UAH" />
