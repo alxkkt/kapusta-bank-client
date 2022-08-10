@@ -1,17 +1,27 @@
-import styles from './balance.module.scss';
+import { useState, useEffect } from 'react';
 import NumberFormat from 'react-number-format';
-import { useState } from 'react';
-import modal from '../../shared/images/png/modalBalance.png';
-// import ModalBalance from './ModalBalance';
+
+import ModalBalance from './ModalBalance';
+
+import styles from './balance.module.scss';
 
 const Balance = () => {
   const [balance, setBalance] = useState('');
+  const [isTooltipOpen, setTooltipOpen] = useState(false);
+
+  useEffect(() => {
+    if (!+balance) {
+      setTimeout(() => {
+        setTooltipOpen(true);
+      }, 500);
+    }
+  }, [balance]);
 
   const handleChange = e => {
     setBalance(e.target.value);
   };
   return (
-    <>
+    <div className={styles.container} onClick={() => setTooltipOpen(false)}>
       <p className={styles.balance}>Balance:</p>
       <form className={styles.form} action="">
         <NumberFormat
@@ -33,19 +43,8 @@ const Balance = () => {
           CONFIRM
         </button>
       </form>
-
-      <div className={styles.modalContainer}>
-        <div className={styles.triangle}></div>
-        <div className={styles.tooltipContainer}>
-          <p className={styles.strongSign}>
-            Hello! To get started, enter the current balance of your account!
-          </p>
-          <p className={styles.smallSign}>
-            You can't spend money until you have it :)
-          </p>
-        </div>
-      </div>
-    </>
+      <ModalBalance isOpen={isTooltipOpen} />
+    </div>
   );
 };
 

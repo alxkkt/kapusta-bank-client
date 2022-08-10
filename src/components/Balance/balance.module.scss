@@ -1,5 +1,5 @@
 .balance {
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   text-align: center;
   color: var(--text-color-faded);
   font-style: normal;
@@ -49,6 +49,10 @@ input::placeholder {
   border: 2px solid #ffff;
   border-radius: 0px 22px 22px 0px;
   cursor: pointer;
+
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
 }
 
 .button:hover,
@@ -57,53 +61,6 @@ input::placeholder {
   color: #ffff;
 }
 
-.modal {
-  position: absolute;
-  top: 0%;
-  right: 5%;
-  z-index: 1;
-}
-
-.modalContainer {
-  background-color: transparent;
-  clip-path: polygon(
-    51% 19%,
-    100% 20%,
-    100% 100%,
-    0 100%,
-    0 20%,
-    25% 20%,
-    40% 0
-  );
-}
-
-.triangle {
-  //   clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-  width: 11px;
-  height: 11px;
-  background: var(--tooltip-background-gradient);
-
-  //   margin-left: 68px;
-}
-
-.tooltipContainer {
-  color: var(--main-white-color);
-  padding: 22px;
-  background: var(--tooltip-background-gradient);
-
-  border-radius: 30px;
-}
-
-.strongSign {
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 1.43;
-
-  margin-bottom: 20px;
-}
-
-.smallSign {
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 1.33;
+.container {
+  position: relative;
 }
