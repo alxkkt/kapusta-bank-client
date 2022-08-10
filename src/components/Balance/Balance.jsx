@@ -1,17 +1,27 @@
-import styles from './balance.module.scss';
+import { useState, useEffect } from 'react';
 import NumberFormat from 'react-number-format';
-import { useState } from 'react';
-import modal from '../../shared/images/png/modalBalance.png';
-// import ModalBalance from './ModalBalance';
+
+import ModalBalance from './ModalBalance';
+
+import styles from './balance.module.scss';
 
 const Balance = () => {
   const [balance, setBalance] = useState('');
+  const [isTooltipOpen, setTooltipOpen] = useState(false);
+
+  useEffect(() => {
+    if (!+balance) {
+      setTimeout(() => {
+        setTooltipOpen(true);
+      }, 500);
+    }
+  }, [balance]);
 
   const handleChange = e => {
     setBalance(e.target.value);
   };
   return (
-    <>
+    <div className={styles.container} onClick={() => setTooltipOpen(false)}>
       <p className={styles.balance}>Balance:</p>
       <form className={styles.form} action="">
         <NumberFormat
@@ -28,15 +38,13 @@ const Balance = () => {
           placeholder="00.00 UAH"
           minLength={1}
         />
-        {Number(balance) <= 0 && (
-          <img className={styles.modal} src={modal} alt="modal" />
-        )}
 
         <button className={styles.button} type="submit">
           CONFIRM
         </button>
       </form>
-    </>
+      <ModalBalance isOpen={isTooltipOpen} />
+    </div>
   );
 };
 
