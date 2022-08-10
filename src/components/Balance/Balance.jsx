@@ -1,8 +1,8 @@
 import styles from './balance.module.scss';
-// import NumberFormat from 'react-number-format';
+import NumberFormat from 'react-number-format';
 import { useState } from 'react';
 import modal from '../../shared/images/png/modalBalance.png';
-import ModalBalance from './ModalBalance';
+// import ModalBalance from './ModalBalance';
 
 const Balance = () => {
   const [balance, setBalance] = useState('');
@@ -14,14 +14,20 @@ const Balance = () => {
     <>
       <p className={styles.balance}>Balance:</p>
       <form className={styles.form} action="">
-        <input
+        <NumberFormat
           className={styles.input}
-          type="number"
           name="balance"
-          onChange={handleChange}
+          type="text"
           value={balance}
-          placeholder="00.00UAH"
-        ></input>
+          onChange={handleChange}
+          thousandSeparator=" "
+          decimalSeparator="."
+          decimalScale={2}
+          fixedDecimalScale={true}
+          suffix="UAH"
+          placeholder="00.00 UAH"
+          minLength={1}
+        />
         {Number(balance) <= 0 && (
           <img className={styles.modal} src={modal} alt="modal" />
         )}

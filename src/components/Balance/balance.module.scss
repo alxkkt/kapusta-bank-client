@@ -19,7 +19,7 @@
 
 .input {
     padding-left: 19px;
-    text-align: right;
+    text-align: center;
 width: 140px;
     height: 44px;
 
@@ -62,7 +62,7 @@ input::placeholder {
 
 .modal {
     position: absolute;
-    top: -10%;
-    right: 27%;
+    top: 0%;
+    right: 5%;
     z-index: 1;
 }

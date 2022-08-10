@@ -8,20 +8,24 @@ import Icon from 'shared/components/Icon';
 const Calendar = ({ onChange, startDate }) => {
   return (
     <div className={styles.wrapper}>
-      <Icon
-        className={styles.img}
-        name={`icon-calendar`}
-        width={20}
-        height={20}
-      />
-      <DatePicker
-        className={styles.datePicker}
-        name="date"
-        dateFormat="dd.MM.yyyy"
-        selected={startDate}
-        onChange={onChange}
-        required
-      />
+      <div>
+        <Icon
+          className={styles.img}
+          name={`icon-calendar`}
+          width={20}
+          height={20}
+        />
+      </div>
+      <div>
+        <DatePicker
+          className={styles.datePicker}
+          name="date"
+          dateFormat="dd.MM.yyyy"
+          selected={startDate}
+          onChange={onChange}
+          required
+        />
+      </div>
     </div>
   );
 };
