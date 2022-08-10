@@ -1,6 +1,7 @@
 import styles from './HomePage.module.scss';
 
 import Transactions from 'components/Transactions';
+import TransactionsList from 'components/TransactionsList';
 
 import { Link } from 'react-router-dom';
 
@@ -13,6 +14,7 @@ const HomePage = () => {
         <Link className={styles.link} to="/addtransaction">
           ADD TRANSACTION
         </Link>
+        <TransactionsList />
       </div>
     </section>
   );
