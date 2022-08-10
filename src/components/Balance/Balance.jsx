@@ -7,21 +7,28 @@ import styles from './balance.module.scss';
 
 const Balance = () => {
   const [balance, setBalance] = useState('');
-  const [isTooltipOpen, setTooltipOpen] = useState(false);
+  const [tooltipStatus, setTooltipStatus] = useState({
+    isOpen: false,
+    isShown: false,
+  });
 
   useEffect(() => {
-    if (!+balance) {
+    if (!+balance && !tooltipStatus.isShown) {
       setTimeout(() => {
-        setTooltipOpen(true);
+        setTooltipStatus(prevState => ({ ...prevState, isOpen: true }));
       }, 500);
     }
-  }, [balance]);
+  }, [balance, tooltipStatus.isShown]);
 
   const handleChange = e => {
     setBalance(e.target.value);
   };
+
   return (
-    <div className={styles.container} onClick={() => setTooltipOpen(false)}>
+    <div
+      className={styles.container}
+      onClick={() => setTooltipStatus({ isOpen: false, isShown: true })}
+    >
       <p className={styles.balance}>Balance:</p>
       <form className={styles.form} action="">
         <NumberFormat
@@ -43,7 +50,7 @@ const Balance = () => {
           CONFIRM
         </button>
       </form>
-      <ModalBalance isOpen={isTooltipOpen} />
+      <ModalBalance isOpen={tooltipStatus.isOpen} />
     </div>
   );
 };
