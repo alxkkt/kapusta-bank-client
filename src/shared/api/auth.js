@@ -18,6 +18,11 @@ export const signUp = async body => {
   return data;
 };
 
+export const reverify = async email => {
+  const { data } = await instance.post('/auth/verify', { email });
+  return data;
+};
+
 export const signIn = async body => {
   const { data } = await instance.post('/auth/login', body);
 

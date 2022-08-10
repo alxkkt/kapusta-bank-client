@@ -1,6 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { signIn, signUp, getCurrentUser, logOut } from './auth-operations';
+import {
+  signIn,
+  signUp,
+  getCurrentUser,
+  logOut,
+  reverify,
+} from './auth-operations';
 
 const initialState = {
   user: {},
@@ -13,13 +19,19 @@ const initialState = {
 const authSlice = createSlice({
   name: 'auth',
   initialState,
+  // reducers: {
+  //   // reducers for verification email boolean
+  //   setVerify: (state, { payload }) => {
+  //     state.verify = payload;
+  //   },
+  // },
   extraReducers: {
     //реєстрація нового юзера
     [signUp.pending]: (store, _) => ({ ...store, loading: true, error: null }),
     [signUp.fulfilled]: (store, { payload }) => ({
       ...store,
       loading: false,
-      ...payload,
+      user: { email: payload },
     }),
     [signUp.rejected]: (store, { payload }) => ({
       ...store,

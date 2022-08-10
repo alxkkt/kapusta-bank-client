@@ -11,11 +11,11 @@ export const signUp = createAsyncThunk(
     try {
       const newUser = await services.signUp(data);
       Notify.success(
-        'Вітаю, Ви успішно зареєструвалися, ви зможете увійти після підтвердження почти .'
+        ' You will receive an email in a few minutes, please verify your email to continue.'
       );
       return newUser;
     } catch (error) {
-      Notify.failure('Нажаль, щось пішло не так, спробуйте ще!');
+      Notify.failure('Something went wrong, please try again.');
       return rejectWithValue(error);
     }
   }
@@ -26,12 +26,11 @@ export const signIn = createAsyncThunk(
   'auth/signIn',
   async (data, { rejectWithValue }) => {
     try {
-      console.log(data);
       const user = await services.signIn(data);
-      Notify.success('Вітаю, Ви успішно залогінились!');
+      Notify.success('Welcome back!');
       return user;
     } catch (error) {
-      Notify.failure('Нажаль, щось пішло не так, спробуйте ще!');
+      Notify.failure('Something went wrong, please try again.');
       return rejectWithValue(error);
     }
   }
@@ -62,6 +61,6 @@ export const getCurrentUser = createAsyncThunk(
 //logOut
 export const logOut = createAsyncThunk('auth/logOut', async () => {
   await services.logOut;
-  Notify.success('Вітаю, логаут здійснено!');
+  Notify.success('Goodbye! We hope to see you again.');
   return;
 });

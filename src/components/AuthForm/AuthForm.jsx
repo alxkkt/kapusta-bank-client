@@ -18,11 +18,11 @@ const AuthForm = ({ register, login }) => {
     }));
   };
 
-  const onSignIn = e => {
+  const onSignIn = () => {
     login({ ...form });
     setForm({ ...initialState });
   };
-  const onSignUp = e => {
+  const onSignUp = () => {
     register({ ...form });
     setForm({ ...initialState });
   };
@@ -52,11 +52,18 @@ const AuthForm = ({ register, login }) => {
           />
         </div>
         <div className={s.wrapButton}>
-          {/* тута будуть компоненты button */}
-          <button className={s.buttonSignIn} onClick={onSignIn} type="button">
+          <button
+            className={s.buttonSignIn}
+            onClick={() => onSignIn()}
+            type="button"
+          >
             SIGN IN
           </button>
-          <button className={s.buttonSignUp} onClick={onSignUp} type="button">
+          <button
+            className={s.buttonSignUp}
+            onClick={() => onSignUp()}
+            type="button"
+          >
             SIGN UP
           </button>
         </div>
