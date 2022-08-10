@@ -1,3 +1,7 @@
+.container {
+  display: flex;
+}
+
 .wrapper {
   display: flex;
   justify-content: space-between;
@@ -11,7 +15,7 @@
 
 .element {
   width: 3px;
-  background-color: var(--text-color-faded);
+  background-color: var(--text-color-strong);
 
   &:nth-child(1) {
     height: 10px;
@@ -28,6 +32,41 @@
 
 .wrapper:hover .element,
 .wrapper:focus .element {
+  background-color: var(--accent-color);
+
+  &:nth-child(1) {
+    height: 14px;
+  }
+
+  &:nth-child(2) {
+    height: 5px;
+  }
+
+  &:nth-child(3) {
+    height: 11px;
+  }
+
+  transition: all 250ms ease-in-out;
+}
+
+.description {
+  margin-right: 10px;
+  color: var(--text-color-faded);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: 0.04em;
+}
+
+.container:hover .description,
+.container:focus .description {
+  color: var(--accent-color);
+
+  transition: color 250ms ease-in-out;
+}
+
+.container:hover .element,
+.container:focus .element {
   background-color: var(--accent-color);
 
   &:nth-child(1) {

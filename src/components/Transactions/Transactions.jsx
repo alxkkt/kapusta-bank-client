@@ -16,8 +16,7 @@ const Transactions = () => {
   return (
     <>
       <Link className={styles.reports} to="/reports">
-        <p className={styles.description}>Reports</p>
-        <ReportsIcon className={styles.img} />
+        <ReportsIcon />
       </Link>
       <Balance />
       <Calendar startDate={date} onChange={handleChange} />
