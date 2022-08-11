@@ -5,6 +5,8 @@ import { useEffect } from 'react';
 import useLogin from '../../shared/hooks/isUserLogin';
 import { signIn, signUp } from '../../redux/auth/auth-operations';
 
+import toast, { Toaster } from 'react-hot-toast';
+
 import s from './AuthPage.module.scss';
 
 import AuthForm from '../../components/AuthForm';
@@ -21,11 +23,23 @@ const AuthPage = () => {
   }, [isLogin, navigate]);
 
   const registrNewUser = async data => {
-    dispatch(signUp(data));
+    try {
+      await dispatch(signUp(data));
+      toast.success(
+        ' You will receive an email in a few minutes, please verify your email to continue.'
+      );
+    } catch (error) {
+      toast.error('Something went wrong, please try again.');
+    }
   };
 
-  const loginUser = data => {
-    dispatch(signIn(data));
+  const loginUser = async data => {
+    try {
+      await dispatch(signIn(data));
+      toast.success('Welcome back!');
+    } catch (error) {
+      toast.error('Something went wrong, please try again.');
+    }
   };
 
   return (
@@ -37,6 +51,7 @@ const AuthPage = () => {
         </div>
         <AuthForm register={registrNewUser} login={loginUser} />
       </div>
+      <Toaster />
     </div>
   );
 };

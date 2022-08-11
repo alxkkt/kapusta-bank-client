@@ -1,5 +1,4 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 import * as services from 'shared/api/auth';
 
@@ -10,12 +9,9 @@ export const signUp = createAsyncThunk(
   async (data, { rejectWithValue }) => {
     try {
       const newUser = await services.signUp(data);
-      Notify.success(
-        ' You will receive an email in a few minutes, please verify your email to continue.'
-      );
+
       return newUser;
     } catch (error) {
-      Notify.failure('Something went wrong, please try again.');
       return rejectWithValue(error);
     }
   }
@@ -27,10 +23,9 @@ export const signIn = createAsyncThunk(
   async (data, { rejectWithValue }) => {
     try {
       const user = await services.signIn(data);
-      Notify.success('Welcome back!');
+
       return user;
     } catch (error) {
-      Notify.failure('Something went wrong, please try again.');
       return rejectWithValue(error);
     }
   }
@@ -61,6 +56,6 @@ export const getCurrentUser = createAsyncThunk(
 //logOut
 export const logOut = createAsyncThunk('auth/logOut', async () => {
   await services.logOut;
-  Notify.success('Goodbye! We hope to see you again.');
+  toast.success('Goodbye! We hope to see you again.');
   return;
 });

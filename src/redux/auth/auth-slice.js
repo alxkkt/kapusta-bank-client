@@ -9,7 +9,7 @@ import {
 } from './auth-operations';
 
 const initialState = {
-  user: {},
+  userData: {},
   token: '',
   loading: false,
   error: null,
@@ -31,7 +31,7 @@ const authSlice = createSlice({
     [signUp.fulfilled]: (store, { payload }) => ({
       ...store,
       loading: false,
-      user: { email: payload },
+      userData: { email: payload },
     }),
     [signUp.rejected]: (store, { payload }) => ({
       ...store,
