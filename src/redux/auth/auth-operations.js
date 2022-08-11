@@ -1,64 +1,60 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import * as services from '../../shared/api/auth';
 
-export const signup = createAsyncThunk(
-  'auth/signup',
+import * as services from 'shared/api/auth';
+
+//registration
+
+export const signUp = createAsyncThunk(
+  'auth/signUp',
   async (data, { rejectWithValue }) => {
     try {
-      const user = await services.signup(data);
+      const newUser = await services.signUp(data);
 
-      return user;
+      return newUser;
     } catch (error) {
-      return rejectWithValue(error.message);
+      return rejectWithValue(error);
     }
   }
 );
 
-export const login = createAsyncThunk(
-  'auth/login',
+//login
+export const signIn = createAsyncThunk(
+  'auth/signIn',
   async (data, { rejectWithValue }) => {
     try {
-      const user = await services.login(data);
+      const user = await services.signIn(data);
 
       return user;
     } catch (error) {
-      return rejectWithValue(error.message);
+      return rejectWithValue(error);
     }
   }
 );
 
 export const getCurrentUser = createAsyncThunk(
-  'auth/current',
+  'auth/getCurrentUser',
   async (_, { rejectWithValue, getState }) => {
     try {
-      const { user } = getState();
-      const { token } = user;
-      const data = await services.getCurrent(token);
-
-      return data;
+      const { auth } = getState();
+      const { token } = auth;
+      const user = await services.getCurrentUser(token);
+      return user;
     } catch (error) {
-      return rejectWithValue(error.message);
+      return rejectWithValue(error);
     }
   },
   {
     condition: (_, { getState }) => {
-      const { user } = getState();
-      if (!user.token) {
-        return false;
-      }
+      const { auth } = getState();
+      const { token } = auth;
+      if (!token) return false;
+      return;
     },
   }
 );
 
-export const logout = createAsyncThunk(
-  'auth/logout',
-  async (_, { rejectWithValue }) => {
-    try {
-      const user = await services.logout();
-
-      return user;
-    } catch (error) {
-      return rejectWithValue(error.message);
-    }
-  }
-);
+//logOut
+export const logOut = createAsyncThunk('auth/logOut', async () => {
+  await services.logOut;
+  return;
+});
