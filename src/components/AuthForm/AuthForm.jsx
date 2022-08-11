@@ -31,22 +31,30 @@ const AuthForm = ({ register, login }) => {
 
   return (
     <div className={s.wrap}>
-      <h2 className={s.title}>Login to our app using e-mail and password:</h2>
+      <h2 className={s.title}>
+        You can log in using an email and password, after registering:
+      </h2>
       <form action="" className={s.form}>
         <div className={s.wrapInput}>
+          <label htmlFor="email" className={s.text}>
+            Email
+          </label>
           <input
             onChange={handleChange}
             name="email"
             type="email"
-            placeholder="E-mail"
+            placeholder="Enter your email"
             className={s.input}
             value={email}
           />
+          <label htmlFor="password" className={s.text}>
+            Password
+          </label>
           <input
             onChange={handleChange}
             name="password"
             type="password"
-            placeholder="Password"
+            placeholder="Enter your password"
             className={s.input}
             value={password}
           />
@@ -57,14 +65,14 @@ const AuthForm = ({ register, login }) => {
             onClick={() => onSignIn()}
             type="button"
           >
-            SIGN IN
+            Log In
           </button>
           <button
             className={s.buttonSignUp}
             onClick={() => onSignUp()}
             type="button"
           >
-            SIGN UP
+            Registration
           </button>
         </div>
       </form>
