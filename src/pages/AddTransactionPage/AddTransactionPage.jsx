@@ -8,8 +8,14 @@ import { Link } from 'react-router-dom';
 
 const AddTransactionPage = () => {
   const [date, setDate] = useState(Date.now);
+  const [transaction, setTransaction] = useState({});
+  console.log(transaction);
   const handleChange = date => {
     setDate(date);
+  };
+
+  const addTransaction = data => {
+    setTransaction({ ...data, date: date });
   };
   return (
     <div className="container">
@@ -26,7 +32,7 @@ const AddTransactionPage = () => {
         <div className={styles.calendar}>
           <Calendar startDate={date} onChange={handleChange} />
         </div>
-        <AddTransactionForm />
+        <AddTransactionForm onSubmit={addTransaction} date={date} />
       </section>
     </div>
   );
