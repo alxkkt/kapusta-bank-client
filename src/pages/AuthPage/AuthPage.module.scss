@@ -1,0 +1,80 @@
+.bg {
+  background-image: url(../../shared/images/svg/cabbage-line.svg),
+    url(../../shared/images/svg/cabbage-bottom.svg),
+    linear-gradient(180deg, (#f5f6fb 60%), (#ffffff 60%));
+  background-repeat: no-repeat;
+  background-position: top 84px left 10px, bottom 56px left 103px, center;
+
+  @media screen and (min-width: 768px) {
+    background-position: top 84px left 10px, bottom 56px left 103px, center;
+  }
+  @media screen and (min-width: 1280px) {
+    background-position: top 84px left 320px, bottom 50px left 450px, center;
+  }
+}
+.authPage {
+  min-width: 320px;
+  height: 100vh;
+  margin: 0 auto;
+  padding: 40px 20px 34px;
+
+  @media screen and (min-width: 480px) {
+    width: 480px;
+  }
+  @media screen and (min-width: 768px) {
+    width: 768px;
+    padding: 80px 115px 70px;
+    background-position: top 84px left 10px, bottom 56px left 103px, center;
+  }
+  @media screen and (min-width: 1280px) {
+    display: flex;
+    align-items: center;
+
+    width: 1280px;
+    height: 100vh;
+    padding: 100px 125px;
+
+    background-position: top 84px left 10px, bottom 50px left 230px, center;
+  }
+}
+
+.wrap {
+  display: block;
+  @media screen and (min-width: 1280px) {
+    width: 420px;
+    margin-right: 112px;
+  }
+}
+.title {
+  margin-bottom: 8px;
+
+  font-size: 34px;
+  font-weight: 900;
+  font-size: 78px;
+  line-height: 1.17;
+  color: #000;
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 20px;
+    font-size: 102px;
+  }
+  @media screen and (min-width: 1280px) {
+  }
+}
+.text {
+  margin-bottom: 24px;
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 1.15;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+    line-height: 1.18;
+    letter-spacing: 0.18em;
+  }
+  @media screen and (min-width: 1280px) {
+    font-size: 18px;
+  }
+}

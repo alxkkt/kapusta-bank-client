@@ -1,0 +1,51 @@
+.wrapper {
+  background: var(--tooltip-background-gradient);
+
+  color: var(--main-white-color);
+  border-radius: 30px;
+}
+
+.tooltipContainer {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  position: absolute;
+  z-index: 2;
+
+  transition: all 250ms ease-in;
+}
+
+.visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: all;
+  cursor: help;
+}
+
+.triangle {
+  height: 11px;
+  width: 23px;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+
+  background-color: #162c5c;
+  margin-left: 68px;
+}
+
+.textContainer {
+  padding: 30px 22px;
+}
+
+.strongSign {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.43;
+
+  margin-bottom: 20px;
+}
+
+.smallSign {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.33;
+}
