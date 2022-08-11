@@ -56,6 +56,5 @@ export const getCurrentUser = createAsyncThunk(
 //logOut
 export const logOut = createAsyncThunk('auth/logOut', async () => {
   await services.logOut;
-  toast.success('Goodbye! We hope to see you again.');
   return;
 });
