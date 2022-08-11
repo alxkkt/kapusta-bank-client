@@ -9,14 +9,15 @@ import { Link } from 'react-router-dom';
 const AddTransactionPage = () => {
   const [date, setDate] = useState(Date.now);
   const [transaction, setTransaction] = useState({});
-  console.log(transaction);
   const handleChange = date => {
     setDate(date);
   };
 
   const addTransaction = data => {
-    setTransaction({ ...data, date: date });
+    const typeValue = data.category === 'Sallary' ? 'Income' : 'Expense';
+    setTransaction({ ...data, date: date, type: typeValue });
   };
+  console.log(transaction);
   return (
     <div className="container">
       <section className={styles.section}>
