@@ -29,8 +29,14 @@ const AuthPage = () => {
   };
 
   return (
-    <div className={s.authPage}>
-      <AuthForm register={registrNewUser} login={loginUser} />
+    <div className={s.bg}>
+      <div className={s.authPage}>
+        <div className={s.wrap}>
+          <h1 className={s.title}>Kapusta</h1>
+          <p className={s.text}>Smart Finance</p>
+        </div>
+        <AuthForm register={registrNewUser} login={loginUser} />
+      </div>
     </div>
   );
 };

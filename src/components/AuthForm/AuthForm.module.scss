@@ -5,7 +5,7 @@
 .wrap {
   min-width: 280px;
   min-height: 400px;
-  margin: 200px 0 0 auto;
+  margin: 0 auto;
   padding: 30px 20px 40px 20px;
 
   background-color: #fff;
@@ -18,24 +18,17 @@
   @media screen and (min-width: 768px) {
     width: 500px;
     padding: 60px 32px 50px;
-    margin: 260px auto 0 auto;
-  }
-
-  @media screen and (min-width: 1280px) {
-    margin: 117px 90px auto auto;
   }
 }
 .title {
   margin: 0 auto;
-  font-family: 'Montserrat';
-  font-weight: 500;
-  font-size: 10px;
-  line-height: 1.2;
-  letter-spacing: 0.02em;
-  @media screen and (min-width: 768px) {
-    font-size: 14px;
-    line-height: 1.4;
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: 0.04em;
+  @media screen and (min-width: 1280px) {
+    font-size: 16px;
   }
+
   &:last-of-type {
     margin-bottom: 20px;
     @media screen and (min-width: 768px) {
@@ -44,16 +37,27 @@
   }
 }
 
+.text {
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: 0.04em;
+  @media screen and (min-width: 1280px) {
+    font-size: 14px;
+  }
+}
+
 .input {
   width: 100%;
   height: 56px;
+  margin-top: 12px;
   margin-bottom: 20px;
   padding: 20px;
-  background-color: var(--main-white);
-  color: inherit;
-  border-radius: 15px;
+  background-color: #f6f7fb;
 
-  border: 1px solid #ced2d1;
+  color: inherit;
+  border-radius: 30px;
+  border: 1px solid #f6f7fb;
+
   @media screen and (min-width: 768px) {
     width: 425px;
   }
@@ -63,73 +67,66 @@
   }
 
   &::placeholder {
-    color: var(--input-color);
+    font-size: 14px;
+    line-height: 1.14;
+    letter-spacing: 0.04em;
+    color: #a6abb9;
   }
 }
 
 .wrapButton {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 .buttonSignIn {
-  width: 110px;
-  height: 40px;
+  width: 115px;
+  height: 44px;
 
-  font-family: 'Montserrat';
   font-weight: 700;
-  font-size: 10px;
-  line-height: 12px;
+  font-size: 12px;
+  line-height: 1.17;
+
+  text-align: center;
   letter-spacing: 0.02em;
   text-transform: uppercase;
 
-  color: var(--white-color);
+  color: #fff;
   background-color: var(--accent-color);
   border: none;
   border-radius: 15px;
 
   cursor: pointer;
   @media screen and (min-width: 768px) {
-    width: 210px;
-    height: 60px;
-
-    font-size: 12px;
+    width: 125px;
   }
 
   @media screen and (min-width: 1280px) {
-    width: 210px;
-    height: 60px;
-
-    font-size: 12px;
+    width: 125px;
   }
 }
 .buttonSignUp {
-  width: 110px;
-  height: 40px;
+  width: 115px;
+  height: 44px;
 
-  font-family: 'Montserrat';
   font-weight: 700;
-  font-size: 10px;
-  line-height: 1.2;
+  font-size: 12px;
+  line-height: 1.17;
+
+  text-align: center;
   letter-spacing: 0.02em;
   text-transform: uppercase;
 
-  color: var(--main-black);
-  background-color: var(--white-color);
-  border: 1px solid #ced2d1;
+  color: #000;
+  background-color: #f6f7fb;
+  border: 1px solid #f6f7fb;
   border-radius: 15px;
 
   cursor: pointer;
   @media screen and (min-width: 768px) {
-    width: 210px;
-    height: 60px;
-
-    font-size: 12px;
+    width: 125px;
   }
 
   @media screen and (min-width: 1280px) {
-    width: 210px;
-    height: 60px;
-
-    font-size: 12px;
+    width: 125px;
   }
 }
