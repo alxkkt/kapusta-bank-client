@@ -1,0 +1,47 @@
+.writing {
+  font-family: 'Roboto';
+
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.16;
+  /* identical to box height */
+
+  text-align: center;
+  letter-spacing: 0.04em;
+
+  color: rgba(82, 85, 95, 0.7);
+
+  margin-bottom: 5px;
+}
+.div {
+  margin-left: auto;
+  margin-right: auto;
+  width: 150px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.date {
+  font-family: 'Roboto';
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.14;
+
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+
+  color: #000000;
+}
+.button {
+  height: 15px;
+  display: inline-flex;
+  align-items: center;
+  padding-bottom: 4px;
+  background-color: transparent;
+  border: none;
+  font-weight: 700;
+  color: rgba(255, 117, 29, 1);
+  &:hover {
+    cursor: pointer;
+  }
+}
