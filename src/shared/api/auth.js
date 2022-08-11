@@ -4,8 +4,8 @@ const instance = axios.create({
   baseURL: 'https://kapusta-backend-proj.herokuapp.com/api',
 });
 
-const addToken = accessToken => {
-  instance.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
+export const addToken = accessToken => {
+  instance.defaults.headers.common.Authorization = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZjM4NDczMzlkNzQ2NjNmNmVkOTI1YSIsImlhdCI6MTY2MDE2MDY2NiwiZXhwIjoxNjYwNDE5ODY2fQ.wfriWCsRCJS1SUWMzQ2BWj4bmmLBeMes9IPyp-0XIMk`;
 };
 
 const removeToken = () => {

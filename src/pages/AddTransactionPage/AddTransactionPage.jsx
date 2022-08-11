@@ -1,14 +1,29 @@
 import styles from './AddTransactionPage.module.scss';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import AddTransactionForm from '../../components/AddTransactionForm';
 import Calendar from 'components/Calendar';
 import Icon from 'shared/components/Icon';
+import { fetchTransaction } from 'shared/api/transactions';
 
 import { Link } from 'react-router-dom';
 
 const AddTransactionPage = () => {
   const [date, setDate] = useState(Date.now);
   const [transaction, setTransaction] = useState({});
+
+  const firstRender = useRef(true);
+
+  useEffect(() => {
+    const resultFetch = async () => {
+      if (!firstRender.current) {
+        const result = await fetchTransaction(transaction);
+        console.log(result);
+      }
+    };
+    resultFetch();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [transaction]);
+
   const handleChange = date => {
     setDate(date);
   };
