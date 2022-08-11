@@ -1,19 +1,29 @@
-.datePicker {
-    position: relative;
-    display: block;
-    text-align: center;
-    margin: 0 auto;
-    color: #52555F;
-    background-color: transparent;
-    border: transparent;
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    font-weight: 700;
-        font-size: 12px;
-        line-height: 14px;
-        letter-spacing: 0.04em;
+  margin-top: 40px;
+}
+
+.datePicker {
+  display: block;
+  text-align: center;
+  width: 74px;
+  height: 40px;
+
+  color: #52555f;
+  background-color: transparent;
+  border: transparent;
+
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.04em;
 }
 
 .img {
-    position: absolute;
-    left: 44%;
+  display: block;
+  // position: absolute;
+  // right: 58%;
 }

@@ -3,21 +3,30 @@ import styles from './calendar.module.scss';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
-import CalendarImg from '../../shared/images/png/Calendar.png';
+import Icon from 'shared/components/Icon';
 
 const Calendar = ({ onChange, startDate }) => {
   return (
-    <>
-      <img className={styles.img} src={CalendarImg} alt="calendar" />
-      <DatePicker
-        className={styles.datePicker}
-        name="date"
-        dateFormat="dd.MM.yyyy"
-        selected={startDate}
-        onChange={onChange}
-        required
-      />
-    </>
+    <div className={styles.wrapper}>
+      <div>
+        <Icon
+          className={styles.img}
+          name={`icon-calendar`}
+          width={20}
+          height={20}
+        />
+      </div>
+      <div>
+        <DatePicker
+          className={styles.datePicker}
+          name="date"
+          dateFormat="dd.MM.yyyy"
+          selected={startDate}
+          onChange={onChange}
+          required
+        />
+      </div>
+    </div>
   );
 };
 

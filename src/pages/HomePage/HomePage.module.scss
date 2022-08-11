@@ -1,49 +1,44 @@
-
-
 .section {
-    margin-bottom: 40px;
-    padding-top: 45px;
-    padding-bottom: 40px;
-    background-color: #F5F6FB;
-    border-bottom-left-radius: 50%;
+  margin-bottom: 40px;
+  padding-top: 45px;
+  padding-bottom: 40px;
+  background-color: #f5f6fb;
+  border-bottom-left-radius: 50%;
 }
 .title {
-    position: absolute;
-    white-space: nowrap;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    border: 0;
-    padding: 0;
-    clip: rect(0 0 0 0);
-    clip-path: inset(50%);
-    margin: -1px;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  margin: -1px;
 }
 
+.link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  width: 200px;
+  height: 44px;
 
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.02em;
 
-    .link {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-left: auto;
-            margin-right: auto;
-            text-align: center;
-            width: 200px;
-            height: 44px;
-    
-            font-weight: 700;
-            font-size: 12px;
-            line-height: 14px;
-            letter-spacing: 0.02em;
-    
-            color: #FFFF;
-            background-color: var(--accent-color);
-    
-            border-radius: 22px 22px 22px 22px;
-            cursor: pointer;
-        }
+  color: #ffff;
+  background-color: var(--accent-color);
 
+  border-radius: 22px 22px 22px 22px;
+  cursor: pointer;
+}
 
 // @media screen and (min-width: 768px) {
 //     .link {
@@ -52,12 +47,11 @@
 // }
 
 @media screen and (min-width: 1280px) {
-    .link {
-            display: none;
-        }
+  .link {
+    display: none;
+  }
 }
 
 .link:visited {
-color: #FFFF;
+  color: #ffff;
 }
-
