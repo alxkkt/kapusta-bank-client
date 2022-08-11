@@ -23,21 +23,27 @@ const AuthPage = () => {
   }, [isLogin, navigate]);
 
   const registrNewUser = async data => {
-    try {
-      await dispatch(signUp(data));
+    const { meta } = await dispatch(signUp(data));
+    const { requestStatus } = meta;
+
+    if (requestStatus === 'fulfilled') {
       toast.success(
         ' You will receive an email in a few minutes, please verify your email to continue.'
       );
-    } catch (error) {
+    }
+    if (requestStatus === 'rejected') {
       toast.error('Something went wrong, please try again.');
     }
   };
 
   const loginUser = async data => {
-    try {
-      await dispatch(signIn(data));
+    const { meta } = await dispatch(signIn(data));
+    const { requestStatus } = meta;
+
+    if (requestStatus === 'fulfilled') {
       toast.success('Welcome back!');
-    } catch (error) {
+    }
+    if (requestStatus === 'rejected') {
       toast.error('Something went wrong, please try again.');
     }
   };
