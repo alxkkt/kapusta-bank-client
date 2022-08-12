@@ -1,12 +1,13 @@
 import styles from './balance.module.scss';
 import { useState, useEffect } from 'react';
-import { useSelector, shallowEqual } from 'react-redux';
+import { useSelector, shallowEqual, useDispatch } from 'react-redux';
 import { getTotalBalance } from 'redux/auth/auth-selectors';
 import NumberFormat from 'react-number-format';
 import ModalBalance from './ModalBalance';
+import { updateBalance } from 'redux/auth/auth-operations';
 
 const Balance = () => {
-  // const [balance, setBalance] = useState('');
+  const [form, setForm] = useState();
   const balance = useSelector(getTotalBalance, shallowEqual);
   console.log(balance);
 
@@ -23,8 +24,15 @@ const Balance = () => {
     }
   }, [balance, tooltipStatus.isShown]);
 
-  const handleChange = e => {
-    // setBalance(e.target.value);
+  // const updateTotalBalance = () => {};
+
+  const handleChange = ({ target }) => {
+    setForm(target.value);
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    console.log(Number.parseFloat(form));
   };
 
   return (
@@ -40,7 +48,7 @@ const Balance = () => {
           type="text"
           value={balance}
           onChange={handleChange}
-          thousandSeparator=" "
+          // thousandSeparator=""
           decimalSeparator="."
           decimalScale={2}
           fixedDecimalScale={true}
@@ -49,7 +57,7 @@ const Balance = () => {
           minLength={1}
         />
 
-        <button className={styles.button} type="submit">
+        <button className={styles.button} type="submit" onClick={handleSubmit}>
           CONFIRM
         </button>
       </form>

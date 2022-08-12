@@ -16,7 +16,6 @@ const initialState = {
   loading: false,
   error: null,
   isLogin: false,
-  totalBalance: 1,
 };
 
 const authSlice = createSlice({
@@ -75,6 +74,27 @@ const authSlice = createSlice({
     [logOut.pending]: (store, _) => ({ ...store, loading: true, error: null }),
     [logOut.fulfilled]: () => ({ ...initialState, loading: false }),
     [logOut.rejected]: () => ({ ...initialState, loading: false }),
+    //get balance
+    [getBalance.pending]: (store, _) => ({
+      ...store,
+      loading: true,
+      error: null,
+    }),
+    [getBalance.fulfilled]: (store, { payload }) => {
+      const { token, totalBalance } = payload;
+      return {
+        ...store,
+        loading: false,
+        isLogin: true,
+        token,
+        userData: { totalBalance },
+      };
+    },
+    [getBalance.rejected]: (store, { payload }) => ({
+      ...store,
+      loading: false,
+      error: payload,
+    }),
   },
 });
 export default authSlice.reducer;
