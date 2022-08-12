@@ -38,10 +38,10 @@
   text-align: center;
 }
 .expenses {
-  color: rgba(229, 57, 53, 1);
+  color: var(--main-red-color);
 }
 .income {
-  color: rgba(64, 121, 70, 1);
+  color: var(--main-green-color);
 }
 .leftDiv {
   border-right: 1px solid #e0e5eb;
