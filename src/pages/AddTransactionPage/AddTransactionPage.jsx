@@ -1,5 +1,6 @@
 import styles from './AddTransactionPage.module.scss';
 import { useState, useEffect, useRef } from 'react';
+import { useSelector, shallowEqual } from 'react-redux';
 import AddTransactionForm from '../../components/AddTransactionForm';
 import Calendar from 'components/Calendar';
 import Icon from 'shared/components/Icon';

@@ -19,7 +19,7 @@ const App = () => {
     <div>
       <MyRoutes />
       {/* <AuthPage /> */}
-      <HomePage />
+      {/* <HomePage /> */}
     </div>
   );
 };

@@ -55,6 +55,34 @@ export const getCurrentUser = createAsyncThunk(
 
 //logOut
 export const logOut = createAsyncThunk('auth/logOut', async () => {
-  await services.logOut;
+  await services.logOut();
   return;
 });
+
+export const getBalance = createAsyncThunk(
+  'auth/balance',
+  async (_, { rejectWithValue, getState }) => {
+    try {
+      const { auth } = getState();
+      const { token } = auth;
+      const balance = await services.getBalance(token);
+      return balance;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
+
+export const updateBalance = createAsyncThunk(
+  'auth/balance',
+  async (data, { rejectWithValue, getState }) => {
+    try {
+      const { auth } = getState();
+      const { token } = auth;
+      const balance = await services.updateBalance(token, data);
+      return balance;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);

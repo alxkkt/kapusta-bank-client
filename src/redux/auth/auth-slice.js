@@ -6,6 +6,8 @@ import {
   getCurrentUser,
   logOut,
   reverify,
+  getBalance,
+  updateBalance,
 } from './auth-operations';
 
 const initialState = {
@@ -14,6 +16,7 @@ const initialState = {
   loading: false,
   error: null,
   isLogin: false,
+  totalBalance: 1,
 };
 
 const authSlice = createSlice({

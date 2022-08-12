@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import NumberFormat from 'react-number-format';
 
 import ModalBalance from './ModalBalance';
@@ -6,7 +7,10 @@ import ModalBalance from './ModalBalance';
 import styles from './balance.module.scss';
 
 const Balance = () => {
-  const [balance, setBalance] = useState('');
+  // const [balance, setBalance] = useState('');
+  const balance = useSelector(({ auth }) => auth.userData.totalBalance);
+  console.log(balance);
+
   const [tooltipStatus, setTooltipStatus] = useState({
     isOpen: false,
     isShown: false,
@@ -21,7 +25,7 @@ const Balance = () => {
   }, [balance, tooltipStatus.isShown]);
 
   const handleChange = e => {
-    setBalance(e.target.value);
+    // setBalance(e.target.value);
   };
 
   return (
