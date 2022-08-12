@@ -18,6 +18,7 @@ const App = () => {
   return (
     <div>
       <MyRoutes />
+
       {/* <AuthPage /> */}
       {/* <HomePage /> */}
     </div>
