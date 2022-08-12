@@ -9,11 +9,14 @@ const HomePage = () => {
   return (
     <section className={styles.section}>
       <div className="container">
-        <h1 className={styles.title}>Home Page</h1>
-        <Transactions />
+        <div className={styles.background}>
+          <h1 className={styles.title}>Home Page</h1>
+          <Transactions />
+        </div>
         <Link className={styles.link} to="/addtransaction">
           ADD TRANSACTION
         </Link>
+
         <TransactionsList />
       </div>
     </section>

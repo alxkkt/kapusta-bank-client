@@ -5,7 +5,7 @@ import { useState } from 'react';
 
 const AddTransactionForm = ({ onSubmit }) => {
   const [form, setForm] = useState({
-    name: '',
+    description: '',
     category: '',
     sum: '',
   });
@@ -19,28 +19,27 @@ const AddTransactionForm = ({ onSubmit }) => {
     e.preventDefault();
     onSubmit({ ...form });
     setForm({
-      name: '',
+      description: '',
       category: '',
-      type: '',
       sum: '',
     });
   };
 
   const handleClear = e => {
     setForm({
-      name: '',
+      description: '',
       category: '',
       sum: '',
     });
   };
-  const { name, category, sum } = form;
+  const { description, category, sum } = form;
   return (
     <form className={styles.form} action="" onSubmit={handleSubmit}>
       <input
         className={styles.input}
         onChange={handleChange}
-        name="name"
-        value={name}
+        name="description"
+        value={description}
         type="text"
         placeholder="Product description"
       />
@@ -49,6 +48,7 @@ const AddTransactionForm = ({ onSubmit }) => {
         onChange={handleChange}
         name="category"
         value={category}
+        required
       >
         <option value="" disabled>
           Product category

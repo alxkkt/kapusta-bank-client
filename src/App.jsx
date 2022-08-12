@@ -17,9 +17,9 @@ const App = () => {
 
   return (
     <div>
-      {/* <MyRoutes /> */}
-      <AuthPage />
-      {/* <HomePage /> */}
+      <MyRoutes />
+      {/* <AuthPage /> */}
+      <HomePage />
     </div>
   );
 };

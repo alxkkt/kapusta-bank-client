@@ -4,6 +4,7 @@ import AddTransactionForm from '../../components/AddTransactionForm';
 import Calendar from 'components/Calendar';
 import Icon from 'shared/components/Icon';
 import { fetchTransaction } from 'shared/api/transactions';
+// import { transactionsApi } from 'redux/transactions/transactions';
 
 import { Link } from 'react-router-dom';
 
@@ -11,17 +12,15 @@ const AddTransactionPage = () => {
   const [date, setDate] = useState(Date.now);
   const [transaction, setTransaction] = useState({});
 
-  const firstRender = useRef(true);
+  // const firstRender = useRef(true);
+  // console.log(firstRender);
 
   useEffect(() => {
     const resultFetch = async () => {
-      if (!firstRender.current) {
-        const result = await fetchTransaction(transaction);
-        console.log(result);
-      }
+      const result = await fetchTransaction(transaction);
+      console.log(result);
     };
-    resultFetch();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // resultFetch();
   }, [transaction]);
 
   const handleChange = date => {
@@ -30,12 +29,19 @@ const AddTransactionPage = () => {
 
   const addTransaction = data => {
     const typeValue = data.category === 'Sallary' ? 'Income' : 'Expense';
-    setTransaction({ ...data, date: date, type: typeValue });
+    const sumToNumber = Number.parseFloat(data.sum);
+    return setTransaction({
+      ...data,
+      date: date,
+      type: typeValue,
+      sum: sumToNumber,
+    });
   };
+
   console.log(transaction);
   return (
-    <div className="container">
-      <section className={styles.section}>
+    <section className={styles.section}>
+      <div className="container">
         <Link className={styles.link} to="/">
           <Icon
             className={styles.img}
@@ -49,8 +55,8 @@ const AddTransactionPage = () => {
           <Calendar startDate={date} onChange={handleChange} />
         </div>
         <AddTransactionForm onSubmit={addTransaction} date={date} />
-      </section>
-    </div>
+      </div>
+    </section>
   );
 };
 
