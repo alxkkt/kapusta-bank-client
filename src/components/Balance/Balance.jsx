@@ -1,14 +1,13 @@
-import { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import NumberFormat from 'react-number-format';
-
-import ModalBalance from './ModalBalance';
-
 import styles from './balance.module.scss';
+import { useState, useEffect } from 'react';
+import { useSelector, shallowEqual } from 'react-redux';
+import { getTotalBalance } from 'redux/auth/auth-selectors';
+import NumberFormat from 'react-number-format';
+import ModalBalance from './ModalBalance';
 
 const Balance = () => {
   // const [balance, setBalance] = useState('');
-  const balance = useSelector(({ auth }) => auth.userData.totalBalance);
+  const balance = useSelector(getTotalBalance, shallowEqual);
   console.log(balance);
 
   const [tooltipStatus, setTooltipStatus] = useState({
