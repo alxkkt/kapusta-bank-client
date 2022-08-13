@@ -4,35 +4,37 @@ import { useSelector, shallowEqual, useDispatch } from 'react-redux';
 import { getTotalBalance } from 'redux/auth/auth-selectors';
 import NumberFormat from 'react-number-format';
 import ModalBalance from './ModalBalance';
-import { updateBalance } from 'redux/auth/auth-operations';
+import { updateBalance, getBalance } from 'redux/auth/auth-operations';
 
 const Balance = () => {
-  const [form, setForm] = useState();
   const balance = useSelector(getTotalBalance, shallowEqual);
-  const [newBalance, setNewBalance] = useState('');
+  const [balanceState, setBalanceState] = useState('');
+  const dispatch = useDispatch();
 
   const [tooltipStatus, setTooltipStatus] = useState({
     isOpen: false,
     isShown: false,
   });
 
+  // const updateTotalBalance = () => {};
+
+  const handleChange = ({ target }) => {
+    setBalanceState(target.value);
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    // dispatch(getBalance(Number.parseFloat(Number.parseFloat(balanceState))));
+  };
+
   useEffect(() => {
-    setNewBalance(balance);
+    setBalanceState(balance);
     if (!+balance && !tooltipStatus.isShown) {
       setTimeout(() => {
         setTooltipStatus(prevState => ({ ...prevState, isOpen: true }));
       }, 500);
     }
   }, [balance, tooltipStatus.isShown]);
-
-  // const updateTotalBalance = () => {};
-
-  const handleChange = ({ target }) => {};
-
-  const handleSubmit = e => {
-    e.preventDefault();
-    console.log(Number.parseFloat(form));
-  };
 
   return (
     <div
@@ -45,7 +47,7 @@ const Balance = () => {
           className={styles.input}
           name="balance"
           type="text"
-          value={newBalance}
+          value={balanceState}
           onChange={handleChange}
           // thousandSeparator=""
           decimalSeparator="."

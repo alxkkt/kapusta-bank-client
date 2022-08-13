@@ -1,5 +1,5 @@
 import styles from './AddTransactionPage.module.scss';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector, shallowEqual } from 'react-redux';
 
 import AddTransactionForm from '../../components/AddTransactionForm';
@@ -14,15 +14,12 @@ const AddTransactionPage = () => {
   const [date, setDate] = useState(Date.now);
   const [transaction, setTransaction] = useState({});
 
-  // const firstRender = useRef(true);
-  // console.log(firstRender);
-
   useEffect(() => {
     const resultFetch = async () => {
       const result = await fetchTransaction(transaction);
       console.log(result);
     };
-    resultFetch();
+    // resultFetch();
   }, [transaction]);
 
   const handleChange = date => {
@@ -30,7 +27,7 @@ const AddTransactionPage = () => {
   };
 
   const addTransaction = data => {
-    const typeValue = data.category === 'Sallary' ? 'income' : 'expense';
+    const typeValue = data.category === 'sallary' ? 'income' : 'expense';
     const sumToNumber = Number.parseFloat(data.sum);
     return setTransaction({
       ...data,
@@ -51,7 +48,6 @@ const AddTransactionPage = () => {
             height={24}
             name={`icon-backspace`}
           />
-          {/* <img className={styles.img} src={Back} alt="Back" /> */}
         </Link>
         <div className={styles.calendar}>
           <Calendar startDate={date} onChange={handleChange} />

@@ -95,6 +95,27 @@ const authSlice = createSlice({
       loading: false,
       error: payload,
     }),
+    //update balance
+    [updateBalance.pending]: (store, _) => ({
+      ...store,
+      loading: true,
+      error: null,
+    }),
+    [updateBalance.fulfilled]: (store, { payload }) => {
+      const { token, totalBalance } = payload;
+      return {
+        ...store,
+        loading: false,
+        isLogin: true,
+        token,
+        userData: { totalBalance },
+      };
+    },
+    [updateBalance.rejected]: (store, { payload }) => ({
+      ...store,
+      loading: false,
+      error: payload,
+    }),
   },
 });
 export default authSlice.reducer;

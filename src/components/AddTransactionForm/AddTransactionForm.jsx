@@ -11,7 +11,7 @@ const AddTransactionForm = ({ onSubmit }) => {
     sum: '',
   });
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const handleChange = ({ target }) => {
     const { name, value } = target;
@@ -36,7 +36,7 @@ const AddTransactionForm = ({ onSubmit }) => {
       sum: '',
     });
   };
-  const { description, category, sum } = form;
+  const { description, sum } = form;
   return (
     <form className={styles.form} action="" onSubmit={handleSubmit}>
       <input
@@ -51,12 +51,10 @@ const AddTransactionForm = ({ onSubmit }) => {
         className={styles.select}
         onChange={handleChange}
         name="category"
-        value={category}
+        // value={category}
         required
       >
-        <option value="" disabled>
-          Product category
-        </option>
+        <option value="">Product category</option>
         <optgroup label="Expense" name="type">
           <option value="Health">Health</option>
           <option value="Alcohol">Alcohol</option>
