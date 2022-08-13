@@ -15,6 +15,8 @@ import storage from 'redux-persist/lib/storage';
 import authReducer from './auth/auth-slice';
 import { transactionsApi } from './transactions/transactions';
 
+import transactionsByYear from './transactionsByDate/slice';
+
 const persistAuthConfig = {
   key: 'auth',
   storage,
@@ -27,6 +29,7 @@ export const store = configureStore({
   reducer: {
     auth: persistedAuthReducer,
     [transactionsApi.reducerPath]: transactionsApi.reducer,
+    transactionsByDate: transactionsByYear.reducer,
   },
   middleware: getDefaultMiddleware => [
     ...getDefaultMiddleware({
