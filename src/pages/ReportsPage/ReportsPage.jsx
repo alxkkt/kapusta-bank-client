@@ -2,6 +2,7 @@
 import CurrentPeriod from '../../components/CurrentPeriod';
 import ExpensesIncomeSwitch from '../../components/ExpensesIncomeSwitch';
 import ExpensesIncome from '../../components/ExpensesIncome';
+import ReturnBackButton from '../../components/ReturnBackButton';
 import moment from 'moment';
 import { useState } from 'react';
 
@@ -14,7 +15,11 @@ const ReportsPage = () => {
   return (
     <section>
       <div className="container">
-        <CurrentPeriod period={period} setPeriod={setPeriod} />
+        <div>
+          <ReturnBackButton />
+          <CurrentPeriod period={period} setPeriod={setPeriod} />
+        </div>
+
         <ExpensesIncome
           totalIncome={totalIncome}
           totalExpenses={totalExpenses}
