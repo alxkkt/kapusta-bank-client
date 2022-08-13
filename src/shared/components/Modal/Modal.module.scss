@@ -13,7 +13,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 100%;
+  width: 380px;
   padding: 50px 60px 0px 60px;
   background-color: #FFF;
   border-radius: 30px;
@@ -25,22 +25,24 @@
 
 .closeModalBtn {
   position: relative;
-  top: -20px;
-  right: -91%;
+  top: -25px;
+  right: -110%;
   width: 15px;
   height: 15px;
   border: transparent;
   border-radius: 50%;
   background-color: transparent;
-  // background-image: url(../../../assets/close.svg);
-  background-repeat: no-repeat;
-  background-position: center;
   transition: background-color 600ms ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .closeModalBtn:hover {
   background-color: #ff751d;
 }
+
+
 
 .modalContentWrapper {
   list-style: none;
@@ -79,7 +81,7 @@
 @media screen and (min-width: 768px) {
   .modalContent {
     height: 200px;
-    width: 300px;
+    width: 380px;
     padding: 0px 60px 0px 60px;
   }
 
@@ -95,8 +97,4 @@
     margin-right: 15px;
   }
 
-  .closeModalBtn {
-    top: -25px;
-    right: -110%;
-  }
 }

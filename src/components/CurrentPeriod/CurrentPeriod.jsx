@@ -1,7 +1,7 @@
 import moment from 'moment';
 import styles from './CurrentPeriod.module.scss';
-import icons from '../../images/icons.svg';
-import { useState } from 'react';
+// import icons from '../../images/icons.svg';
+// import { useState } from 'react';
 const CurrentPeriod = ({ period, setPeriod }) => {
   const onPrevClick = () => {
     setPeriod(period - 1);

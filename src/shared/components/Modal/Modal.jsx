@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { createPortal } from 'react-dom';
 import Button from '../Button';
+import Icon from '../Icon';
 
 import s from './Modal.module.scss';
 
@@ -32,11 +33,14 @@ class Modal extends Component {
     return createPortal(
       <div className={s.modalOverlay} onClick={this.handleOverlayClick}>
         <div className={s.modalContent}>
-          <button
-            type="button"
-            onClick={onNo}
-            className={s.closeModalBtn}
-          ></button>
+          <button type="button" onClick={onNo} className={s.closeModalBtn}>
+            <Icon
+              width="12"
+              height="12"
+              name="icon-close"
+              className={s.iconClose}
+            />
+          </button>
           <p className={s.modalText}>{title}</p>
           <ul className={s.modalContentWrapper}>
             <li className={s.btnWrapper}>
