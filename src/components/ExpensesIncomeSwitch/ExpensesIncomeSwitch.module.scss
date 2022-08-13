@@ -1,0 +1,29 @@
+.div {
+  width: 134px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.button {
+  background-color: transparent;
+  color: rgba(255, 117, 29, 1);
+  font-weight: 700;
+  border: none;
+  &:hover {
+    cursor: pointer;
+  }
+}
+.text {
+  font-family: 'Roboto';
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.14;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+
+  color: #000000;
+}
