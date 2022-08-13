@@ -1,15 +1,14 @@
 import Logo from './Logo';
 import UserMenu from './UserMenu';
 import s from './Header.module.scss';
-// import useLogin from '../../shared/hooks/isUserLogin';
+import useLogin from '../../shared/hooks/isUserLogin';
 
 const Header = () => {
-  // const isLogin = useLogin();
+  const isLogin = useLogin();
   return (
     <div className={s.header}>
       <Logo />
-      {/* {isLogin && <UserMenu />} */}
-      <UserMenu />
+      {isLogin && <UserMenu />}
     </div>
   );
 };
