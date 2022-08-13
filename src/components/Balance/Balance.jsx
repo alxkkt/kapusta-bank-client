@@ -9,7 +9,7 @@ import { updateBalance } from 'redux/auth/auth-operations';
 const Balance = () => {
   const [form, setForm] = useState();
   const balance = useSelector(getTotalBalance, shallowEqual);
-  console.log(balance);
+  const [newBalance, setNewBalance] = useState('');
 
   const [tooltipStatus, setTooltipStatus] = useState({
     isOpen: false,
@@ -17,6 +17,7 @@ const Balance = () => {
   });
 
   useEffect(() => {
+    setNewBalance(balance);
     if (!+balance && !tooltipStatus.isShown) {
       setTimeout(() => {
         setTooltipStatus(prevState => ({ ...prevState, isOpen: true }));
@@ -26,9 +27,7 @@ const Balance = () => {
 
   // const updateTotalBalance = () => {};
 
-  const handleChange = ({ target }) => {
-    setForm(target.value);
-  };
+  const handleChange = ({ target }) => {};
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -46,7 +45,7 @@ const Balance = () => {
           className={styles.input}
           name="balance"
           type="text"
-          value={balance}
+          value={newBalance}
           onChange={handleChange}
           // thousandSeparator=""
           decimalSeparator="."

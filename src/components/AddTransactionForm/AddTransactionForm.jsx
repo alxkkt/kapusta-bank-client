@@ -2,6 +2,7 @@ import styles from './AddTransactionForm.module.scss';
 import NumberFormat from 'react-number-format';
 import Icon from 'shared/components/Icon';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const AddTransactionForm = ({ onSubmit }) => {
   const [form, setForm] = useState({
@@ -10,9 +11,12 @@ const AddTransactionForm = ({ onSubmit }) => {
     sum: '',
   });
 
+  const navigate = useNavigate();
+
   const handleChange = ({ target }) => {
     const { name, value } = target;
-    setForm({ ...form, [name]: value });
+    const newValue = value.toLowerCase();
+    setForm({ ...form, [name]: newValue });
   };
 
   const handleSubmit = e => {
@@ -77,7 +81,6 @@ const AddTransactionForm = ({ onSubmit }) => {
           name="sum"
           value={sum}
           type="text"
-          thousandSeparator=" "
           decimalSeparator="."
           decimalScale={2}
           fixedDecimalScale={true}

@@ -1,6 +1,7 @@
 import styles from './AddTransactionPage.module.scss';
 import { useState, useEffect, useRef } from 'react';
 import { useSelector, shallowEqual } from 'react-redux';
+
 import AddTransactionForm from '../../components/AddTransactionForm';
 import Calendar from 'components/Calendar';
 import Icon from 'shared/components/Icon';
@@ -21,7 +22,7 @@ const AddTransactionPage = () => {
       const result = await fetchTransaction(transaction);
       console.log(result);
     };
-    // resultFetch();
+    resultFetch();
   }, [transaction]);
 
   const handleChange = date => {
@@ -29,7 +30,7 @@ const AddTransactionPage = () => {
   };
 
   const addTransaction = data => {
-    const typeValue = data.category === 'Sallary' ? 'Income' : 'Expense';
+    const typeValue = data.category === 'Sallary' ? 'income' : 'expense';
     const sumToNumber = Number.parseFloat(data.sum);
     return setTransaction({
       ...data,
