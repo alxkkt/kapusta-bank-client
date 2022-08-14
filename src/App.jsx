@@ -18,8 +18,10 @@ const App = () => {
   return (
     <div>
       <MyRoutes />
-      {/* <AuthPage />
-      <HomePage /> */}
+
+      {/* <AuthPage /> */}
+      {/* <HomePage /> */}
+
     </div>
   );
 };

@@ -5,7 +5,7 @@ const instance = axios.create({
   // baseURL: 'http://localhost:3030/api',
 });
 
-const addToken = token => {
+export const addToken = token => {
   instance.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
@@ -50,6 +50,21 @@ export const logOut = async () => {
 export const logInByGoogle = async () => {
   const { data } = await instance.post('/auth/google');
   addToken(data.accessToken);
+  return data;
+};
+
+export const getBalance = async accessToken => {
+  addToken(accessToken);
+  const { data } = await instance.get('/auth/balance');
+  return data;
+};
+
+export const updateBalance = async (body, accessToken) => {
+  addToken(accessToken);
+  console.log(body);
+  const { data } = await instance.patch('/auth/balance', {
+    totalBalance: body,
+  });
   return data;
 };
 

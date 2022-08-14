@@ -1,9 +1,10 @@
-.section {
-  margin-bottom: 40px;
+
+.background {
+background-color: #f5f6fb;
+  border-bottom-left-radius: 40%;
   padding-top: 45px;
   padding-bottom: 40px;
-  background-color: #f5f6fb;
-  border-bottom-left-radius: 50%;
+  margin-bottom: 30px;
 }
 .title {
   position: absolute;
@@ -40,17 +41,17 @@
   cursor: pointer;
 }
 
-// @media screen and (min-width: 768px) {
-//     .link {
-//         display: none;
-//     }
-// }
-
-@media screen and (min-width: 1280px) {
-  .link {
-    display: none;
-  }
+@media screen and (min-width: 768px) {
+    .link {
+        display: none;
+    }
 }
+
+// @media screen and (min-width: 1280px) {
+//   .link {
+//     display: none;
+//   }
+// }
 
 .link:visited {
   color: #ffff;

@@ -6,10 +6,14 @@ import {
   getCurrentUser,
   logOut,
   reverify,
+  getBalance,
+  updateBalance,
 } from './auth-operations';
 
 const initialState = {
-  userData: {},
+  userData: {
+    totalBalance: 0,
+  },
   token: '',
   loading: false,
   error: null,
@@ -72,6 +76,45 @@ const authSlice = createSlice({
     [logOut.pending]: (store, _) => ({ ...store, loading: true, error: null }),
     [logOut.fulfilled]: () => ({ ...initialState, loading: false }),
     [logOut.rejected]: () => ({ ...initialState, loading: false }),
+    //get balance
+    [getBalance.pending]: (store, _) => ({
+      ...store,
+      loading: true,
+      error: null,
+    }),
+    [getBalance.fulfilled]: (store, { payload }) => {
+      const { totalBalance } = payload;
+      return {
+        ...store,
+        loading: false,
+        isLogin: true,
+        userData: { totalBalance },
+      };
+    },
+    [getBalance.rejected]: (store, { payload }) => ({
+      ...store,
+      loading: false,
+      error: payload,
+    }),
+    //update balance
+    [updateBalance.pending]: (store, _) => ({
+      ...store,
+      loading: true,
+      error: null,
+    }),
+    [updateBalance.fulfilled]: (store, { payload }) => {
+      const { balanceNow } = payload;
+      return {
+        ...store,
+        loading: false,
+        userData: { totalBalance: balanceNow },
+      };
+    },
+    [updateBalance.rejected]: (store, { payload }) => ({
+      ...store,
+      loading: false,
+      error: payload,
+    }),
   },
 });
 export default authSlice.reducer;

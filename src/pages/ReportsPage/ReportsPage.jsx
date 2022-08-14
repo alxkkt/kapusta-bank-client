@@ -4,15 +4,25 @@ import ExpensesIncomeSwitch from '../../components/ExpensesIncomeSwitch';
 import ExpensesIncome from '../../components/ExpensesIncome';
 import ReturnBackButton from '../../components/ReturnBackButton';
 import Header from '../../components/Header';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { getTransactionsByDate } from '../../redux/transactionsByDate/operations';
 import moment from 'moment';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { transactions } from '../../redux/transactionsByDate/selectors';
 
 const ReportsPage = () => {
   const [period, setPeriod] = useState(moment().month());
   const [areExpensesOpen, setAreExpensesOpen] = useState(true);
-  const [totalExpenses, setTotalExpenses] = useState(0);
-  const [totalIncome, setTotalIncome] = useState(0);
+  const transactionsInfo = useSelector(transactions);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(
+      getTransactionsByDate({
+        year: moment().month(period).year(),
+        month: moment().month(period).month(),
+      })
+    );
+  }, [dispatch, period]);
 
   return (
     <section>
@@ -24,8 +34,8 @@ const ReportsPage = () => {
         </div>
 
         <ExpensesIncome
-          totalIncome={totalIncome}
-          totalExpenses={totalExpenses}
+          totalIncome={transactionsInfo.totalIncome}
+          totalExpenses={transactionsInfo.totalExpense}
         />
         <ExpensesIncomeSwitch
           areExpensesOpen={areExpensesOpen}

@@ -6,6 +6,7 @@
 }
 
 .input {
+ 
     padding-left: 20px;
     width: 280px;
     height: 44px;
@@ -17,17 +18,21 @@
     background-color: transparent;
     border: 2px solid #FFFF;
     border-radius: 22px 22px 0px 0px;
+    
 }
 
 .input::placeholder {
     color: #C7CCDC;
+    font-weight: 400;
 }
 
 .select {
+    
     composes: input;
     margin-bottom: 32px;
     color: #C7CCDC;
     border-radius: 0px 0px 22px 22px;
+    border-top: none;
 }
 
 .container {
