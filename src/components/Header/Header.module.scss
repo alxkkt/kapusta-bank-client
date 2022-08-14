@@ -1,6 +1,14 @@
 @import '../../sass/main.scss';
 
-.header {
+.header 
+{
+  width: 100%;
+  background-color: #fff;
+}
+
+
+
+.headerWrapper {
   max-width: 320px;
   display: flex;
   justify-content: space-between;

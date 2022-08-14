@@ -7,8 +7,11 @@ const Header = () => {
   const isLogin = useLogin();
   return (
     <div className={s.header}>
-      <Logo />
-      {isLogin && <UserMenu />}
+      <div className={s.headerWrapper}>
+        <Logo />
+        {isLogin && <UserMenu />}
+        {/* <UserMenu /> */}
+      </div>
     </div>
   );
 };

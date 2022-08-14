@@ -3,6 +3,8 @@ import CurrentPeriod from '../../components/CurrentPeriod';
 import ExpensesIncomeSwitch from '../../components/ExpensesIncomeSwitch';
 import ExpensesIncome from '../../components/ExpensesIncome';
 import ReturnBackButton from '../../components/ReturnBackButton';
+import Header from '../../components/Header';
+
 import moment from 'moment';
 import { useState } from 'react';
 
@@ -14,6 +16,7 @@ const ReportsPage = () => {
 
   return (
     <section>
+      <Header />
       <div className="container">
         <div>
           <ReturnBackButton />

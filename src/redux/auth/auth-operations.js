@@ -53,8 +53,14 @@ export const getCurrentUser = createAsyncThunk(
   }
 );
 
-//logOut
-export const logOut = createAsyncThunk('auth/logOut', async () => {
-  await services.logOut;
-  return;
-});
+export const logOut = createAsyncThunk(
+  "auth/logout",
+  async (_, { rejectWithValue }) => {
+    try {
+      const user = await services.logOut();
+      return user;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
