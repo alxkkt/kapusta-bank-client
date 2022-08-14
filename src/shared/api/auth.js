@@ -33,7 +33,7 @@ export const signIn = async body => {
 export const getCurrentUser = async accessToken => {
   addToken(accessToken);
   try {
-    const { data } = await instance.get('/user');
+    const { data } = await instance.get('/auth/current');
     return data;
   } catch (error) {
     removeToken();

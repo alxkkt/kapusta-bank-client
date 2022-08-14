@@ -2,7 +2,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 
 import PublicRoute from 'shared/components/PublicRoute';
-// import PrivateRoute from 'shared/components/PrivateRoute';
+import PrivateRoute from 'shared/components/PrivateRoute';
 
 const AuthPage = lazy(() => import('./pages/AuthPage'));
 const HomePage = lazy(() => import('./pages/HomePage'));
@@ -16,7 +16,7 @@ const MyRoutes = () => {
         <Route element={<PublicRoute />}>
           <Route path="auth" element={<AuthPage />} />
         </Route>
-        <Route>
+        <Route element={<PrivateRoute />}>
           <Route path="/" element={<HomePage />} />
           <Route path="reports" element={<ReportsPage />} />
           <Route path="/addtransaction" element={<AddTransactionPage />} />
