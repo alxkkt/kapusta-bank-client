@@ -1,8 +1,7 @@
 import axios from 'axios';
 
 const instance = axios.create({
-  baseURL: 'https://kapusta-backend-proj.herokuapp.com/api',
-  // baseURL: 'http://localhost:3030/api',
+  baseURL: 'https://kapusta-backend-proj.herokuapp.com/api/auth',
 });
 
 export const addToken = token => {
@@ -14,17 +13,17 @@ const removeToken = () => {
 };
 
 export const signUp = async body => {
-  const { data } = await instance.post('/auth/register', body);
+  const { data } = await instance.post('/register', body);
   return data;
 };
 
 export const reverify = async email => {
-  const { data } = await instance.post('/auth/verify', { email });
+  const { data } = await instance.post('/verify', { email });
   return data;
 };
 
 export const signIn = async body => {
-  const { data } = await instance.post('/auth/login', body);
+  const { data } = await instance.post('/login', body);
 
   addToken(data.accessToken);
   return data;
@@ -33,7 +32,7 @@ export const signIn = async body => {
 export const getCurrentUser = async accessToken => {
   addToken(accessToken);
   try {
-    const { data } = await instance.get('/auth/current');
+    const { data } = await instance.get('/current');
     return data;
   } catch (error) {
     removeToken();
@@ -42,27 +41,28 @@ export const getCurrentUser = async accessToken => {
 };
 
 export const logOut = async () => {
-  const { data } = await instance.post('/auth/logout');
+  const { data } = await instance.post('/logout');
   removeToken();
   return data;
 };
 
 export const logInByGoogle = async () => {
-  const { data } = await instance.post('/auth/google');
+  const { data } = await instance.post('/google');
   addToken(data.accessToken);
   return data;
 };
 
 export const getBalance = async accessToken => {
-  addToken('accessToken');
-  const { data } = await instance.get('/auth/balance');
+  addToken(accessToken);
+  const { data } = await instance.get('/balance');
+
   return data;
 };
 
 export const updateBalance = async (body, accessToken) => {
   addToken(accessToken);
-  console.log(body);
-  const { data } = await instance.patch('/auth/balance', {
+
+  const { data } = await instance.patch('/balance', {
     totalBalance: body,
   });
   return data;
