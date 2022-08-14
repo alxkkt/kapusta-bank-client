@@ -11,7 +11,9 @@ import {
 } from './auth-operations';
 
 const initialState = {
-  userData: {},
+  userData: {
+    totalBalance: 0,
+  },
   token: '',
   loading: false,
   error: null,
@@ -81,12 +83,11 @@ const authSlice = createSlice({
       error: null,
     }),
     [getBalance.fulfilled]: (store, { payload }) => {
-      const { token, totalBalance } = payload;
+      const { totalBalance } = payload;
       return {
         ...store,
         loading: false,
         isLogin: true,
-        token,
         userData: { totalBalance },
       };
     },
@@ -102,13 +103,11 @@ const authSlice = createSlice({
       error: null,
     }),
     [updateBalance.fulfilled]: (store, { payload }) => {
-      const { token, totalBalance } = payload;
+      const { balanceNow } = payload;
       return {
         ...store,
         loading: false,
-        isLogin: true,
-        token,
-        userData: { totalBalance },
+        userData: { totalBalance: balanceNow },
       };
     },
     [updateBalance.rejected]: (store, { payload }) => ({

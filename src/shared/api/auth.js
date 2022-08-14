@@ -59,9 +59,12 @@ export const getBalance = async accessToken => {
   return data;
 };
 
-export const updateBalance = async (accessToken, body) => {
+export const updateBalance = async (body, accessToken) => {
   addToken(accessToken);
-  const { data } = await instance.patch('/auth/balance', body);
+  console.log(body);
+  const { data } = await instance.patch('/auth/balance', {
+    totalBalance: body,
+  });
   return data;
 };
 

@@ -5,6 +5,7 @@ import { getTotalBalance } from 'redux/auth/auth-selectors';
 import NumberFormat from 'react-number-format';
 import ModalBalance from './ModalBalance';
 import { updateBalance, getBalance } from 'redux/auth/auth-operations';
+// import { updateBalance } from 'shared/api/auth';
 
 const Balance = () => {
   const balance = useSelector(getTotalBalance, shallowEqual);
@@ -16,16 +17,9 @@ const Balance = () => {
     isShown: false,
   });
 
-  // const updateTotalBalance = () => {};
-
-  const handleChange = ({ target }) => {
-    setBalanceState(target.value);
-  };
-
-  const handleSubmit = e => {
-    e.preventDefault();
-    // dispatch(getBalance(Number.parseFloat(Number.parseFloat(balanceState))));
-  };
+  useEffect(() => {
+    dispatch(getBalance());
+  }, [dispatch]);
 
   useEffect(() => {
     setBalanceState(balance);
@@ -35,6 +29,15 @@ const Balance = () => {
       }, 500);
     }
   }, [balance, tooltipStatus.isShown]);
+
+  const handleChange = ({ target }) => {
+    setBalanceState(target.value);
+  };
+
+  const handleSubmit = async e => {
+    e.preventDefault();
+    dispatch(updateBalance(Number.parseFloat(balanceState)));
+  };
 
   return (
     <div

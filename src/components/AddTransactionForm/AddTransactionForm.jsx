@@ -2,7 +2,7 @@ import styles from './AddTransactionForm.module.scss';
 import NumberFormat from 'react-number-format';
 import Icon from 'shared/components/Icon';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
 const AddTransactionForm = ({ onSubmit }) => {
   const [form, setForm] = useState({
