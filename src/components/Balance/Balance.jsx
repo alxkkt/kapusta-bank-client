@@ -17,18 +17,18 @@ const Balance = () => {
     isShown: false,
   });
 
-  useEffect(() => {
-    dispatch(getBalance());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(getBalance());
+  // }, [dispatch]);
 
   useEffect(() => {
-    setBalanceState(balance);
-    if (!+balance && !tooltipStatus.isShown) {
+    // setBalanceState(balance);
+    if (!+balanceState && !tooltipStatus.isShown) {
       setTimeout(() => {
         setTooltipStatus(prevState => ({ ...prevState, isOpen: true }));
       }, 500);
     }
-  }, [balance, tooltipStatus.isShown]);
+  }, [balanceState, tooltipStatus.isShown]);
 
   const handleChange = ({ target }) => {
     setBalanceState(target.value);

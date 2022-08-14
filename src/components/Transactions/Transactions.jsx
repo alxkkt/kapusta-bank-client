@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 // import moment from 'moment';
-
+import ExpensesAndIncomesButtons from 'components/ExpensesAndIncomesButtons';
+import TransactionsList from 'components/TransactionsList';
 import Calendar from 'components/Calendar';
 import Balance from 'components/Balance';
 import ReportsIcon from 'shared/components/ReportsIcon';
@@ -20,7 +21,12 @@ const Transactions = () => {
         <ReportsIcon />
       </Link>
       <Balance />
+      <Link className={styles.link} to="/addtransaction">
+        ADD TRANSACTION
+      </Link>
       <Calendar startDate={date} onChange={handleChange} />
+      <TransactionsList />
+      <ExpensesAndIncomesButtons />
     </>
   );
 };

@@ -1,0 +1,17 @@
+
+.background {
+    position: absolute;
+    height: 330px;
+    width: 100%;
+    background-color: #f5f6fb;
+    border-bottom-left-radius: 30%;
+    z-index: -1;
+
+@media screen and (min-width: 768px) {
+        height: 526px;
+    }
+
+    @media screen and (min-width: 1280px) {
+        height: 66%;
+    }
+}
