@@ -1,0 +1,56 @@
+@import '../../sass/main.scss';
+
+.containerBtn {
+    display: flex;
+    text-align: center;
+    margin-top: 12px;
+
+    @media screen and (min-width: 768px) {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+    }
+}
+
+.button {
+        padding: 15px 30px;
+        border: none;
+        font-weight: 700;
+            font-size: 12px;
+            line-height: 14px;
+        text-transform: uppercase;
+        background-color: #F5F6FB;
+        color: #000000;
+        cursor: pointer;
+    &:hover {
+            background-color: var(--accent-color);
+            color: #ffff;
+        }
+        &:not(:last-child) {
+        margin-right: 4px;
+        }
+@include mobile {
+    width: 50%;
+}
+@include tablet {
+border-top-left-radius: 22px;
+border-top-right-radius: 22px;
+                                                  }
+        }
+           
+   
+
+                  
+        
+                        
+        // .active {
+        // composes: button;
+        // background-color: var(--accent-color);
+        // color: var(--background-color-main);
+        // }
+        //         @media screen and (min-width: 768px) and (max-width: 1279px) {
+        //     background-color: #fefefe;
+        //     color: var(--accent-color);
+        // }
+    

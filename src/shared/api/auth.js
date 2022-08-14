@@ -54,7 +54,7 @@ export const logInByGoogle = async () => {
 };
 
 export const getBalance = async accessToken => {
-  addToken(accessToken);
+  addToken('accessToken');
   const { data } = await instance.get('/auth/balance');
   return data;
 };

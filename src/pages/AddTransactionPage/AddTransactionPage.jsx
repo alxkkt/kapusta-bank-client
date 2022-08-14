@@ -1,7 +1,7 @@
 import styles from './AddTransactionPage.module.scss';
 import { useState, useEffect } from 'react';
 // import { useSelector, shallowEqual } from 'react-redux';
-
+import { useMediaQuery } from 'react-responsive';
 import AddTransactionForm from '../../components/AddTransactionForm';
 import Calendar from 'components/Calendar';
 import Icon from 'shared/components/Icon';
@@ -11,6 +11,7 @@ import { fetchTransaction } from 'shared/api/transactions';
 import Header from '../../components/Header';
 
 import { Link } from 'react-router-dom';
+import Wrapper from 'shared/components/Wrapper';
 
 const AddTransactionPage = () => {
   const [date, setDate] = useState(Date.now);
@@ -40,27 +41,33 @@ const AddTransactionPage = () => {
   };
 
   console.log(transaction);
+  const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
   return (
-    <div>
-      <Header />
-      <div className="container">
-        <section className={styles.section}>
-          <Link className={styles.link} to="/">
-            <Icon
-              className={styles.img}
-              width={24}
-              height={24}
-              name={`icon-backspace`}
-            />
-            {/* <img className={styles.img} src={Back} alt="Back" /> */}
-          </Link>
-          <div className={styles.calendar}>
-            <Calendar startDate={date} onChange={handleChange} />
-          </div>
-          <AddTransactionForm />
-        </section>
-      </div>
-    </div>
+    <>
+      {isMobile && (
+        <>
+          <Wrapper>
+            <Header />
+            <section className={styles.section}>
+              <div className="container">
+                <Link className={styles.link} to="/">
+                  <Icon
+                    className={styles.img}
+                    width={24}
+                    height={24}
+                    name={`icon-backspace`}
+                  />
+                </Link>
+                <div className={styles.calendar}>
+                  <Calendar startDate={date} onChange={handleChange} />
+                </div>
+                <AddTransactionForm onSubmit={addTransaction} />
+              </div>
+            </section>
+          </Wrapper>
+        </>
+      )}
+    </>
   );
 };
 
