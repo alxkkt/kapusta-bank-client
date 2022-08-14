@@ -8,6 +8,8 @@ import Icon from 'shared/components/Icon';
 import { fetchTransaction } from 'shared/api/transactions';
 // import { transactionsApi } from 'redux/transactions/transactions';
 
+import Header from '../../components/Header';
+
 import { Link } from 'react-router-dom';
 
 const AddTransactionPage = () => {
@@ -39,22 +41,26 @@ const AddTransactionPage = () => {
 
   console.log(transaction);
   return (
-    <section className={styles.section}>
+    <div>
+      <Header />
       <div className="container">
-        <Link className={styles.link} to="/">
-          <Icon
-            className={styles.img}
-            width={24}
-            height={24}
-            name={`icon-backspace`}
-          />
-        </Link>
-        <div className={styles.calendar}>
-          <Calendar startDate={date} onChange={handleChange} />
-        </div>
-        <AddTransactionForm onSubmit={addTransaction} date={date} />
+        <section className={styles.section}>
+          <Link className={styles.link} to="/">
+            <Icon
+              className={styles.img}
+              width={24}
+              height={24}
+              name={`icon-backspace`}
+            />
+            {/* <img className={styles.img} src={Back} alt="Back" /> */}
+          </Link>
+          <div className={styles.calendar}>
+            <Calendar startDate={date} onChange={handleChange} />
+          </div>
+          <AddTransactionForm />
+        </section>
       </div>
-    </section>
+    </div>
   );
 };
 

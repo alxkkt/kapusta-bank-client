@@ -1,0 +1,100 @@
+@import '../../../sass/utils/mixins';
+
+.container {
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #f5f6fa;
+
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  line-height: 1.166;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #52555f;
+}
+
+.userNameText {
+  display: none;
+  font-family: 'Roboto', sans-serif;
+  @include tablet {
+    display: block;
+    margin-left: 10px;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.166;
+    letter-spacing: 0.04em;
+    color: #52555f;
+    position: relative;
+    &::after {
+      content: '';
+      position: absolute;
+      top: -15px;
+      margin-left: 20px;
+      width: 1px;
+      height: 36px;
+      background-color: #E0E5EB;
+    }
+  }
+}
+
+
+
+.logOutBtn {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  margin-left: 15px;
+  cursor: pointer;
+  background-color: transparent;
+  fill: #cbccd0;
+  color: #52555f;
+  &:hover,
+  &:focus {
+    fill: #ff751d;
+    color: #ff751d;
+    scroll-behavior: smooth;
+  }
+  @include tablet {
+    margin-left: 40px;
+    
+  }
+}
+
+.logOutIcon {
+  @include tablet {
+    display: none;
+  }
+}
+
+.logOutText {
+  display: none;
+  @include tablet {
+    display: block;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.166;
+    letter-spacing: 0.04em;
+    text-decoration-line: underline;
+    transition: color 600ms ease-in-out;
+    &:hover,
+    &:focus{
+      color:#ff751d;
+    }
+  }
+}
+
+.icon {
+  @include tablet {
+    display:none;
+  }
+}

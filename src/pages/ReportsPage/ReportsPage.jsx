@@ -3,6 +3,7 @@ import CurrentPeriod from '../../components/CurrentPeriod';
 import ExpensesIncomeSwitch from '../../components/ExpensesIncomeSwitch';
 import ExpensesIncome from '../../components/ExpensesIncome';
 import ReturnBackButton from '../../components/ReturnBackButton';
+import Header from '../../components/Header';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTransactionsByDate } from '../../redux/transactionsByDate/operations';
 import moment from 'moment';
@@ -25,6 +26,7 @@ const ReportsPage = () => {
 
   return (
     <section>
+      <Header />
       <div className="container">
         <div>
           <ReturnBackButton />

@@ -2,6 +2,8 @@ import styles from './HomePage.module.scss';
 import { useMediaQuery } from 'react-responsive';
 // import { useSelector, shallowEqual, useDispatch } from 'react-redux';
 import Transactions from 'components/Transactions';
+
+import Header from '../../components/Header';
 import TransactionsList from 'components/TransactionsList';
 
 import { Link } from 'react-router-dom';
@@ -13,23 +15,21 @@ const HomePage = () => {
   });
   const isDesktop = useMediaQuery({ query: '(min-width: 1280px)' });
   return (
-    <section className={styles.section}>
-      <div className="container">
-        {isMobile && (
-          <>
-            <div className={styles.background}>
-              <h1 className={styles.title}>Home Page</h1>
-              <Transactions />
-            </div>
-            <Link className={styles.link} to="/addtransaction">
-              ADD TRANSACTION
-            </Link>
-
-            <TransactionsList />
-          </>
-        )}
-      </div>
-    </section>
+    <div>
+      <Header />
+      <section className={styles.section}>
+        <div className="container">
+          <section className={styles.section}>
+            <h1 className={styles.title}>Home Page</h1>
+            <Transactions />
+          </section>
+          <Link className={styles.link} to="/addtransaction">
+            ADD TRANSACTION
+          </Link>
+          <TransactionsList />
+        </div>
+      </section>
+    </div>
   );
 };
 

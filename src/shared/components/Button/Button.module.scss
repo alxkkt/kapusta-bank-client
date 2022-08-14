@@ -1,0 +1,21 @@
+.button {
+    width: 125px;
+    height: 44px;
+    border-radius: 16px;
+    border: none;
+    background-color:#dfe2eb;
+    color: #52555F;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 12px;
+    line-height: 1.17;
+    transition: box-shadow 600ms ease-in-out, background-color 600ms ease-in-out;
+  }
+  
+  .button:hover,
+  .button:focus {
+    background-color: #ff751d;
+    color: #fff;
+    box-shadow: 0 0 20px 20px #ff751d inset;
+  }

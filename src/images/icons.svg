@@ -1,5 +1,9 @@
 <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <defs>
+<symbol id="icon-close" viewBox="0 0 14 14" >
+<path d="M1 1L13 13" stroke="#52555F" stroke-width="2"/>
+<path d="M1 13L13 0.999999" stroke="#52555F" stroke-width="2"/>
+</symbol>
 <symbol id="icon-logout" viewBox="0 0 32 32">
 <path fill="#cbccd0" style="fill: var(--color1, #cbccd0)" d="M20 28h-16v-24h16v2h4v-6h-24v32h24v-6h-4v2z"></path>
 <path fill="#cbccd0" style="fill: var(--color1, #cbccd0)" d="M24.586 8.586l-2.828 2.828 2.586 2.586h-10.344v4h10.344l-2.586 2.586 2.828 2.828 7.414-7.414-7.414-7.414z"></path>

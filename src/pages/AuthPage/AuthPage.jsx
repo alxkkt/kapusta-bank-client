@@ -1,3 +1,4 @@
+import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
@@ -9,7 +10,10 @@ import toast, { Toaster } from 'react-hot-toast';
 
 import s from './AuthPage.module.scss';
 
+import Header from '../../components/Header';
 import AuthForm from '../../components/AuthForm';
+
+import '../../sass/main.scss';
 
 const AuthPage = () => {
   const dispatch = useDispatch();
@@ -50,6 +54,7 @@ const AuthPage = () => {
 
   return (
     <div className={s.bg}>
+      <Header />
       <div className={s.authPage}>
         <div className={s.wrap}>
           <h1 className={s.title}>Kapusta</h1>
