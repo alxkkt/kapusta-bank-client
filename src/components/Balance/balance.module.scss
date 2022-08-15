@@ -12,6 +12,9 @@
   @include tablet-only {
     margin-right: 21px;
   }
+  @include desktop {
+    margin-right: 20px;
+  }
 }
 
 .form {
@@ -36,7 +39,7 @@
   border: 2px solid #ffff;
   border-radius: 22px 0px 0px 22px;
   z-index: 2;
-  @include tablet-only {
+  @include tablet {
     margin-right: 15px;
     width: 125px;
     text-align:center;
@@ -64,7 +67,7 @@ input::placeholder {
   font-weight: 400;
   font-size: 12px;
   line-height: 14px;
-  @include tablet-only{
+  @include tablet{
     width: 125px;
     border-radius: 22px 22px 22px 22px;
   }
@@ -78,15 +81,21 @@ input::placeholder {
 
 .container {
   position: relative;
-  @include tablet-only {
+  @include tablet {
     margin: 0;
+  }
+  @include desktop {
+    margin-left: auto;
   }
 }
 
 .containerTablet {
-  @include tablet-only {
+  @include tablet{
   display: flex;
   align-items: baseline;
-  justify-content: flex-start;
+  justify-content: center;
+}
+@include desktop {
+
 }
 }

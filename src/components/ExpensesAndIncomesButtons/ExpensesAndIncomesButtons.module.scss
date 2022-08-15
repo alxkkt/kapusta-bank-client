@@ -3,7 +3,6 @@
 .containerBtn {
     display: flex;
     text-align: center;
-
     @include mobile {
         position: fixed;
         left: 0;

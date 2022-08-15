@@ -38,7 +38,7 @@ const Balance = () => {
       className={styles.container}
       onClick={() => setTooltipStatus({ isOpen: false, isShown: true })}
     >
-      {/* <div className={styles.containerTablet}>
+      <div className={styles.containerTablet}>
         <p className={styles.balance}>Balance:</p>
         <form className={styles.form} action="">
           <NumberFormat
@@ -54,9 +54,9 @@ const Balance = () => {
             suffix="UAH"
             placeholder="00.00 UAH"
             minLength={1}
-          /> */}
+          />
 
-      <p className={styles.balance}>Balance:</p>
+          {/* <p className={styles.balance}>Balance:</p>
       <form className={styles.form} action="">
         <NumberFormat
           className={styles.input}
@@ -71,7 +71,7 @@ const Balance = () => {
           suffix="UAH"
           placeholder="0.00 UAH"
           minLength={1}
-        />
+        /> */}
           <button
             className={styles.button}
             type="submit"

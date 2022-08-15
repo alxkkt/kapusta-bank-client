@@ -7,6 +7,11 @@
   margin-bottom: 20px;
   @include tablet {
     justify-content: flex-start;
+    margin-right: 44px;
+    margin-bottom: 0;
+  }
+  @include desktop {
+    margin-right: 32px;
   }
 }
 

@@ -1,3 +1,4 @@
+import styles from './transactions.module.scss';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 // import moment from 'moment';
@@ -7,7 +8,7 @@ import Calendar from 'components/Calendar';
 import Balance from 'components/Balance';
 import ReportsIcon from 'shared/components/ReportsIcon';
 import { useMediaQuery } from 'react-responsive';
-import styles from './transactions.module.scss';
+import Cabbages from '../../shared/images/svg/Cabages.svg';
 import AddTransactionForm from 'components/AddTransactionForm';
 
 const Transactions = () => {
@@ -47,9 +48,26 @@ const Transactions = () => {
           </div>
           <ExpensesAndIncomesButtons />
           <div className={styles.containerTable}>
-            <Calendar startDate={date} onChange={handleChange} />
+            {isMobile && <Calendar startDate={date} onChange={handleChange} />}
             <AddTransactionForm />
           </div>
+          <img className={styles.cabages} src={Cabbages} alt="Cabages" />
+        </>
+      )}
+      {isDesktop && (
+        <>
+          <div className={styles.containerTablet}>
+            <Balance />
+            <Link className={styles.reports} to="/reports">
+              <ReportsIcon />
+            </Link>
+          </div>
+          <ExpensesAndIncomesButtons />
+          <div className={styles.containerTable}>
+            {isMobile && <Calendar startDate={date} onChange={handleChange} />}
+            <AddTransactionForm />
+          </div>
+          <img className={styles.cabages} src={Cabbages} alt="Cabages" />
         </>
       )}
     </>

@@ -3,6 +3,7 @@ import NumberFormat from 'react-number-format';
 import { useMediaQuery } from 'react-responsive';
 import Icon from 'shared/components/Icon';
 import { useState } from 'react';
+import Calendar from 'components/Calendar';
 // import { useNavigate } from 'react-router-dom';
 
 const AddTransactionForm = ({ onSubmit }) => {
@@ -11,6 +12,7 @@ const AddTransactionForm = ({ onSubmit }) => {
     category: '',
     sum: '',
   });
+  const [date, setDate] = useState(Date.now());
 
   // const navigate = useNavigate();
 
@@ -38,14 +40,20 @@ const AddTransactionForm = ({ onSubmit }) => {
     });
   };
 
+  const onChange = date => {
+    setDate(date);
+  };
+
   const isTablet = useMediaQuery({
     query: '(min-width: 768px) and (max-width: 1279px)',
   });
-
+  const isDesktop = useMediaQuery({ query: '(min-width: 1280px)' });
   const { description, sum } = form;
   return (
     <form className={styles.form} action="" onSubmit={handleSubmit}>
       <div className={styles.tablet}>
+        {isTablet && <Calendar startDate={date} onChange={onChange} />}
+        {isDesktop && <Calendar startDate={date} onChange={onChange} />}
         <input
           className={styles.input}
           onChange={handleChange}
@@ -79,7 +87,7 @@ const AddTransactionForm = ({ onSubmit }) => {
             <option value="Sallary">Sallary</option>
           </optgroup>
         </select>
-        <div className={styles.container}>
+        <div className={styles.containerForm}>
           <NumberFormat
             className={styles.sum}
             onChange={handleChange}
@@ -90,7 +98,7 @@ const AddTransactionForm = ({ onSubmit }) => {
             decimalScale={2}
             fixedDecimalScale={true}
             suffix=" UAH"
-            placeholder="00.00  UAH"
+            placeholder="00.00   UAH"
             minLength={1}
           />
           <div className={styles.decoration}>
