@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import Avatar from 'react-avatar';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
-// import isUserEmail from '../../../redux/auth/auth-selectors';
 import useEmail from 'shared/hooks/useEmail';
 import { logOut } from '../../../redux/auth/auth-operations';
 import Modal from '../../../shared/components/Modal';
