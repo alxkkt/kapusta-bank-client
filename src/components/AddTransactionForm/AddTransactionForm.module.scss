@@ -1,8 +1,16 @@
+@import '../../sass/main.scss';
 .form {
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
+}
+
+.tablet {
+    @include tablet {
+        display: flex;
+        justify-content: flex-end;
+    }
 }
 
 .input {
@@ -17,13 +25,20 @@
 
     background-color: transparent;
     border: 2px solid #FFFF;
-    border-radius: 22px 22px 0px 0px;
+    
+    @include tablet {
+        width: 184px;
+        border: 2px solid #F5F6FB;
+        border-radius: 22px 0px 0px 0px;
+    }
     
 }
 
 .input::placeholder {
     color: #C7CCDC;
     font-weight: 400;
+    font-size: 12px;
+        line-height: 14px;
 }
 
 .select {
@@ -32,6 +47,15 @@
     color: #C7CCDC;
     border-radius: 0px 0px 22px 22px;
     border-top: none;
+    @include tablet {
+        font-weight: 400;
+            font-size: 12px;
+            line-height: 14px;
+            color: #C7CCDC;
+        width: 186px;
+        border: 2px solid #F5F6FB;
+        border-radius: 0px 0px 0px 0px;
+    }
 }
 
 .container {
@@ -51,6 +75,12 @@
     text-align: right;
     font-weight: 700;
     border-radius: 22px 0px 0px 22px;
+    @include tablet {
+        text-align: right;
+        width: 60px;
+    border-radius: 0px 0px 0px 0px;
+    border-right: transparent;
+    }
 }
 
 .sum::placeholder {
@@ -59,14 +89,24 @@
     font-size: 12px;
     line-height: 14px;
     letter-spacing: 0.02em;
+    @include tablet {
+        font-weight: 400;
+            font-size: 12px;
+            line-height: 14px;
+            color: #C7CCDC;
+    }
 }
 
 .decoration {
     composes: input;
     padding: 12px 20px 20px 12px;
     height: 44px;
-    width: 60px;
+    width: 50px;
     border-radius: 0px 22px 22px 0px;
+    @include tablet {
+    border-radius: 0px 22px 22px 0px;
+    border-left: transparent;
+    }
 }
 
 .containerBtn {

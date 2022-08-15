@@ -1,10 +1,10 @@
 import styles from './ExpensesAndIncomesButtons.module.scss';
 
-const ExpensesAndIncomesButtons = ({ onClick, isActive }) => {
+const ExpensesAndIncomesButtons = () => {
   return (
     <div className={styles.containerBtn}>
       <button
-        onClick={onClick}
+        // onClick={onClick}
         className={styles.button}
         // className={`${isActive === 'expenses' ? styles.active : styles.button}`}
         data-name="expenses"
@@ -13,7 +13,7 @@ const ExpensesAndIncomesButtons = ({ onClick, isActive }) => {
         Expenses
       </button>
       <button
-        onClick={onClick}
+        // onClick={onClick}
         className={styles.button}
         // className={`${isActive !== 'expenses' ? styles.active : styles.button}`}
         data-name="income"

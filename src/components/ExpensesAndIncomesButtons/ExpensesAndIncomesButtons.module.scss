@@ -3,13 +3,13 @@
 .containerBtn {
     display: flex;
     text-align: center;
-    margin-top: 12px;
 
-    @media screen and (min-width: 768px) {
+    @include mobile {
         position: fixed;
         left: 0;
         bottom: 0;
         width: 100%;
+        margin-top: 12px;
     }
 }
 
@@ -20,22 +20,28 @@
             font-size: 12px;
             line-height: 14px;
         text-transform: uppercase;
-        background-color: #F5F6FB;
+        background-color: #FAFBFD;
         color: #000000;
         cursor: pointer;
+    
+       
+@include mobile {
+    width: 50%;
     &:hover {
             background-color: var(--accent-color);
             color: #ffff;
         }
-        &:not(:last-child) {
-        margin-right: 4px;
-        }
-@include mobile {
-    width: 50%;
+                 &:not(:last-child) {
+                     margin-right: 2px;
+                 }
 }
 @include tablet {
+    width: 138px;
 border-top-left-radius: 22px;
 border-top-right-radius: 22px;
+&:hover {
+    color: var(--accent-color);
+}
                                                   }
         }
            
@@ -44,13 +50,13 @@ border-top-right-radius: 22px;
                   
         
                         
-        // .active {
-        // composes: button;
-        // background-color: var(--accent-color);
-        // color: var(--background-color-main);
-        // }
-        //         @media screen and (min-width: 768px) and (max-width: 1279px) {
-        //     background-color: #fefefe;
-        //     color: var(--accent-color);
-        // }
+        .active {
+        composes: button;
+        background-color: var(--accent-color);
+        color: var(--background-color-main);
+        }
+                @include tablet {
+            background-color: #fefefe;
+            color: var(--accent-color);
+        }
     

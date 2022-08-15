@@ -44,27 +44,33 @@ const Balance = () => {
       className={styles.container}
       onClick={() => setTooltipStatus({ isOpen: false, isShown: true })}
     >
-      <p className={styles.balance}>Balance:</p>
-      <form className={styles.form} action="">
-        <NumberFormat
-          className={styles.input}
-          name="balance"
-          type="text"
-          value={balanceState}
-          onChange={handleChange}
-          // thousandSeparator=""
-          decimalSeparator="."
-          decimalScale={2}
-          fixedDecimalScale={true}
-          suffix="UAH"
-          placeholder="00.00 UAH"
-          minLength={1}
-        />
+      <div className={styles.containerTablet}>
+        <p className={styles.balance}>Balance:</p>
+        <form className={styles.form} action="">
+          <NumberFormat
+            className={styles.input}
+            name="balance"
+            type="text"
+            value={balanceState}
+            onChange={handleChange}
+            // thousandSeparator=""
+            decimalSeparator="."
+            decimalScale={2}
+            fixedDecimalScale={true}
+            suffix="UAH"
+            placeholder="00.00 UAH"
+            minLength={1}
+          />
 
-        <button className={styles.button} type="submit" onClick={handleSubmit}>
-          CONFIRM
-        </button>
-      </form>
+          <button
+            className={styles.button}
+            type="submit"
+            onClick={handleSubmit}
+          >
+            CONFIRM
+          </button>
+        </form>
+      </div>
       <ModalBalance isOpen={tooltipStatus.isOpen} />
     </div>
   );

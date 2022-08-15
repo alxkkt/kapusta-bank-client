@@ -1,5 +1,6 @@
 import styles from './AddTransactionForm.module.scss';
 import NumberFormat from 'react-number-format';
+import { useMediaQuery } from 'react-responsive';
 import Icon from 'shared/components/Icon';
 import { useState } from 'react';
 // import { useNavigate } from 'react-router-dom';
@@ -36,58 +37,65 @@ const AddTransactionForm = ({ onSubmit }) => {
       sum: '',
     });
   };
+
+  const isTablet = useMediaQuery({
+    query: '(min-width: 768px) and (max-width: 1279px)',
+  });
+
   const { description, sum } = form;
   return (
     <form className={styles.form} action="" onSubmit={handleSubmit}>
-      <input
-        className={styles.input}
-        onChange={handleChange}
-        name="description"
-        value={description}
-        type="text"
-        placeholder="Product description"
-      />
-      <select
-        className={styles.select}
-        onChange={handleChange}
-        name="category"
-        // value={category}
-        required
-      >
-        <option value="">Product category</option>
-        <optgroup label="Expense" name="type">
-          <option value="Health">Health</option>
-          <option value="Alcohol">Alcohol</option>
-          <option value="Entertainment">Entertainment</option>
-          <option value="Housing">Housing</option>
-          <option value="Technique">Technique</option>
-          <option value="Communal, Communications">
-            Communal, Communications
-          </option>
-          <option value="Sports, Hobbies">Sports, Hobbies</option>
-          <option value="Education">Education</option>
-          <option value="Other">Other</option>
-        </optgroup>
-        <optgroup label="Income" name="type">
-          <option value="Sallary">Sallary</option>
-        </optgroup>
-      </select>
-      <div className={styles.container}>
-        <NumberFormat
-          className={styles.sum}
+      <div className={styles.tablet}>
+        <input
+          className={styles.input}
           onChange={handleChange}
-          name="sum"
-          value={sum}
+          name="description"
+          value={description}
           type="text"
-          decimalSeparator="."
-          decimalScale={2}
-          fixedDecimalScale={true}
-          suffix=" UAH"
-          placeholder="00.00 UAH"
-          minLength={1}
+          placeholder="Product description"
         />
-        <div className={styles.decoration}>
-          <Icon width={20} height={20} name={`icon-calculator`} />
+        <select
+          className={styles.select}
+          onChange={handleChange}
+          name="category"
+          // value={category}
+          required
+        >
+          <option value="">Product category</option>
+          <optgroup label="Expense" name="type">
+            <option value="Health">Health</option>
+            <option value="Alcohol">Alcohol</option>
+            <option value="Entertainment">Entertainment</option>
+            <option value="Housing">Housing</option>
+            <option value="Technique">Technique</option>
+            <option value="Communal, Communications">
+              Communal, Communications
+            </option>
+            <option value="Sports, Hobbies">Sports, Hobbies</option>
+            <option value="Education">Education</option>
+            <option value="Other">Other</option>
+          </optgroup>
+          <optgroup label="Income" name="type">
+            <option value="Sallary">Sallary</option>
+          </optgroup>
+        </select>
+        <div className={styles.container}>
+          <NumberFormat
+            className={styles.sum}
+            onChange={handleChange}
+            name="sum"
+            value={sum}
+            type="text"
+            decimalSeparator="."
+            decimalScale={2}
+            fixedDecimalScale={true}
+            suffix=" UAH"
+            placeholder="00.00  UAH"
+            minLength={1}
+          />
+          <div className={styles.decoration}>
+            <Icon width={20} height={20} name={`icon-calculator`} />
+          </div>
         </div>
       </div>
       <div className={styles.containerBtn}>

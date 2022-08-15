@@ -6,8 +6,9 @@ import TransactionsList from 'components/TransactionsList';
 import Calendar from 'components/Calendar';
 import Balance from 'components/Balance';
 import ReportsIcon from 'shared/components/ReportsIcon';
-
+import { useMediaQuery } from 'react-responsive';
 import styles from './transactions.module.scss';
+import AddTransactionForm from 'components/AddTransactionForm';
 
 const Transactions = () => {
   const [date, setDate] = useState(Date.now());
@@ -15,18 +16,42 @@ const Transactions = () => {
   const handleChange = date => {
     setDate(date);
   };
+  const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
+  const isTablet = useMediaQuery({
+    query: '(min-width: 768px) and (max-width: 1279px)',
+  });
+  const isDesktop = useMediaQuery({ query: '(min-width: 1280px)' });
   return (
     <>
-      <Link className={styles.reports} to="/reports">
-        <ReportsIcon />
-      </Link>
-      <Balance />
-      <Link className={styles.link} to="/addtransaction">
-        ADD TRANSACTION
-      </Link>
-      <Calendar startDate={date} onChange={handleChange} />
-      <TransactionsList />
-      <ExpensesAndIncomesButtons />
+      {isMobile && (
+        <>
+          <Link className={styles.reports} to="/reports">
+            <ReportsIcon />
+          </Link>
+          <Balance />
+          <Link className={styles.link} to="/addtransaction">
+            ADD TRANSACTION
+          </Link>
+          <Calendar startDate={date} onChange={handleChange} />
+          <TransactionsList />
+          <ExpensesAndIncomesButtons />
+        </>
+      )}
+      {isTablet && (
+        <>
+          <div className={styles.containerTablet}>
+            <Balance />
+            <Link className={styles.reports} to="/reports">
+              <ReportsIcon />
+            </Link>
+          </div>
+          <ExpensesAndIncomesButtons />
+          <div className={styles.containerTable}>
+            <Calendar startDate={date} onChange={handleChange} />
+            <AddTransactionForm />
+          </div>
+        </>
+      )}
     </>
   );
 };

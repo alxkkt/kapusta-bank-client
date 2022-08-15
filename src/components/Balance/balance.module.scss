@@ -1,3 +1,5 @@
+@import '../../sass/main.scss';
+
 .balance {
   margin-bottom: 10px;
   text-align: center;
@@ -7,6 +9,9 @@
   font-size: 12px;
   line-height: 14px;
   letter-spacing: 0.02em;
+  @include tablet-only {
+    margin-right: 21px;
+  }
 }
 
 .form {
@@ -31,6 +36,12 @@
   border: 2px solid #ffff;
   border-radius: 22px 0px 0px 22px;
   z-index: 2;
+  @include tablet-only {
+    margin-right: 15px;
+    width: 125px;
+    text-align:center;
+    border-radius: 22px 22px 22px 22px;
+  }
 }
 
 input::placeholder {
@@ -53,6 +64,10 @@ input::placeholder {
   font-weight: 400;
   font-size: 12px;
   line-height: 14px;
+  @include tablet-only{
+    width: 125px;
+    border-radius: 22px 22px 22px 22px;
+  }
 }
 
 .button:hover,
@@ -63,4 +78,15 @@ input::placeholder {
 
 .container {
   position: relative;
+  @include tablet-only {
+    margin: 0;
+  }
+}
+
+.containerTablet {
+  @include tablet-only {
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-start;
+}
 }
