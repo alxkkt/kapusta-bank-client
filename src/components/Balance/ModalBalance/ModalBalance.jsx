@@ -1,15 +1,40 @@
 import PropTypes from 'prop-types';
+import { useState, useEffect } from 'react';
 
 import styles from './ModalBalance.module.scss';
 
-const ModalBalance = ({ isOpen }) => {
+const ModalBalance = ({ balance }) => {
+  const [tooltipStatus, setTooltipStatus] = useState({
+    isOpen: false,
+    isShown: false,
+  });
+
+  const closeTooltip = () => {
+    return setTooltipStatus({ isOpen: false, isShown: true });
+  };
+
+  useEffect(() => {
+    if (!balance && !tooltipStatus.isShown) {
+      setTooltipStatus(prevState => ({ ...prevState, isOpen: true }));
+    }
+
+    window.addEventListener('click', closeTooltip);
+
+    return () => {
+      window.removeEventListener('click', closeTooltip);
+    };
+  }, [balance, tooltipStatus.isShown]);
+
   const isTooltipOpen = isOpen => {
     return isOpen
       ? `${styles.tooltipContainer} ${styles.visible}`
       : `${styles.tooltipContainer}`;
   };
   return (
-    <div className={isTooltipOpen(isOpen)}>
+    <div
+      className={isTooltipOpen(tooltipStatus.isOpen)}
+      onClick={() => closeTooltip()}
+    >
       <div className={styles.triangle}></div>
       <div className={styles.wrapper}>
         <div className={styles.textContainer}>
@@ -28,5 +53,5 @@ const ModalBalance = ({ isOpen }) => {
 export default ModalBalance;
 
 ModalBalance.propTypes = {
-  isOpen: PropTypes.bool.isRequired,
+  balance: PropTypes.number.isRequired,
 };

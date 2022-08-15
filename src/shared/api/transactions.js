@@ -1,8 +1,6 @@
 import instance from './auth';
-import { addToken } from './auth';
 
-export const fetchTransaction = async (body, accessToken) => {
-  addToken(accessToken);
+export const fetchTransaction = async body => {
   const { data } = await instance.post('/transactions', body);
   return data;
 };
