@@ -10,8 +10,10 @@ import moment from 'moment';
 import { useState, useEffect } from 'react';
 import { transactions } from '../../redux/transactionsByDate/selectors';
 import Expenses from '../../components/Expenses';
+import { useMediaQuery } from 'react-responsive';
 
 const ReportsPage = () => {
+  const isTabOrPc = useMediaQuery({ query: '(min-width:768px)' });
   const [period, setPeriod] = useState(moment().month());
   const [areExpensesOpen, setAreExpensesOpen] = useState(true);
   const transactionsInfo = useSelector(transactions);
@@ -38,14 +40,22 @@ const ReportsPage = () => {
             totalIncome={transactionsInfo.totalIncome}
             totalExpenses={transactionsInfo.totalExpense}
           />
-          <ExpensesIncomeSwitch
-            areExpensesOpen={areExpensesOpen}
-            switchExpenses={setAreExpensesOpen}
-          />
+          {!isTabOrPc && (
+            <ExpensesIncomeSwitch
+              areExpensesOpen={areExpensesOpen}
+              switchExpenses={setAreExpensesOpen}
+            />
+          )}
+
           {areExpensesOpen ? (
             <Expenses
               expenseTransactions={transactionsInfo.expenseTransactions}
-            />
+            >
+              <ExpensesIncomeSwitch
+                areExpensesOpen={areExpensesOpen}
+                switchExpenses={setAreExpensesOpen}
+              />
+            </Expenses>
           ) : undefined}
         </div>
       </section>
