@@ -5,15 +5,11 @@ import {
   signUp,
   getCurrentUser,
   logOut,
-  reverify,
-  getBalance,
-  updateBalance,
+  // reverify,
 } from './auth-operations';
 
 const initialState = {
-  userData: {
-    totalBalance: 0,
-  },
+  userData: {},
   token: '',
   loading: false,
   error: null,
@@ -46,13 +42,13 @@ const authSlice = createSlice({
     //логін юзера
     [signIn.pending]: (store, _) => ({ ...store, loading: true, error: null }),
     [signIn.fulfilled]: (store, { payload }) => {
-      const { token, email, totalBalance } = payload;
+      const { token, email } = payload;
       return {
         ...store,
         loading: false,
         isLogin: true,
         token,
-        userData: { email, totalBalance },
+        userData: { email },
       };
     },
     [signIn.rejected]: (store, { payload }) => ({
@@ -76,45 +72,6 @@ const authSlice = createSlice({
     [logOut.pending]: (store, _) => ({ ...store, loading: true, error: null }),
     [logOut.fulfilled]: () => ({ ...initialState, loading: false }),
     [logOut.rejected]: () => ({ ...initialState, loading: false }),
-    //get balance
-    [getBalance.pending]: (store, _) => ({
-      ...store,
-      loading: true,
-      error: null,
-    }),
-    [getBalance.fulfilled]: (store, { payload }) => {
-      const { totalBalance } = payload;
-      return {
-        ...store,
-        loading: false,
-        isLogin: true,
-        userData: { totalBalance },
-      };
-    },
-    [getBalance.rejected]: (store, { payload }) => ({
-      ...store,
-      loading: false,
-      error: payload,
-    }),
-    //update balance
-    [updateBalance.pending]: (store, _) => ({
-      ...store,
-      loading: true,
-      error: null,
-    }),
-    [updateBalance.fulfilled]: (store, { payload }) => {
-      const { balanceNow } = payload;
-      return {
-        ...store,
-        loading: false,
-        userData: { totalBalance: balanceNow },
-      };
-    },
-    [updateBalance.rejected]: (store, { payload }) => ({
-      ...store,
-      loading: false,
-      error: payload,
-    }),
   },
 });
 export default authSlice.reducer;
