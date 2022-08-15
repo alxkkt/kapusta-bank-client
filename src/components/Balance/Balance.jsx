@@ -11,10 +11,6 @@ import styles from './balance.module.scss';
 
 const Balance = () => {
   const [balanceState, setBalanceState] = useState('');
-  const [tooltipStatus, setTooltipStatus] = useState({
-    isOpen: false,
-    isShown: false,
-  });
 
   const dispatch = useDispatch();
   const balance = useBalance();
@@ -34,10 +30,7 @@ const Balance = () => {
   };
 
   return (
-    <div
-      className={styles.container}
-      onClick={() => setTooltipStatus({ isOpen: false, isShown: true })}
-    >
+    <div className={styles.container}>
       <p className={styles.balance}>Balance:</p>
       <form className={styles.form} action="">
         <NumberFormat
@@ -59,7 +52,7 @@ const Balance = () => {
           CONFIRM
         </button>
       </form>
-      <ModalBalance isOpen={tooltipStatus.isOpen} />
+      <ModalBalance balance={balance} />
     </div>
   );
 };
