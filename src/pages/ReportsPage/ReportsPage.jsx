@@ -9,6 +9,7 @@ import { getTransactionsByDate } from '../../redux/transactionsByDate/operations
 import moment from 'moment';
 import { useState, useEffect } from 'react';
 import { transactions } from '../../redux/transactionsByDate/selectors';
+import Expenses from '../../components/Expenses';
 
 const ReportsPage = () => {
   const [period, setPeriod] = useState(moment().month());
@@ -23,27 +24,33 @@ const ReportsPage = () => {
       })
     );
   }, [dispatch, period]);
+  if (transactionsInfo.incomeTransactions) {
+    return (
+      <section>
+        <Header />
+        <div className="container">
+          <div>
+            <ReturnBackButton />
+            <CurrentPeriod period={period} setPeriod={setPeriod} />
+          </div>
 
-  return (
-    <section>
-      <Header />
-      <div className="container">
-        <div>
-          <ReturnBackButton />
-          <CurrentPeriod period={period} setPeriod={setPeriod} />
+          <ExpensesIncome
+            totalIncome={transactionsInfo.totalIncome}
+            totalExpenses={transactionsInfo.totalExpense}
+          />
+          <ExpensesIncomeSwitch
+            areExpensesOpen={areExpensesOpen}
+            switchExpenses={setAreExpensesOpen}
+          />
+          {areExpensesOpen ? (
+            <Expenses
+              expenseTransactions={transactionsInfo.expenseTransactions}
+            />
+          ) : undefined}
         </div>
-
-        <ExpensesIncome
-          totalIncome={transactionsInfo.totalIncome}
-          totalExpenses={transactionsInfo.totalExpense}
-        />
-        <ExpensesIncomeSwitch
-          areExpensesOpen={areExpensesOpen}
-          switchExpenses={setAreExpensesOpen}
-        />
-      </div>
-    </section>
-  );
+      </section>
+    );
+  }
 };
 
 export default ReportsPage;

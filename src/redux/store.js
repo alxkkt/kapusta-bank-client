@@ -2,7 +2,6 @@ import { configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/dist/query';
 import {
   persistStore,
-  persistReducer,
   FLUSH,
   REHYDRATE,
   PAUSE,
@@ -10,24 +9,16 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
 
-import authReducer from './auth/auth-slice';
+import persistedAuthReducer from './configs/auth';
+import persistedBalanceReducer from './configs/balance';
 import { transactionsApi } from './transactions/transactions';
-
 import transactionsByYear from './transactionsByDate/slice';
-
-const persistAuthConfig = {
-  key: 'auth',
-  storage,
-  whiteList: ['token'],
-};
-
-const persistedAuthReducer = persistReducer(persistAuthConfig, authReducer);
 
 export const store = configureStore({
   reducer: {
     auth: persistedAuthReducer,
+    balance: persistedBalanceReducer,
     [transactionsApi.reducerPath]: transactionsApi.reducer,
     transactionsByDate: transactionsByYear.reducer,
   },

@@ -8,6 +8,7 @@ import MyRoutes from './Routes';
 
 const App = () => {
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(getCurrentUser());
   }, [dispatch]);

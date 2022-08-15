@@ -3,7 +3,6 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import * as services from 'shared/api/auth';
 
 //registration
-
 export const signUp = createAsyncThunk(
   'auth/signUp',
   async (data, { rejectWithValue }) => {
@@ -36,8 +35,8 @@ export const getCurrentUser = createAsyncThunk(
   async (_, { rejectWithValue, getState }) => {
     try {
       const { auth } = getState();
-      const { token } = auth;
-      const user = await services.getCurrentUser(token);
+      const user = await services.getCurrentUser(auth.token);
+
       return user;
     } catch (error) {
       return rejectWithValue(error);
@@ -46,48 +45,19 @@ export const getCurrentUser = createAsyncThunk(
   {
     condition: (_, { getState }) => {
       const { auth } = getState();
-      const { token } = auth;
-      if (!token) return false;
-      return;
+      if (!auth.token) {
+        return false;
+      }
     },
   }
 );
 
-
 export const logOut = createAsyncThunk(
-  "auth/logout",
+  'auth/logout',
   async (_, { rejectWithValue }) => {
     try {
       const user = await services.logOut();
       return user;
-      } catch (error) {
-      return rejectWithValue(error);
-    }
-  }
-);
-
-export const getBalance = createAsyncThunk(
-  'auth/balance',
-  async (_, { rejectWithValue, getState }) => {
-    try {
-      // const { auth } = getState();
-      // const { token } = auth;
-      const balance = await services.getBalance();
-      return balance;
-    } catch (error) {
-      return rejectWithValue(error);
-    }
-  }
-);
-
-export const updateBalance = createAsyncThunk(
-  'auth/balance',
-  async (data, { rejectWithValue, getState }) => {
-    try {
-      // const { auth } = getState();
-      // const { token } = auth;
-      const balance = await services.updateBalance(data);
-      return balance;
     } catch (error) {
       return rejectWithValue(error);
     }

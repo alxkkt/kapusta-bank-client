@@ -1,11 +1,11 @@
 import axios from 'axios';
 
 const instance = axios.create({
-  baseURL: 'https://kapusta-backend-proj.herokuapp.com/api',
-  // baseURL: 'http://localhost:3030/api',
+  // baseURL: 'https://kapusta-backend-proj.herokuapp.com/api',
+  baseURL: 'http://localhost:3030/api',
 });
 
-export const addToken = token => {
+const addToken = token => {
   instance.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
@@ -26,46 +26,28 @@ export const reverify = async email => {
 export const signIn = async body => {
   const { data } = await instance.post('/auth/login', body);
 
-  addToken(data.accessToken);
+  addToken(data.token);
   return data;
 };
 
-export const getCurrentUser = async accessToken => {
-  addToken(accessToken);
-  try {
-    const { data } = await instance.get('/auth/current');
-    return data;
-  } catch (error) {
-    removeToken();
-    throw error;
-  }
+export const getCurrentUser = async token => {
+  addToken(token);
+  const { data } = await instance.get('/auth/current');
+
+  return data;
 };
 
 export const logOut = async () => {
   const { data } = await instance.post('/auth/logout');
   removeToken();
+
   return data;
 };
 
-export const logInByGoogle = async () => {
-  const { data } = await instance.post('/auth/google');
-  addToken(data.accessToken);
-  return data;
-};
-
-export const getBalance = async accessToken => {
-  addToken('accessToken');
-  const { data } = await instance.get('/auth/balance');
-  return data;
-};
-
-export const updateBalance = async (body, accessToken) => {
-  addToken(accessToken);
-  console.log(body);
-  const { data } = await instance.patch('/auth/balance', {
-    totalBalance: body,
-  });
-  return data;
-};
+// export const logInByGoogle = async () => {
+//   const { data } = await authInstance.post('/google');
+//   addToken(data.accessToken);
+//   return data;
+// };
 
 export default instance;
