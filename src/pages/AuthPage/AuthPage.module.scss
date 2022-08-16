@@ -9,12 +9,12 @@
     background-position: top 84px left 10px, bottom 56px left 103px, center;
   }
   @media screen and (min-width: 1280px) {
-    background-position: top 84px left 320px, bottom 50px left 450px, center;
+    background-position: top 84px left 560px, bottom 220px left 680px, center;
   }
 }
 .authPage {
   min-width: 320px;
-  height: 100vh;
+  height: 90vh;
   margin: 0 auto;
   padding: 40px 20px 34px;
 
@@ -24,7 +24,6 @@
   @media screen and (min-width: 768px) {
     width: 768px;
     padding: 80px 115px 70px;
-    background-position: top 84px left 10px, bottom 56px left 103px, center;
   }
   @media screen and (min-width: 1280px) {
     display: flex;
@@ -33,8 +32,6 @@
     width: 1280px;
     height: 100vh;
     padding: 100px 125px;
-
-    background-position: top 84px left 10px, bottom 50px left 230px, center;
   }
 }
 
