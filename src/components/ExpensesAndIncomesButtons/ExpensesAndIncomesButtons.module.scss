@@ -10,6 +10,9 @@
         width: 100%;
         margin-top: 12px;
     }
+    @include desktop {
+    
+    }
 }
 
 .button {
@@ -51,11 +54,11 @@ border-top-right-radius: 22px;
                         
         .active {
         composes: button;
+        color: #fefefe;
         background-color: var(--accent-color);
-        color: var(--background-color-main);
-        }
-                @include tablet {
-            background-color: #fefefe;
-            color: var(--accent-color);
+        @include tablet {
+                background-color: #fefefe;
+                color: var(--accent-color);
+            }
         }
     

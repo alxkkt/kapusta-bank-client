@@ -13,6 +13,10 @@ import AddTransactionForm from 'components/AddTransactionForm';
 
 const Transactions = () => {
   const [date, setDate] = useState(Date.now());
+  const [transactionType, setTransactionType] = useState('expenses');
+  const handleClick = e => {
+    setTransactionType(e.target.dataset.type);
+  };
 
   const handleChange = date => {
     setDate(date);
@@ -34,8 +38,10 @@ const Transactions = () => {
             ADD TRANSACTION
           </Link>
           <Calendar startDate={date} onChange={handleChange} />
-          <TransactionsList />
-          <ExpensesAndIncomesButtons />
+          <ExpensesAndIncomesButtons
+            isActive={transactionType}
+            onClick={handleClick}
+          />
         </>
       )}
       {isTablet && (
@@ -46,10 +52,14 @@ const Transactions = () => {
               <ReportsIcon />
             </Link>
           </div>
-          <ExpensesAndIncomesButtons />
+          <ExpensesAndIncomesButtons
+            isActive={transactionType}
+            onClick={handleClick}
+          />
           <div className={styles.containerTable}>
             {isMobile && <Calendar startDate={date} onChange={handleChange} />}
             <AddTransactionForm />
+            <TransactionsList />
           </div>
           <img className={styles.cabages} src={Cabbages} alt="Cabages" />
         </>
@@ -62,12 +72,15 @@ const Transactions = () => {
               <ReportsIcon />
             </Link>
           </div>
-          <ExpensesAndIncomesButtons />
+          <ExpensesAndIncomesButtons
+            isActive={transactionType}
+            onClick={handleClick}
+          />
           <div className={styles.containerTable}>
             {isMobile && <Calendar startDate={date} onChange={handleChange} />}
             <AddTransactionForm />
+            <TransactionsList />
           </div>
-          <img className={styles.cabages} src={Cabbages} alt="Cabages" />
         </>
       )}
     </>

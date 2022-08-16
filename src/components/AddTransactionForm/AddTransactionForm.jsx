@@ -98,7 +98,7 @@ const AddTransactionForm = ({ onSubmit }) => {
             decimalScale={2}
             fixedDecimalScale={true}
             suffix=" UAH"
-            placeholder="00.00   UAH"
+            placeholder="0.00"
             minLength={1}
           />
           <div className={styles.decoration}>

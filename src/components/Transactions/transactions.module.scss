@@ -6,6 +6,9 @@
   align-items: baseline;
   margin-bottom: 60px;
 }
+@include desktop {
+  margin-bottom: 8px;
+}
 }
 
 
@@ -64,7 +67,10 @@
     border-radius: 0px 30px 30px 30px;
  }
  @include desktop {
+  margin: 0 auto;
   padding: 32px 32px;
+  width: 100%;
+  height: 580px;
  }
 }
 

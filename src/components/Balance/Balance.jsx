@@ -52,7 +52,7 @@ const Balance = () => {
             decimalScale={2}
             fixedDecimalScale={true}
             suffix="UAH"
-            placeholder="00.00 UAH"
+            placeholder=".00 UAH"
             minLength={1}
           />
 
