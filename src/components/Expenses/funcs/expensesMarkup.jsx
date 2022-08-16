@@ -7,7 +7,7 @@ const expensesMarkup = expenseCategories =>
         return (
           <li className={styles.categoryDiv}>
             <p className={styles.sum}>{sum}</p>
-            <svg height="56" width="65">
+            <svg className={styles.svg} height="56" width="65">
               <use href={`${sprite}#icon-transport`}></use>
             </svg>
             <p className={styles.category}>TRANSPORT</p>
@@ -18,7 +18,7 @@ const expensesMarkup = expenseCategories =>
         return (
           <li className={styles.categoryDiv}>
             <p className={styles.sum}>{sum}</p>
-            <svg height="56" width="65">
+            <svg className={styles.svg}  height="56" width="65">
               <use href={`${sprite}#icon-health`}></use>
             </svg>
             <p className={styles.category}>HEALTH</p>
@@ -28,7 +28,7 @@ const expensesMarkup = expenseCategories =>
         return (
           <li className={styles.categoryDiv}>
             <p className={styles.sum}>{sum}</p>
-            <svg height="56" width="65">
+            <svg className={styles.svg}  height="56" width="65">
               <use href={`${sprite}#icon-alcohol`}></use>
             </svg>
             <p className={styles.category}>ALCOHOL</p>
@@ -38,7 +38,7 @@ const expensesMarkup = expenseCategories =>
         return (
           <li className={styles.categoryDiv}>
             <p className={styles.sum}>{sum}</p>
-            <svg height="56" width="65">
+            <svg className={styles.svg}  height="56" width="65">
               <use href={`${sprite}#icon-entertainment`}></use>
             </svg>
             <p className={styles.category}>ENTERTAINMENT</p>
@@ -48,7 +48,7 @@ const expensesMarkup = expenseCategories =>
         return (
           <li className={styles.categoryDiv}>
             <p className={styles.sum}>{sum}</p>
-            <svg height="56" width="65">
+            <svg className={styles.svg}  height="56" width="65">
               <use href={`${sprite}#icon-housing`}></use>
             </svg>
             <p className={styles.category}>HOUSING</p>
@@ -58,7 +58,7 @@ const expensesMarkup = expenseCategories =>
         return (
           <li className={styles.categoryDiv}>
             <p className={styles.sum}>{sum}</p>
-            <svg height="56" width="65">
+            <svg className={styles.svg}  height="56" width="65">
               <use href={`${sprite}#icon-technique`}></use>
             </svg>
             <p className={styles.category}>TECHNIQUE</p>
@@ -68,7 +68,7 @@ const expensesMarkup = expenseCategories =>
         return (
           <li className={styles.categoryDiv}>
             <p className={styles.sum}>{sum}</p>
-            <svg height="56" width="65">
+            <svg className={styles.svg}  height="56" width="65">
               <use href={`${sprite}#icon-communal`}></use>
             </svg>
             <p className={styles.category}>
@@ -81,7 +81,7 @@ const expensesMarkup = expenseCategories =>
         return (
           <li className={styles.categoryDiv}>
             <p className={styles.sum}>{sum}</p>
-            <svg height="56" width="65">
+            <svg className={styles.svg}  height="56" width="65">
               <use href={`${sprite}#icon-sports`}></use>
             </svg>
             <p className={styles.category}>
@@ -94,7 +94,7 @@ const expensesMarkup = expenseCategories =>
         return (
           <li className={styles.categoryDiv}>
             <p className={styles.sum}>{sum}</p>
-            <svg height="56" width="65">
+            <svg className={styles.svg}  height="56" width="65">
               <use href={`${sprite}#icon-education`}></use>
             </svg>
             <p className={styles.category}>EDUCATION</p>
@@ -104,7 +104,7 @@ const expensesMarkup = expenseCategories =>
         return (
           <li className={styles.categoryDiv}>
             <p className={styles.sum}>{sum}</p>
-            <svg height="56" width="65">
+            <svg className={styles.svg}  height="56" width="65">
               <use href={`${sprite}#icon-education`}></use>
             </svg>
             <p className={styles.category}>EDUCATION</p>

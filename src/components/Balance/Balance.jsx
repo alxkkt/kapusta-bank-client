@@ -11,10 +11,6 @@ import styles from './balance.module.scss';
 
 const Balance = () => {
   const [balanceState, setBalanceState] = useState('');
-  const [tooltipStatus, setTooltipStatus] = useState({
-    isOpen: false,
-    isShown: false,
-  });
 
   const dispatch = useDispatch();
   const balance = useBalance();
@@ -34,10 +30,7 @@ const Balance = () => {
   };
 
   return (
-    <div
-      className={styles.container}
-      onClick={() => setTooltipStatus({ isOpen: false, isShown: true })}
-    >
+    <div className={styles.container}>
       <div className={styles.containerTablet}>
         <p className={styles.balance}>Balance:</p>
         <form className={styles.form} action="">
@@ -52,26 +45,10 @@ const Balance = () => {
             decimalScale={2}
             fixedDecimalScale={true}
             suffix="UAH"
-            placeholder=".00 UAH"
+            placeholder="0.00 UAH"
             minLength={1}
           />
 
-          {/* <p className={styles.balance}>Balance:</p>
-      <form className={styles.form} action="">
-        <NumberFormat
-          className={styles.input}
-          name="balance"
-          type="text"
-          value={balanceState}
-          onChange={handleChange}
-          // thousandSeparator=""
-          decimalSeparator="."
-          decimalScale={2}
-          fixedDecimalScale={true}
-          suffix="UAH"
-          placeholder="0.00 UAH"
-          minLength={1}
-        /> */}
           <button
             className={styles.button}
             type="submit"
@@ -80,8 +57,8 @@ const Balance = () => {
             CONFIRM
           </button>
         </form>
+        <ModalBalance balance={balance} />
       </div>
-      <ModalBalance isOpen={tooltipStatus.isOpen} />
     </div>
   );
 };
