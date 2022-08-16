@@ -1,4 +1,4 @@
-
+@import '../../../sass/main.scss';
 .background {
     position: absolute;
     height: 290px;
@@ -7,11 +7,11 @@
     border-bottom-left-radius: 30%;
     z-index: 1;
 
-@media screen and (min-width: 768px) {
+@include tablet {
         height: 526px;
     }
 
     @media screen and (min-width: 1280px) {
-        height: 66%;
+        height: 70%;
     }
 }
