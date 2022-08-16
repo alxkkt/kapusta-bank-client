@@ -46,8 +46,8 @@ const AddTransactionPage = () => {
     <>
       {isMobile && (
         <>
+          <Header />
           <Wrapper>
-            <Header />
             <section className={styles.section}>
               <div className="container">
                 <Link className={styles.link} to="/">

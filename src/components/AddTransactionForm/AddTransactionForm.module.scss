@@ -1,8 +1,30 @@
+@import '../../sass/main.scss';
 .form {
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    @include tablet {
+        margin-bottom: 48px;
+    }
+    @include desktop {
+        flex-direction: row;
+        align-items: center;
+        justify-content:space-between;
+        margin-bottom: 60px;
+    }
+}
+
+.tablet {
+    @include tablet {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 32px;
+    }
+    @include desktop {
+        margin: 0;
+    }
 }
 
 .input {
@@ -17,29 +39,55 @@
 
     background-color: transparent;
     border: 2px solid #FFFF;
-    border-radius: 22px 22px 0px 0px;
+    
+    @include tablet {
+        width: 184px;
+        border: 2px solid #F5F6FB;
+        border-radius: 22px 0px 0px 0px;
+    }
+    @include desktop{
+        width: 240px;
+    }
     
 }
 
 .input::placeholder {
     color: #C7CCDC;
     font-weight: 400;
+    font-size: 12px;
+        line-height: 14px;
 }
 
 .select {
     composes: input;
-    margin-bottom: 12px;
+    @include mobile {
+        margin-bottom: 12px;
+    }
     color: #C7CCDC;
     border-radius: 0px 0px 22px 22px;
     border-top: none;
+    @include tablet {
+        font-weight: 400;
+            font-size: 12px;
+            line-height: 14px;
+            color: #C7CCDC;
+        width: 186px;
+        border: 2px solid #F5F6FB;
+        border-radius: 0px 0px 0px 0px;
+        border-left: transparent;
+    }
+    @include desktop {
+        width: 168px;
+    }
 }
 
-.container {
+.containerForm {
     display: flex;
     justify-content: center;
+    @include mobile {
     margin-bottom: 80px;
 }
-
+}
 .img {
     width: 20px;
     height: 20px;
@@ -51,6 +99,17 @@
     text-align: right;
     font-weight: 700;
     border-radius: 22px 0px 0px 22px;
+    border-left: transparent;
+    border-right: transparent;
+    @include tablet {
+        text-align: center;
+        width: 60px;
+    border-radius: 0px 0px 0px 0px;
+    border-right: transparent;
+    }
+    @include desktop {
+        width: 75px
+    }
 }
 
 .sum::placeholder {
@@ -59,14 +118,28 @@
     font-size: 12px;
     line-height: 14px;
     letter-spacing: 0.02em;
+    @include tablet {
+        font-weight: 400;
+            font-size: 12px;
+            line-height: 14px;
+            color: #C7CCDC;
+    }
 }
 
 .decoration {
     composes: input;
     padding: 12px 20px 20px 12px;
     height: 44px;
-    width: 60px;
+    width: 50px;
     border-radius: 0px 22px 22px 0px;
+    @include tablet {
+    border-radius: 0px 22px 22px 0px;
+    border-left: transparent;
+    }
+    @include desktop {
+        width: 45px;
+        margin-right: 32px;
+    }
 }
 
 .containerBtn {
@@ -89,6 +162,9 @@
         border: transparent;
         border-radius: 16px;
         box-shadow: 1px 2px 5px rgba(170, 178, 197, 0.4);
+        @include desktop {
+            width: 135px;
+        }
 }
 
 .clearBtn {

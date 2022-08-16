@@ -1,5 +1,16 @@
+@import '../../sass/main.scss';
+
 .section {
 padding-top: 30px;
+@include tablet {
+padding-bottom: 60px;
+}
+@include desktop {
+  padding: 40px 91px 60px 91px;
+  background-image: url(../../shared/images/svg/cabbage-line.svg);
+  background-repeat: repeat-x;
+  background-position: 0% 100%;
+}
 }
 .title {
   position: absolute;

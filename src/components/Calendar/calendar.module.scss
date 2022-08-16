@@ -1,8 +1,18 @@
+@import '../../sass/main.scss';
+
 .wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 20px;
+  @include tablet {
+    justify-content: flex-start;
+    margin-right: 44px;
+    margin-bottom: 0;
+  }
+  @include desktop {
+    margin-right: 36px;
+  }
 }
 
 .datePicker {
@@ -19,6 +29,7 @@
   font-size: 12px;
   line-height: 14px;
   letter-spacing: 0.04em;
+  cursor: pointer;
 }
 
 .img {
