@@ -10,6 +10,8 @@ import App from './App';
 import '../node_modules/modern-normalize/modern-normalize.css';
 import './sass/main.scss';
 
+// const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
+// console.log(clientId);
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
