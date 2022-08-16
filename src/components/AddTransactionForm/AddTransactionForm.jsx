@@ -1,39 +1,71 @@
-import styles from './AddTransactionForm.module.scss';
+import { useState } from 'react';
 import NumberFormat from 'react-number-format';
 import { useMediaQuery } from 'react-responsive';
+
 import Icon from 'shared/components/Icon';
-import { useState } from 'react';
 import Calendar from 'components/Calendar';
-// import { useNavigate } from 'react-router-dom';
+import CategoriesList from './CategoriesList';
+
+import { usePostTransactionMutation } from 'redux/transactions/transactions';
+
+import styles from './AddTransactionForm.module.scss';
 
 const AddTransactionForm = ({ onSubmit }) => {
-  const [form, setForm] = useState({
+  const [formData, setFormData] = useState({
     description: '',
     category: '',
     sum: '',
   });
   const [date, setDate] = useState(Date.now());
 
-  // const navigate = useNavigate();
+  const [postTransaction, { isLoading, isSuccess, isError }] =
+    usePostTransactionMutation();
 
   const handleChange = ({ target }) => {
     const { name, value } = target;
     const newValue = value.toLowerCase();
-    setForm({ ...form, [name]: newValue });
+    setFormData({ ...formData, [name]: newValue });
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-    onSubmit({ ...form });
-    setForm({
-      description: '',
-      category: '',
-      sum: '',
+
+    const dataType =
+      e.target.elements.category.value === 'income' ||
+      e.target.elements.category.value === 'wages'
+        ? 'income'
+        : 'expense';
+    const dataSum = Number.parseFloat(e.target.elements.sum.value);
+    postTransaction({
+      date,
+      category: e.target.elements.category.value.toLowerCase(),
+      description: e.target.elements.description.value,
+      type: dataType,
+      sum: dataSum,
     });
+
+    isSuccess &&
+      setFormData({
+        description: '',
+        category: '',
+        sum: '',
+      });
   };
 
+  // const editToSend = ({ description, category, sum }) => {
+  //   const typeValue =
+  //     category === 'income' || category === 'wages' ? 'income' : 'expense';
+  //   const sumToNumber = Number.parseFloat(sum);
+  //   setTransaction({
+  //     description,
+  //     date,
+  //     type: typeValue,
+  //     sum: sumToNumber,
+  //   });
+  // };
+
   const handleClear = e => {
-    setForm({
+    setFormData({
       description: '',
       category: '',
       sum: '',
@@ -48,9 +80,10 @@ const AddTransactionForm = ({ onSubmit }) => {
     query: '(min-width: 768px) and (max-width: 1279px)',
   });
   const isDesktop = useMediaQuery({ query: '(min-width: 1280px)' });
-  const { description, sum } = form;
+
+  const { description, sum } = formData;
   return (
-    <form className={styles.form} action="" onSubmit={handleSubmit}>
+    <form className={styles.form} onSubmit={handleSubmit}>
       <div className={styles.tablet}>
         {isTablet && <Calendar startDate={date} onChange={onChange} />}
         {isDesktop && <Calendar startDate={date} onChange={onChange} />}
@@ -62,31 +95,7 @@ const AddTransactionForm = ({ onSubmit }) => {
           type="text"
           placeholder="Product description"
         />
-        <select
-          className={styles.select}
-          onChange={handleChange}
-          name="category"
-          // value={category}
-          required
-        >
-          <option value="">Product category</option>
-          <optgroup label="Expense" name="type">
-            <option value="Health">Health</option>
-            <option value="Alcohol">Alcohol</option>
-            <option value="Entertainment">Entertainment</option>
-            <option value="Housing">Housing</option>
-            <option value="Technique">Technique</option>
-            <option value="Communal, Communications">
-              Communal, Communications
-            </option>
-            <option value="Sports, Hobbies">Sports, Hobbies</option>
-            <option value="Education">Education</option>
-            <option value="Other">Other</option>
-          </optgroup>
-          <optgroup label="Income" name="type">
-            <option value="Sallary">Sallary</option>
-          </optgroup>
-        </select>
+        <CategoriesList onChange={handleChange} />
         <div className={styles.containerForm}>
           <NumberFormat
             className={styles.sum}

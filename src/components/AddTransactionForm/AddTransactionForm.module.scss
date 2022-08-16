@@ -1,176 +1,157 @@
 @import '../../sass/main.scss';
 .form {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  @include tablet {
+    margin-bottom: 48px;
+  }
+  @include desktop {
+    flex-direction: row;
     align-items: center;
-    @include tablet {
-        margin-bottom: 48px;
-    }
-    @include desktop {
-        flex-direction: row;
-        align-items: center;
-        justify-content:space-between;
-        margin-bottom: 60px;
-    }
+    justify-content: space-between;
+    margin-bottom: 60px;
+  }
 }
 
 .tablet {
-    @include tablet {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-bottom: 32px;
-    }
-    @include desktop {
-        margin: 0;
-    }
+  @include tablet {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 32px;
+  }
+  @include desktop {
+    margin: 0;
+  }
 }
 
 .input {
- 
-    padding-left: 20px;
-    width: 280px;
-    height: 44px;
+  padding-left: 20px;
+  width: 280px;
+  height: 44px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.02em;
+  border-radius: 22px 22px 0px 0px;
+
+  background-color: transparent;
+  border: 2px solid #ffff;
+
+  @include tablet {
+    width: 184px;
+    border: 2px solid #f5f6fb;
+    border-radius: 22px 0px 0px 0px;
+  }
+  @include desktop {
+    width: 240px;
+  }
+
+  &::placeholder {
+    color: var(--input-placeholder-color);
     font-weight: 400;
     font-size: 12px;
     line-height: 14px;
-    letter-spacing: 0.02em;
-
-    background-color: transparent;
-    border: 2px solid #FFFF;
-    
-    @include tablet {
-        width: 184px;
-        border: 2px solid #F5F6FB;
-        border-radius: 22px 0px 0px 0px;
-    }
-    @include desktop{
-        width: 240px;
-    }
-    
-}
-
-.input::placeholder {
-    color: #C7CCDC;
-    font-weight: 400;
-    font-size: 12px;
-        line-height: 14px;
-}
-
-.select {
-    composes: input;
-    @include mobile {
-        margin-bottom: 12px;
-    }
-    color: #C7CCDC;
-    border-radius: 0px 0px 22px 22px;
-    border-top: none;
-    @include tablet {
-        font-weight: 400;
-            font-size: 12px;
-            line-height: 14px;
-            color: #C7CCDC;
-        width: 186px;
-        border: 2px solid #F5F6FB;
-        border-radius: 0px 0px 0px 0px;
-        border-left: transparent;
-    }
-    @include desktop {
-        width: 168px;
-    }
+  }
 }
 
 .containerForm {
-    display: flex;
-    justify-content: center;
-    @include mobile {
+  display: flex;
+  justify-content: center;
+  @include mobile {
     margin-bottom: 80px;
-}
+  }
 }
 .img {
-    width: 20px;
-    height: 20px;
+  width: 20px;
+  height: 20px;
 }
 
 .sum {
-    composes: input;
-    width: 125px;
-    text-align: right;
-    font-weight: 700;
-    border-radius: 22px 0px 0px 22px;
-    border-left: transparent;
-    border-right: transparent;
-    @include tablet {
-        text-align: center;
-        width: 60px;
+  composes: input;
+  width: 125px;
+  text-align: right;
+  font-weight: 700;
+  border-radius: 22px 0px 0px 22px;
+  border-right: transparent;
+  @include tablet {
+    text-align: center;
+    width: 60px;
     border-radius: 0px 0px 0px 0px;
     border-right: transparent;
-    }
-    @include desktop {
-        width: 75px
-    }
+  }
+  @include desktop {
+    width: 75px;
+  }
 }
 
 .sum::placeholder {
-    color: black;
-    font-weight: 700;
+  color: black;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.02em;
+  @include tablet {
+    font-weight: 400;
     font-size: 12px;
     line-height: 14px;
-    letter-spacing: 0.02em;
-    @include tablet {
-        font-weight: 400;
-            font-size: 12px;
-            line-height: 14px;
-            color: #C7CCDC;
-    }
+    color: #c7ccdc;
+  }
 }
 
 .decoration {
-    composes: input;
-    padding: 12px 20px 20px 12px;
-    height: 44px;
-    width: 50px;
-    border-radius: 0px 22px 22px 0px;
-    @include tablet {
+  composes: input;
+  padding: 12px 20px 20px 12px;
+  height: 44px;
+  width: 50px;
+  border-radius: 0px 22px 22px 0px;
+  @include tablet {
     border-radius: 0px 22px 22px 0px;
     border-left: transparent;
-    }
-    @include desktop {
-        width: 45px;
-        margin-right: 32px;
-    }
+  }
+  @include desktop {
+    width: 45px;
+    margin-right: 32px;
+  }
 }
 
 .containerBtn {
-    display: flex;
-        justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .inputBtn {
-    width: 130px;
-        height: 44px;
+  width: 130px;
+  height: 44px;
+  cursor: pointer;
 
-        background-color: var(--accent-color);
-        color: #FFFF;
+  background-color: var(--accent-color);
+  color: #ffff;
 
-        font-weight: 700;
-            font-size: 12px;
-            line-height: 14px;
-            letter-spacing: 0.02em;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.02em;
 
-        border: transparent;
-        border-radius: 16px;
-        box-shadow: 1px 2px 5px rgba(170, 178, 197, 0.4);
-        @include desktop {
-            width: 135px;
-        }
+  border: transparent;
+  border-radius: 16px;
+  box-shadow: 1px 2px 5px rgba(170, 178, 197, 0.4);
+  @include desktop {
+    width: 135px;
+  }
+
+  &:disabled {
+    background-color: var(--accent-color-faded);
+  }
 }
 
 .clearBtn {
-    composes: inputBtn;
-    margin-left: 20px;
-    
-    color: #52555F;
-    background-color: transparent;
+  composes: inputBtn;
+  margin-left: 20px;
+  cursor: pointer;
+
+  color: #52555f;
+  background-color: transparent;
 }

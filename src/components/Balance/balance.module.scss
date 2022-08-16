@@ -26,6 +26,7 @@
 
 .input {
   padding-left: 19px;
+  padding-right: 5px;
   text-align: right;
   width: 140px;
   height: 44px;
@@ -41,8 +42,7 @@
   z-index: 2;
   @include tablet {
     margin-right: 15px;
-    width: 125px;
-    text-align:center;
+    text-align: center;
     border-radius: 22px 22px 22px 22px;
   }
 }
@@ -61,15 +61,17 @@ input::placeholder {
   color: var(--text-color-faded);
   background-color: transparent;
   border: 2px solid #ffff;
+  border-left: none;
   border-radius: 0px 22px 22px 0px;
   cursor: pointer;
 
   font-weight: 400;
   font-size: 12px;
   line-height: 14px;
-  @include tablet{
+  @include tablet {
     width: 125px;
     border-radius: 22px 22px 22px 22px;
+    border-left: 2px solid #ffff;
   }
 }
 
@@ -90,12 +92,11 @@ input::placeholder {
 }
 
 .containerTablet {
-  @include tablet{
-  display: flex;
-  align-items: baseline;
-  justify-content: center;
-}
-@include desktop {
-
-}
+  @include tablet {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+  }
+  @include desktop {
+  }
 }
