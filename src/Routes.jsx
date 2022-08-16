@@ -16,7 +16,7 @@ const MyRoutes = () => {
         <Route element={<PublicRoute />}>
           <Route path="auth" element={<AuthPage />} />
         </Route>
-        <Route>
+        <Route element={<PrivateRoute />}>
           <Route path="/" element={<HomePage />} />
           <Route path="reports" element={<ReportsPage />} />
           <Route path="/addtransaction" element={<AddTransactionPage />} />
