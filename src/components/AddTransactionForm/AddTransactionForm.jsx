@@ -10,7 +10,7 @@ import { usePostTransactionMutation } from 'redux/transactions/transactions';
 
 import styles from './AddTransactionForm.module.scss';
 
-const AddTransactionForm = ({ onSubmit }) => {
+const AddTransactionForm = () => {
   const [formData, setFormData] = useState({
     description: '',
     category: '',
@@ -18,8 +18,7 @@ const AddTransactionForm = ({ onSubmit }) => {
   });
   const [date, setDate] = useState(Date.now());
 
-  const [postTransaction, { isLoading, isSuccess, isError }] =
-    usePostTransactionMutation();
+  const [postTransaction, { isSuccess }] = usePostTransactionMutation();
 
   const handleChange = ({ target }) => {
     const { name, value } = target;
@@ -52,19 +51,7 @@ const AddTransactionForm = ({ onSubmit }) => {
       });
   };
 
-  // const editToSend = ({ description, category, sum }) => {
-  //   const typeValue =
-  //     category === 'income' || category === 'wages' ? 'income' : 'expense';
-  //   const sumToNumber = Number.parseFloat(sum);
-  //   setTransaction({
-  //     description,
-  //     date,
-  //     type: typeValue,
-  //     sum: sumToNumber,
-  //   });
-  // };
-
-  const handleClear = e => {
+  const handleClear = () => {
     setFormData({
       description: '',
       category: '',
@@ -83,47 +70,53 @@ const AddTransactionForm = ({ onSubmit }) => {
 
   const { description, sum } = formData;
   return (
-    <form className={styles.form} onSubmit={handleSubmit}>
-      <div className={styles.tablet}>
-        {isTablet && <Calendar startDate={date} onChange={onChange} />}
-        {isDesktop && <Calendar startDate={date} onChange={onChange} />}
-        <input
-          className={styles.input}
-          onChange={handleChange}
-          name="description"
-          value={description}
-          type="text"
-          placeholder="Product description"
-        />
-        <CategoriesList onChange={handleChange} />
-        <div className={styles.containerForm}>
-          <NumberFormat
-            className={styles.sum}
+    <>
+      <form className={styles.form} onSubmit={handleSubmit}>
+        <div className={styles.tablet}>
+          {isTablet && <Calendar startDate={date} onChange={onChange} />}
+          {isDesktop && <Calendar startDate={date} onChange={onChange} />}
+          <input
+            className={styles.input}
             onChange={handleChange}
-            name="sum"
-            value={sum}
+            name="description"
+            value={description}
             type="text"
-            decimalSeparator="."
-            decimalScale={2}
-            fixedDecimalScale={true}
-            suffix=" UAH"
-            placeholder="0.00"
-            minLength={1}
+            placeholder="Product description"
           />
-          <div className={styles.decoration}>
-            <Icon width={20} height={20} name={`icon-calculator`} />
+          <CategoriesList onChange={handleChange} />
+          <div className={styles.containerForm}>
+            <NumberFormat
+              className={styles.sum}
+              onChange={handleChange}
+              name="sum"
+              value={sum}
+              type="text"
+              decimalSeparator="."
+              decimalScale={2}
+              fixedDecimalScale={true}
+              suffix=" UAH"
+              placeholder="0.00"
+              minLength={1}
+            />
+            <div className={styles.decoration}>
+              <Icon width={20} height={20} name={`icon-calculator`} />
+            </div>
           </div>
         </div>
-      </div>
-      <div className={styles.containerBtn}>
-        <button className={styles.inputBtn} type="submit">
-          INPUT
-        </button>
-        <button className={styles.clearBtn} onClick={handleClear} type="button">
-          CLEAR
-        </button>
-      </div>
-    </form>
+        <div className={styles.containerBtn}>
+          <button className={styles.inputBtn} type="submit">
+            INPUT
+          </button>
+          <button
+            className={styles.clearBtn}
+            onClick={handleClear}
+            type="button"
+          >
+            CLEAR
+          </button>
+        </div>
+      </form>
+    </>
   );
 };
 
