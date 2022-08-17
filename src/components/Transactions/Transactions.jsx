@@ -79,7 +79,7 @@ const Transactions = () => {
           <div className={styles.containerTable}>
             {isMobile && <Calendar startDate={date} onChange={handleChange} />}
             <AddTransactionForm />
-            <TransactionsList />
+            <TransactionsList date={date} />
           </div>
         </>
       )}
