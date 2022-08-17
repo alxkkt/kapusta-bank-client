@@ -11,11 +11,10 @@ import {
 } from '../../redux/transactions/transactions';
 
 const TransactionsList = ({ date }) => {
-  const { data, error, isLoading } = useGetTransactionsQuery();
+  const { data } = useGetTransactionsQuery();
   const [deleteTransaction] = useDeleteTransactionMutation();
   const [modalDelete, setModalDelete] = useState(false);
   const [transaction, setTransaction] = useState('');
-
   const dispatch = useDispatch();
 
   const handleDeleteClick = transaction => {
@@ -34,6 +33,23 @@ const TransactionsList = ({ date }) => {
     deleteTransaction(transactionToDel._id);
     setTransaction('');
   };
+
+  function pad(value) {
+    return value.toString().padStart(2, 0);
+  }
+  const newDate = new Date(date);
+  const day = pad(newDate.getDate());
+  const month = pad(newDate.getMonth());
+  const year = newDate.getFullYear();
+  const calendarDate = `${day}.${month}.${year}`;
+  const filteredTransactions = data?.filter(item => {
+    const newTransactionDate = new Date(item.date);
+    const transactionDay = pad(newTransactionDate.getDate());
+    const transactionMonth = pad(newTransactionDate.getMonth());
+    const transactionYear = newTransactionDate.getFullYear();
+    const transactionDate = `${transactionDay}.${transactionMonth}.${transactionYear}`;
+    return calendarDate === transactionDate;
+  });
 
   return (
     <>
@@ -68,14 +84,7 @@ const TransactionsList = ({ date }) => {
             className={`${styles.table} ${styles.table_body_transactions}`}
           >
             <tbody className={styles.table_body}>
-              {data?.map(transaction => {
-                function pad(value) {
-                  return value.toString().padStart(2, 0);
-                }
-                const newDate = new Date(transaction.date);
-                const day = pad(newDate.getDate());
-                const month = pad(newDate.getMonth());
-                const year = newDate.getFullYear();
+              {filteredTransactions?.map(transaction => {
                 return (
                   <tr
                     key={transaction._id}
