@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { GoogleLogin } from 'react-google-login';
 import { gapi } from 'gapi-script';
+import toast, { Toaster } from 'react-hot-toast';
 
 import s from './AuthForm.module.scss';
 
@@ -37,15 +38,25 @@ const AuthForm = ({ register, login, onSuccess, onFailure }) => {
   };
 
   const onSignIn = () => {
+    const { email, password } = form;
+    if (!email.trim().length || !password.trim().length) {
+      toast.error('Please fill all fields');
+      return;
+    }
+
     login({ ...form });
     setForm({ ...initialState });
   };
   const onSignUp = () => {
+    const { email, password } = form;
+    if (!email.trim().length || !password.trim().length) {
+      toast.error('Please fill all fields');
+      return;
+    }
     register({ ...form });
     setForm({ ...initialState });
   };
   const resSuccessGoogle = async res => {
-    console.log(res);
     onSuccess({ tokenId: res.tokenId });
   };
 
@@ -81,7 +92,6 @@ const AuthForm = ({ register, login, onSuccess, onFailure }) => {
             placeholder="Enter your email"
             className={s.input}
             value={email}
-            required
           />
           <label htmlFor="password" className={s.text}>
             Password
@@ -93,7 +103,6 @@ const AuthForm = ({ register, login, onSuccess, onFailure }) => {
             placeholder="Enter your password"
             className={s.input}
             value={password}
-            required
           />
         </div>
         <div className={s.wrapButton}>
@@ -113,6 +122,7 @@ const AuthForm = ({ register, login, onSuccess, onFailure }) => {
           </button>
         </div>
       </form>
+      <Toaster />
     </div>
   );
 };
