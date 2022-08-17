@@ -56,7 +56,14 @@ const ReportsPage = () => {
                 switchExpenses={setAreExpensesOpen}
               />
             </Expenses>
-          ) : undefined}
+          ) : (
+            <Expenses expenseTransactions={transactionsInfo.incomeTransactions}>
+              <ExpensesIncomeSwitch
+                areExpensesOpen={areExpensesOpen}
+                switchExpenses={setAreExpensesOpen}
+              />
+            </Expenses>
+          )}
         </div>
       </section>
     );
