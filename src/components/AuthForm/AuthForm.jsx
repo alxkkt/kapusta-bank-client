@@ -3,7 +3,6 @@ import { GoogleLogin } from 'react-google-login';
 import { gapi } from 'gapi-script';
 
 import s from './AuthForm.module.scss';
-import ReactDatePicker from 'react-datepicker';
 
 const clientId =
   '2996877303-j7ihpaskfovb4k023h83sfg5rj5tjosm.apps.googleusercontent.com';
