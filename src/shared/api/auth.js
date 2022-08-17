@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 const instance = axios.create({
-  // baseURL: 'https://kapusta-backend-proj.herokuapp.com/api',
-  baseURL: 'http://localhost:3030/api',
+  baseURL: 'https://kapusta-backend-proj.herokuapp.com/api',
+  // baseURL: 'http://localhost:3030/api',
 });
 
 const addToken = token => {

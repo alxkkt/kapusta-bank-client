@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import NumberFormat from 'react-number-format';
 import { useMediaQuery } from 'react-responsive';
+import { useNavigate } from 'react-router-dom';
 
 import Icon from 'shared/components/Icon';
 import Calendar from 'components/Calendar';
@@ -20,6 +21,7 @@ const AddTransactionForm = () => {
   const [date, setDate] = useState(Date.now());
 
   const [postTransaction, { isSuccess }] = usePostTransactionMutation();
+  const navigate = useNavigate();
 
   const handleChange = ({ target }) => {
     const { name, value } = target;
@@ -28,7 +30,7 @@ const AddTransactionForm = () => {
   };
 
   const handleSubmit = e => {
-    e.preventDefault();
+    // e.preventDefault();
 
     const dataType =
       e.target.elements.category.value.toLowerCase() === 'income' ||
@@ -51,6 +53,7 @@ const AddTransactionForm = () => {
         category: '',
         sum: '',
       });
+    navigate('/');
   };
 
   const handleClear = () => {
