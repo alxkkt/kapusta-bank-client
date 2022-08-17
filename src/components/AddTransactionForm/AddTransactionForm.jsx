@@ -30,11 +30,12 @@ const AddTransactionForm = () => {
     e.preventDefault();
 
     const dataType =
-      e.target.elements.category.value === 'income' ||
-      e.target.elements.category.value === 'wages'
+      e.target.elements.category.value.toLowerCase() === 'income' ||
+      e.target.elements.category.value.toLowerCase() === 'wages'
         ? 'income'
         : 'expense';
     const dataSum = Number.parseFloat(e.target.elements.sum.value);
+
     postTransaction({
       date,
       category: e.target.elements.category.value.toLowerCase(),
