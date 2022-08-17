@@ -5,6 +5,7 @@ import { useMediaQuery } from 'react-responsive';
 import Icon from 'shared/components/Icon';
 import Calendar from 'components/Calendar';
 import CategoriesList from './CategoriesList';
+import TransactionsList from 'components/TransactionsList';
 
 import { usePostTransactionMutation } from 'redux/transactions/transactions';
 
@@ -116,6 +117,7 @@ const AddTransactionForm = () => {
           </button>
         </div>
       </form>
+      <TransactionsList date={date} />
     </>
   );
 };

@@ -3,7 +3,6 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 // import moment from 'moment';
 import ExpensesAndIncomesButtons from 'components/ExpensesAndIncomesButtons';
-import TransactionsList from 'components/TransactionsList';
 import Calendar from 'components/Calendar';
 import Balance from 'components/Balance';
 import ReportsIcon from 'shared/components/ReportsIcon';
@@ -59,7 +58,6 @@ const Transactions = () => {
           <div className={styles.containerTable}>
             {isMobile && <Calendar startDate={date} onChange={handleChange} />}
             <AddTransactionForm />
-            <TransactionsList />
           </div>
           <img className={styles.cabages} src={Cabbages} alt="Cabages" />
         </>
@@ -79,7 +77,6 @@ const Transactions = () => {
           <div className={styles.containerTable}>
             {isMobile && <Calendar startDate={date} onChange={handleChange} />}
             <AddTransactionForm />
-            <TransactionsList date={date} />
           </div>
         </>
       )}
