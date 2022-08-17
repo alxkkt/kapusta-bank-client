@@ -46,10 +46,9 @@ export const logOut = async () => {
 };
 
 export const logInByGoogle = async tokenId => {
-  console.log(tokenId);
   const { data } = await instance.post('/auth/google', tokenId);
-  console.log(data);
-  // addToken(data.token);
+
+  addToken(data.token);
   return data;
 };
 
