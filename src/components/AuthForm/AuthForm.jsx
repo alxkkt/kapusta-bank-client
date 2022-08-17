@@ -4,6 +4,7 @@ import { gapi } from 'gapi-script';
 
 import s from './AuthForm.module.scss';
 
+// const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
 const clientId =
   '2996877303-j7ihpaskfovb4k023h83sfg5rj5tjosm.apps.googleusercontent.com';
 
@@ -44,11 +45,11 @@ const AuthForm = ({ register, login, onSuccess, onFailure }) => {
     setForm({ ...initialState });
   };
   const resSuccessGoogle = async res => {
+    console.log(res);
     onSuccess({ tokenId: res.tokenId });
   };
 
   const resFailureGoogle = async res => {
-    console.log('blydska morda');
     onFailure(res);
   };
 
@@ -80,6 +81,7 @@ const AuthForm = ({ register, login, onSuccess, onFailure }) => {
             placeholder="Enter your email"
             className={s.input}
             value={email}
+            required
           />
           <label htmlFor="password" className={s.text}>
             Password
@@ -91,6 +93,7 @@ const AuthForm = ({ register, login, onSuccess, onFailure }) => {
             placeholder="Enter your password"
             className={s.input}
             value={password}
+            required
           />
         </div>
         <div className={s.wrapButton}>

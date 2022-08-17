@@ -24,7 +24,6 @@ export const reverify = async email => {
 };
 
 export const signIn = async body => {
-  console.log(body);
   const { data } = await instance.post('/auth/login', body);
 
   addToken(data.token);
