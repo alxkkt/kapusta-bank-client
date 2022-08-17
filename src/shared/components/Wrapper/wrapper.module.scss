@@ -11,7 +11,7 @@
         height: 526px;
     }
 
-    @media screen and (min-width: 1280px) {
+    @include desktop {
         height: 70%;
     }
 }
