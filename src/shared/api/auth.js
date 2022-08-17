@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 const instance = axios.create({
-  baseURL: 'https://kapusta-backend-proj.herokuapp.com/api',
-  // baseURL: 'http://localhost:3030/api',
+  // baseURL: 'https://kapusta-backend-proj.herokuapp.com/api',
+  baseURL: 'http://localhost:3030/api',
 });
 
 const addToken = token => {
@@ -44,10 +44,11 @@ export const logOut = async () => {
   return data;
 };
 
-// export const logInByGoogle = async () => {
-//   const { data } = await authInstance.post('/google');
-//   addToken(data.accessToken);
-//   return data;
-// };
+export const logInByGoogle = async tokenId => {
+  const { data } = await instance.post('/auth/google', tokenId);
+
+  addToken(data.token);
+  return data;
+};
 
 export default instance;

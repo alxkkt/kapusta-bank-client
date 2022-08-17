@@ -5,7 +5,7 @@ import {
   signUp,
   getCurrentUser,
   logOut,
-  // reverify,
+  logInByGoogle,
 } from './auth-operations';
 
 const initialState = {
@@ -34,6 +34,28 @@ const authSlice = createSlice({
       userData: { email: payload },
     }),
     [signUp.rejected]: (store, { payload }) => ({
+      ...store,
+      loading: false,
+      error: payload,
+    }),
+
+    //google authorization
+    [logInByGoogle.pending]: (store, _) => ({
+      ...store,
+      loading: true,
+      error: null,
+    }),
+    [logInByGoogle.fulfilled]: (store, { payload }) => {
+      const { token, email } = payload;
+      return {
+        ...store,
+        loading: false,
+        isLogin: true,
+        token,
+        userData: { email },
+      };
+    },
+    [logInByGoogle.rejected]: (store, { payload }) => ({
       ...store,
       loading: false,
       error: payload,

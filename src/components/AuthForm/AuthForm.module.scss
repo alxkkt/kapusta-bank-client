@@ -20,6 +20,13 @@
     padding: 60px 32px 50px;
   }
 }
+.login {
+  display: flex;
+
+  align-items: center;
+  justify-content: flex-start;
+  margin: 20px;
+}
 .title {
   margin: 0 auto;
   font-size: 12px;
