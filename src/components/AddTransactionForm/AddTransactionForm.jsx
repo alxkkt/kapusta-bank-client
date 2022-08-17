@@ -1,104 +1,122 @@
-import styles from './AddTransactionForm.module.scss';
-import NumberFormat from 'react-number-format';
-import Icon from 'shared/components/Icon';
 import { useState } from 'react';
-// import { useNavigate } from 'react-router-dom';
+import NumberFormat from 'react-number-format';
+import { useMediaQuery } from 'react-responsive';
 
-const AddTransactionForm = ({ onSubmit }) => {
-  const [form, setForm] = useState({
+import Icon from 'shared/components/Icon';
+import Calendar from 'components/Calendar';
+import CategoriesList from './CategoriesList';
+
+import { usePostTransactionMutation } from 'redux/transactions/transactions';
+
+import styles from './AddTransactionForm.module.scss';
+
+const AddTransactionForm = () => {
+  const [formData, setFormData] = useState({
     description: '',
     category: '',
     sum: '',
   });
+  const [date, setDate] = useState(Date.now());
 
-  // const navigate = useNavigate();
+  const [postTransaction, { isSuccess }] = usePostTransactionMutation();
 
   const handleChange = ({ target }) => {
     const { name, value } = target;
     const newValue = value.toLowerCase();
-    setForm({ ...form, [name]: newValue });
+    setFormData({ ...formData, [name]: newValue });
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-    onSubmit({ ...form });
-    setForm({
+
+    const dataType =
+      e.target.elements.category.value === 'income' ||
+      e.target.elements.category.value === 'wages'
+        ? 'income'
+        : 'expense';
+    const dataSum = Number.parseFloat(e.target.elements.sum.value);
+    postTransaction({
+      date,
+      category: e.target.elements.category.value.toLowerCase(),
+      description: e.target.elements.description.value,
+      type: dataType,
+      sum: dataSum,
+    });
+
+    isSuccess &&
+      setFormData({
+        description: '',
+        category: '',
+        sum: '',
+      });
+  };
+
+  const handleClear = () => {
+    setFormData({
       description: '',
       category: '',
       sum: '',
     });
   };
 
-  const handleClear = e => {
-    setForm({
-      description: '',
-      category: '',
-      sum: '',
-    });
+  const onChange = date => {
+    setDate(date);
   };
-  const { description, sum } = form;
+
+  const isTablet = useMediaQuery({
+    query: '(min-width: 768px) and (max-width: 1279px)',
+  });
+  const isDesktop = useMediaQuery({ query: '(min-width: 1280px)' });
+
+  const { description, sum } = formData;
   return (
-    <form className={styles.form} action="" onSubmit={handleSubmit}>
-      <input
-        className={styles.input}
-        onChange={handleChange}
-        name="description"
-        value={description}
-        type="text"
-        placeholder="Product description"
-      />
-      <select
-        className={styles.select}
-        onChange={handleChange}
-        name="category"
-        // value={category}
-        required
-      >
-        <option value="">Product category</option>
-        <optgroup label="Expense" name="type">
-          <option value="Health">Health</option>
-          <option value="Alcohol">Alcohol</option>
-          <option value="Entertainment">Entertainment</option>
-          <option value="Housing">Housing</option>
-          <option value="Technique">Technique</option>
-          <option value="Communal, Communications">
-            Communal, Communications
-          </option>
-          <option value="Sports, Hobbies">Sports, Hobbies</option>
-          <option value="Education">Education</option>
-          <option value="Other">Other</option>
-        </optgroup>
-        <optgroup label="Income" name="type">
-          <option value="Sallary">Sallary</option>
-        </optgroup>
-      </select>
-      <div className={styles.container}>
-        <NumberFormat
-          className={styles.sum}
-          onChange={handleChange}
-          name="sum"
-          value={sum}
-          type="text"
-          decimalSeparator="."
-          decimalScale={2}
-          fixedDecimalScale={true}
-          suffix=" UAH"
-          placeholder="00.00 UAH"
-          minLength={1}
-        />
-        <div className={styles.decoration}>
-          <Icon width={20} height={20} name={`icon-calculator`} />
+    <>
+      <form className={styles.form} onSubmit={handleSubmit}>
+        <div className={styles.tablet}>
+          {isTablet && <Calendar startDate={date} onChange={onChange} />}
+          {isDesktop && <Calendar startDate={date} onChange={onChange} />}
+          <input
+            className={styles.input}
+            onChange={handleChange}
+            name="description"
+            value={description}
+            type="text"
+            placeholder="Product description"
+          />
+          <CategoriesList onChange={handleChange} />
+          <div className={styles.containerForm}>
+            <NumberFormat
+              className={styles.sum}
+              onChange={handleChange}
+              name="sum"
+              value={sum}
+              type="text"
+              decimalSeparator="."
+              decimalScale={2}
+              fixedDecimalScale={true}
+              suffix=" UAH"
+              placeholder="0.00"
+              minLength={1}
+            />
+            <div className={styles.decoration}>
+              <Icon width={20} height={20} name={`icon-calculator`} />
+            </div>
+          </div>
         </div>
-      </div>
-      <div className={styles.containerBtn}>
-        <button className={styles.inputBtn} type="submit">
-          INPUT
-        </button>
-        <button className={styles.clearBtn} onClick={handleClear} type="button">
-          CLEAR
-        </button>
-      </div>
-    </form>
+        <div className={styles.containerBtn}>
+          <button className={styles.inputBtn} type="submit">
+            INPUT
+          </button>
+          <button
+            className={styles.clearBtn}
+            onClick={handleClear}
+            type="button"
+          >
+            CLEAR
+          </button>
+        </div>
+      </form>
+    </>
   );
 };
 

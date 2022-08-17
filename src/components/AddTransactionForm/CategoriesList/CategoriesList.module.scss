@@ -1,0 +1,35 @@
+@import '../../../sass/main.scss';
+
+.select {
+  width: 280px;
+  height: 44px;
+  padding-left: 16px;
+
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.02em;
+
+  color: var(--input-placeholder-color);
+  border-radius: 0px 0px 22px 0px;
+  border: 2px solid #ffff;
+  border-top: none;
+
+  background-color: transparent;
+
+  @include mobile {
+    margin-bottom: 12px;
+  }
+
+  @include tablet {
+    width: 184px;
+    border: 2px solid #f5f6fb;
+    border-radius: 0px 0px 0px 0px;
+    border-right: none;
+    border-left: transparent;
+  }
+
+  @include desktop {
+    width: 168px;
+  }
+}

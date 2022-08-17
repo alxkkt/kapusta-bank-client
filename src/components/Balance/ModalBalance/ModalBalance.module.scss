@@ -1,8 +1,14 @@
+@import '../../../sass/main.scss';
+
 .wrapper {
   background: var(--tooltip-background-gradient);
 
   color: var(--main-white-color);
   border-radius: 30px;
+  @include tablet {
+    width: 288px;
+    height: 163px;
+  }
 }
 
 .tooltipContainer {
@@ -11,6 +17,11 @@
   pointer-events: none;
 
   position: absolute;
+  @include tablet{
+top: 53px;
+left: 80px;
+  }
+  
   z-index: 2;
 
   transition: all 250ms ease-in;

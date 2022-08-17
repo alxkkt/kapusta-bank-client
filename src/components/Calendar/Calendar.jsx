@@ -1,16 +1,16 @@
-import styles from './calendar.module.scss';
-
 import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
 
 import Icon from 'shared/components/Icon';
+
+import 'react-datepicker/dist/react-datepicker.css';
+import styles from './calendar.module.scss';
 
 const Calendar = ({ onChange, startDate }) => {
   return (
     <div className={styles.wrapper}>
       <div>
         <Icon
-          className={styles.img}
+          className={styles.calendarIcon}
           name={`icon-calendar`}
           width={20}
           height={20}
@@ -23,6 +23,7 @@ const Calendar = ({ onChange, startDate }) => {
           dateFormat="dd.MM.yyyy"
           selected={startDate}
           onChange={onChange}
+          maxDate={Date.now()}
           required
         />
       </div>

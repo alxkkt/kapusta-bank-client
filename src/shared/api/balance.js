@@ -10,5 +10,6 @@ export const updateBalance = async body => {
   const { data } = await instance.patch('/balance/update', {
     totalBalance: body,
   });
+  
   return data;
 };

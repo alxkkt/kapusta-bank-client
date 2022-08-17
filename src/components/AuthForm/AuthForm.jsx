@@ -1,14 +1,33 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { GoogleLogin } from 'react-google-login';
+import { gapi } from 'gapi-script';
+import toast, { Toaster } from 'react-hot-toast';
 
 import s from './AuthForm.module.scss';
+
+// const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
+const clientId =
+  '2996877303-j7ihpaskfovb4k023h83sfg5rj5tjosm.apps.googleusercontent.com';
 
 const initialState = {
   email: '',
   password: '',
 };
 
-const AuthForm = ({ register, login }) => {
+const AuthForm = ({ register, login, onSuccess, onFailure }) => {
   const [form, setForm] = useState({ ...initialState });
+
+  useEffect(() => {
+    // global google
+    function startGapi() {
+      gapi.client.init({
+        clientId,
+        scope: 'openid profile email',
+      });
+    }
+
+    gapi.load('client:auth2', startGapi);
+  }, []);
 
   const handleChange = ({ target }) => {
     const { name, value } = target;
@@ -19,20 +38,47 @@ const AuthForm = ({ register, login }) => {
   };
 
   const onSignIn = () => {
+    const { email, password } = form;
+    if (!email.trim().length || !password.trim().length) {
+      toast.error('Please fill all fields');
+      return;
+    }
+
     login({ ...form });
     setForm({ ...initialState });
   };
   const onSignUp = () => {
+    const { email, password } = form;
+    if (!email.trim().length || !password.trim().length) {
+      toast.error('Please fill all fields');
+      return;
+    }
     register({ ...form });
     setForm({ ...initialState });
+  };
+  const resSuccessGoogle = async res => {
+    onSuccess({ tokenId: res.tokenId });
+  };
+
+  const resFailureGoogle = async res => {
+    onFailure(res);
   };
 
   const { email, password } = form;
 
   return (
     <div className={s.wrap}>
+      <div className={s.login}>
+        <GoogleLogin
+          clientId="2996877303-j7ihpaskfovb4k023h83sfg5rj5tjosm.apps.googleusercontent.com"
+          buttonText="Login by Google"
+          onSuccess={resSuccessGoogle}
+          onFailure={resFailureGoogle}
+          cookiePolicy={'single_host_origin'}
+        />
+      </div>
       <h2 className={s.title}>
-        You can log in using an email and password, after registering:
+        or You can login using an email and password, after registering:
       </h2>
       <form action="" className={s.form}>
         <div className={s.wrapInput}>
@@ -76,6 +122,7 @@ const AuthForm = ({ register, login }) => {
           </button>
         </div>
       </form>
+      <Toaster />
     </div>
   );
 };

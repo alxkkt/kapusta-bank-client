@@ -4,7 +4,11 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 
 import useLogin from '../../shared/hooks/isUserLogin';
-import { signIn, signUp } from '../../redux/auth/auth-operations';
+import {
+  signIn,
+  signUp,
+  logInByGoogle,
+} from '../../redux/auth/auth-operations';
 
 import toast, { Toaster } from 'react-hot-toast';
 
@@ -52,6 +56,18 @@ const AuthPage = () => {
     }
   };
 
+  const googleSuccess = async data => {
+    const { meta } = await dispatch(logInByGoogle(data));
+    const { requestStatus } = meta;
+    if (requestStatus === 'fulfilled') {
+      toast.success('Welcome back!');
+    }
+  };
+  const googleFailure = async res => {
+    console.log(res);
+    toast.error('Something went wrong, please try again later');
+  };
+
   return (
     <div className={s.bg}>
       <Header />
@@ -60,7 +76,12 @@ const AuthPage = () => {
           <h1 className={s.title}>Kapusta</h1>
           <p className={s.text}>Smart Finance</p>
         </div>
-        <AuthForm register={registrNewUser} login={loginUser} />
+        <AuthForm
+          register={registrNewUser}
+          login={loginUser}
+          onSuccess={googleSuccess}
+          onFailure={googleFailure}
+        />
       </div>
       <Toaster />
     </div>

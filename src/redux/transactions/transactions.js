@@ -20,7 +20,7 @@ export const transactionsApi = createApi({
       query: () => '/',
       providesTags: ['transactions'],
     }),
-    addTransaction: builder.mutation({
+    postTransaction: builder.mutation({
       query: data => ({
         url: '/',
         method: 'POST',
@@ -40,6 +40,6 @@ export const transactionsApi = createApi({
 
 export const {
   useGetTransactionsQuery,
-  useAddTransactionMutation,
+  usePostTransactionMutation,
   useDeleteTransactionMutation,
 } = transactionsApi;

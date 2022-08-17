@@ -16,6 +16,19 @@ export const signUp = createAsyncThunk(
   }
 );
 
+//google login
+export const logInByGoogle = createAsyncThunk(
+  'auth/logInByGoogle',
+  async (data, { rejectWithValue }) => {
+    try {
+      const res = await services.logInByGoogle(data);
+      return res;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
+
 //login
 export const signIn = createAsyncThunk(
   'auth/signIn',

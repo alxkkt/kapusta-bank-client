@@ -31,28 +31,34 @@ const Balance = () => {
 
   return (
     <div className={styles.container}>
-      <p className={styles.balance}>Balance:</p>
-      <form className={styles.form} action="">
-        <NumberFormat
-          className={styles.input}
-          name="balance"
-          type="text"
-          value={balanceState}
-          onChange={handleChange}
-          // thousandSeparator=""
-          decimalSeparator="."
-          decimalScale={2}
-          fixedDecimalScale={true}
-          suffix="UAH"
-          placeholder="0.00 UAH"
-          minLength={1}
-        />
+      <div className={styles.containerTablet}>
+        <p className={styles.balance}>Balance:</p>
+        <form className={styles.form} action="">
+          <NumberFormat
+            className={styles.input}
+            name="balance"
+            type="text"
+            value={balanceState}
+            onChange={handleChange}
+            // thousandSeparator=""
+            decimalSeparator="."
+            decimalScale={2}
+            fixedDecimalScale={true}
+            suffix="UAH"
+            placeholder="0.00 UAH"
+            minLength={1}
+          />
 
-        <button className={styles.button} type="submit" onClick={handleSubmit}>
-          CONFIRM
-        </button>
-      </form>
-      <ModalBalance balance={balance} />
+          <button
+            className={styles.button}
+            type="submit"
+            onClick={handleSubmit}
+          >
+            CONFIRM
+          </button>
+        </form>
+        <ModalBalance balance={balance} />
+      </div>
     </div>
   );
 };
