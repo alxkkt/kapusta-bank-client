@@ -9,6 +9,7 @@ import tabOrPcMarkup from './funcs/tabOrPcMarkup';
 
 const Expenses = ({ expenseTransactions, children }) => {
   const isTabOrPc = useMediaQuery({ query: '(min-width:768px)' });
+  const isPhone = useMediaQuery({ query: '(max-width:767.5px)' });
   const categoriesMarkup = expensesMarkup(
     categoriesObject(expenseTransactions)
   );
@@ -24,6 +25,9 @@ const Expenses = ({ expenseTransactions, children }) => {
 
   if (isTabOrPc) return tabOrPcMarkup(categoriesMarkup, children);
 
-  return phoneMarkup;
+  if (isPhone) {
+    console.log('phone markup');
+    return phoneMarkup;
+  }
 };
 export default Expenses;

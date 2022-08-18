@@ -1,11 +1,12 @@
 import sprite from '../../../images/icons.svg';
 import styles from '../Expenses.module.scss';
+import { nanoid } from '@reduxjs/toolkit';
 const expensesMarkup = expenseCategories =>
   expenseCategories.map(({ category, sum }) => {
     switch (category) {
       case 'transport':
         return (
-          <li className={styles.categoryDiv}>
+          <li key={nanoid()} className={styles.categoryDiv}>
             <p className={styles.sum}>{sum}</p>
             <svg className={styles.svg} height="56" width="65">
               <use href={`${sprite}#icon-transport`}></use>
@@ -16,7 +17,7 @@ const expensesMarkup = expenseCategories =>
 
       case 'health':
         return (
-          <li className={styles.categoryDiv}>
+          <li key={nanoid()} className={styles.categoryDiv}>
             <p className={styles.sum}>{sum}</p>
             <svg className={styles.svg} height="56" width="65">
               <use href={`${sprite}#icon-health`}></use>
@@ -26,7 +27,7 @@ const expensesMarkup = expenseCategories =>
         );
       case 'alcohol':
         return (
-          <li className={styles.categoryDiv}>
+          <li key={nanoid()} className={styles.categoryDiv}>
             <p className={styles.sum}>{sum}</p>
             <svg className={styles.svg} height="56" width="65">
               <use href={`${sprite}#icon-alcohol`}></use>
@@ -36,7 +37,7 @@ const expensesMarkup = expenseCategories =>
         );
       case 'entertainment':
         return (
-          <li className={styles.categoryDiv}>
+          <li key={nanoid()} className={styles.categoryDiv}>
             <p className={styles.sum}>{sum}</p>
             <svg className={styles.svg} height="56" width="65">
               <use href={`${sprite}#icon-entertainment`}></use>
@@ -46,7 +47,7 @@ const expensesMarkup = expenseCategories =>
         );
       case 'housing':
         return (
-          <li className={styles.categoryDiv}>
+          <li key={nanoid()} className={styles.categoryDiv}>
             <p className={styles.sum}>{sum}</p>
             <svg className={styles.svg} height="56" width="65">
               <use href={`${sprite}#icon-housing`}></use>
@@ -56,7 +57,7 @@ const expensesMarkup = expenseCategories =>
         );
       case 'technique':
         return (
-          <li className={styles.categoryDiv}>
+          <li key={nanoid()} className={styles.categoryDiv}>
             <p className={styles.sum}>{sum}</p>
             <svg className={styles.svg} height="56" width="65">
               <use href={`${sprite}#icon-technique`}></use>
@@ -66,20 +67,20 @@ const expensesMarkup = expenseCategories =>
         );
       case 'communal, communications':
         return (
-          <li className={styles.categoryDiv}>
+          <li key={nanoid()} className={styles.categoryDiv}>
             <p className={styles.sum}>{sum}</p>
             <svg className={styles.svg} height="56" width="65">
               <use href={`${sprite}#icon-communal`}></use>
             </svg>
             <p className={styles.category}>
-              COMMUNAL&#44 <br />
+              COMMUNAL <br />
               COMMUNICATIONS
             </p>
           </li>
         );
       case 'sports, hobbies':
         return (
-          <li className={styles.categoryDiv}>
+          <li key={nanoid()} className={styles.categoryDiv}>
             <p className={styles.sum}>{sum}</p>
             <svg className={styles.svg} height="56" width="65">
               <use href={`${sprite}#icon-sports`}></use>
@@ -92,7 +93,7 @@ const expensesMarkup = expenseCategories =>
         );
       case 'education':
         return (
-          <li className={styles.categoryDiv}>
+          <li key={nanoid()} className={styles.categoryDiv}>
             <p className={styles.sum}>{sum}</p>
             <svg className={styles.svg} height="56" width="65">
               <use href={`${sprite}#icon-education`}></use>
@@ -102,7 +103,7 @@ const expensesMarkup = expenseCategories =>
         );
       case 'other':
         return (
-          <li className={styles.categoryDiv}>
+          <li key={nanoid()} className={styles.categoryDiv}>
             <p className={styles.sum}>{sum}</p>
             <svg className={styles.svg} height="56" width="65">
               <use href={`${sprite}#icon-education`}></use>
@@ -113,27 +114,27 @@ const expensesMarkup = expenseCategories =>
 
       case 'wages':
         return (
-          <li className={styles.categoryDiv}>
+          <li key={nanoid()} className={styles.categoryDiv}>
             <p className={styles.sum}>{sum}</p>
             <svg className={styles.svg} height="56" width="65">
-              <use href={`${sprite}#icon-communal`}></use>
+              <use href={`${sprite}#icon-wages`}></use>
             </svg>
-            <p className={styles.category}>WAGES</p>
+            <p className={styles.category}>ЗП</p>
           </li>
         );
       case 'income':
         return (
-          <li className={styles.categoryDiv}>
+          <li key={nanoid()} className={styles.categoryDiv}>
             <p className={styles.sum}>{sum}</p>
             <svg className={styles.svg} height="56" width="65">
-              <use href={`${sprite}#icon-communal`}></use>
+              <use href={`${sprite}#icon-income`}></use>
             </svg>
-            <p className={styles.category}>ADDITIONAL INCOME</p>
+            <p className={styles.category}>доп.дохід</p>
           </li>
         );
 
       default:
-        return;
+        return <></>;
     }
   });
 

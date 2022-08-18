@@ -10,7 +10,7 @@ const CurrentPeriod = ({ period, setPeriod }) => {
     setPeriod(period + 1);
   };
   return (
-    <>
+    <div>
       <p className={styles.writing}>Current period:</p>
       <div className={styles.div}>
         <button className={styles.button} onClick={onPrevClick}>
@@ -24,7 +24,7 @@ const CurrentPeriod = ({ period, setPeriod }) => {
           &#62;
         </button>
       </div>
-    </>
+    </div>
   );
 };
 export default CurrentPeriod;
