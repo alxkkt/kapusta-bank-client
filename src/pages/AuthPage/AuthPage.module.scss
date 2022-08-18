@@ -1,27 +1,30 @@
 .bg {
+  padding: 10px;
+  max-height: 90vh;
   background: #ffffff;
-  background-image: linear-gradient(180deg, (#f5f6fb 30%), (#f5f6fb 30%));
+  background-image: url(../../shared/images/svg/cabbage-line.svg),
+    url(../../shared/images/svg/cabbage-bottom.svg),
+    linear-gradient(to bottom, (#f5f6fb 40%), (#ffffff 40%));
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: top 900px left 10px, bottom 30px left 25px, center;
 
   @media screen and (min-width: 768px) {
-    background-image: linear-gradient(180deg, (#f5f6fb 70%), (#ffffff 70%));
-    background-position: center;
+    max-height: 100vh;
+    background-image: url(../../shared/images/svg/cabbage-line.svg),
+      url(../../shared/images/svg/cabbage-bottom.svg),
+      linear-gradient(to bottom, (#f5f6fb 70%), (#ffffff 70%));
+    background-position: top 84px left 10px, left 50px bottom 40px, center;
   }
   @media screen and (min-width: 1280px) {
+    background-image: linear-gradient(to bottom, (#f5f6fb 75%), (#ffffff 75%));
     background-position: center;
   }
 }
 .authPage {
   min-width: 320px;
-  height: 80vh;
+  height: 90vh;
   margin: 0 auto;
   // padding: 40px 20px 34px;
-
-  background-image: url(../../shared/images/svg/cabbage-line.svg),
-    url(../../shared/images/svg/cabbage-bottom.svg);
-  background-repeat: no-repeat;
-  background-position: top 10px left 10px, bottom 70px left 103px;
 
   @media screen and (min-width: 480px) {
     width: 480px;
@@ -29,9 +32,11 @@
   @media screen and (min-width: 768px) {
     width: 768px;
     // padding: 80px 115px 70px;
-    background-position: top 84px left 10px, left 0px bottom 20px;
   }
   @media screen and (min-width: 1280px) {
+    background-image: url(../../shared/images/svg/cabbage-line.svg),
+      url(../../shared/images/svg/cabbage-bottom.svg);
+    background-repeat: no-repeat;
     display: flex;
     align-items: center;
 
@@ -56,7 +61,7 @@
 .title {
   margin-bottom: 8px;
 
-  font-size: 32px;
+  font-size: 76px;
   font-weight: 900;
 
   line-height: 1.17;
