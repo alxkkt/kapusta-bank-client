@@ -1,5 +1,5 @@
 import styles from '../Expenses.module.scss';
-
+import { nanoid } from 'nanoid';
 const phoneMarkupCallback = categoriesMarkup => {
   const arrayBase = [];
   const howManyArrays = Math.ceil(categoriesMarkup.length / 3);
@@ -11,8 +11,10 @@ const phoneMarkupCallback = categoriesMarkup => {
     arrayBase[arrayPosition].push(element);
   });
 
-  const markup = arrayBase.map(element => (
-    <ul className={styles.ul}>{element}</ul>
+  const markup = arrayBase.map((element, index) => (
+    <ul key={nanoid()} className={styles.ul}>
+      {element}
+    </ul>
   ));
   return markup;
 };

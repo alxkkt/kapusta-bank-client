@@ -1,4 +1,4 @@
-// import styles from './ReportsPage.module.scss';
+import styles from './ReportsPage.module.scss';
 import CurrentPeriod from '../../components/CurrentPeriod';
 import ExpensesIncomeSwitch from '../../components/ExpensesIncomeSwitch';
 import ExpensesIncome from '../../components/ExpensesIncome';
@@ -34,7 +34,7 @@ const ReportsPage = () => {
         <Wrapper>
           <section>
             <div className="container">
-              <div>
+              <div className={styles.divReturnCurrent}>
                 <ReturnBackButton />
                 <CurrentPeriod period={period} setPeriod={setPeriod} />
               </div>
@@ -59,7 +59,16 @@ const ReportsPage = () => {
                     switchExpenses={setAreExpensesOpen}
                   />
                 </Expenses>
-              ) : undefined}
+              ) : (
+                <Expenses
+                  expenseTransactions={transactionsInfo.incomeTransactions}
+                >
+                  <ExpensesIncomeSwitch
+                    areExpensesOpen={areExpensesOpen}
+                    switchExpenses={setAreExpensesOpen}
+                  />
+                </Expenses>
+              )}
             </div>
           </section>
         </Wrapper>

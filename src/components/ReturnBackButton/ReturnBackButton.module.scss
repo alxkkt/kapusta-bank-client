@@ -1,6 +1,10 @@
 .link {
-  display: flex;
+  display: inline-flex;
   align-items: center;
+  margin-bottom: 22px;
+  @media screen and (min-width: 768px) {
+    margin-bottom: 0;
+  }
 }
 .svg {
   margin-right: 19px;
