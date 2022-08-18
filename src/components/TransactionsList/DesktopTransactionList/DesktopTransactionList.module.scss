@@ -1,0 +1,121 @@
+@import '../../../sass/main.scss';
+
+.table {
+    width: 624px;
+    text-align: center;
+    color: rgb(0, 0, 0);
+    border-radius: 20px 20px 0 0;
+    background-color: #f5f6fb;
+    border-spacing: 0px 2px;
+    border-left: 2px;
+    border-right-color: transparent;
+    border-left-color: transparent;
+
+    @include desktop {
+        width: 746px
+    }
+
+    &_container {
+        width: 97%;
+        // table-layout: fixed;
+        border: none;
+        // overflow-x: hidden;margin: 0;
+    }
+
+    &_th {
+        padding: 10px;
+        text-transform: uppercase;
+        color: rgb(0, 0, 0);
+        align-items: center;
+        letter-spacing: 0.02em;
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 14px;
+        font-family: Roboto;
+        font-style: normal;
+    }
+
+    &_scroll {
+        width: 624px;
+        height: 360px;
+        overflow-x: hidden;
+        margin-top: 0px;
+        margin-bottom: 20px;
+        border: 2px solid #f4f6fb;
+
+        &::-webkit-scrollbar {
+            width: 6px;
+            background-color: #f9f9fd;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            border-radius: 4px;
+            height: 130px;
+            background-color: rgba(255, 117, 29, 1);
+        }
+
+        &::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+            border-radius: 0;
+            background-color: rgba(245, 246, 251, 1);
+        }
+
+        @include desktop {
+            width: 746px
+        }
+    }
+
+    &_body_transactions {
+        border-radius: 0;
+
+    }
+
+    &_transaction {
+        display: revert;
+        align-items: center;
+        height: 38px;
+        padding: 0 8px;
+        background: #ffffff;
+        color: #52555f;
+        border-bottom: 2px solid #f4f6fb;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 14px;
+        letter-spacing: 0.04em;
+    }
+
+    &_date {
+        width: 100px;
+    }
+
+    &_description {
+        max-width: 200px;
+    }
+
+    &_category {
+        width: 140px;
+    }
+
+    &_sum {
+        width: 130px;
+    }
+
+    &_icon {
+        width: 118px;
+    }
+
+}
+
+.delete_btn {
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    border-style: none;
+    background-color: #fff;
+
+    &:hover {
+        background-color: rgba(245, 246, 251, 1);
+    }
+}
