@@ -10,13 +10,12 @@ import {
   useDeleteTransactionMutation,
 } from '../../redux/transactions/transactions';
 
-const TransactionsList = ({ date }) => {
+const TransactionsList = ({ date, transactionType }) => {
   const { data } = useGetTransactionsQuery();
   const [deleteTransaction] = useDeleteTransactionMutation();
   const [modalDelete, setModalDelete] = useState(false);
   const [transaction, setTransaction] = useState('');
-  const dispatch = useDispatch();
-
+  // const dispatch = useDispatch();
   const handleDeleteClick = transaction => {
     setModalDelete(true);
     setTransaction(transaction._id);
@@ -34,6 +33,8 @@ const TransactionsList = ({ date }) => {
     setTransaction('');
   };
 
+  const filterType = data?.filter(item => item.type === transactionType);
+
   function pad(value) {
     return value.toString().padStart(2, 0);
   }
@@ -42,7 +43,7 @@ const TransactionsList = ({ date }) => {
   const month = pad(newDate.getMonth() + 1);
   const year = newDate.getFullYear();
   const calendarDate = `${day}.${month}.${year}`;
-  const filteredTransactions = data?.filter(item => {
+  const filteredTransactions = filterType?.filter(item => {
     const newTransactionDate = new Date(item.date);
     const transactionDay = pad(newTransactionDate.getDate());
     const transactionMonth = pad(newTransactionDate.getMonth() + 1);

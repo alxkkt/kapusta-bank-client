@@ -114,8 +114,10 @@
     height: 32px;
     border-style: none;
     background-color: #fff;
+    cursor: pointer;
 
     &:hover {
         background-color: rgba(245, 246, 251, 1);
     }
+
 }
