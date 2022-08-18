@@ -30,7 +30,7 @@ const Balance = () => {
   };
 
   return (
-    <div className={styles.container}>
+    <div className={styles.containerBalance}>
       <div className={styles.containerTablet}>
         <p className={styles.balance}>Balance:</p>
         <form className={styles.form} action="">

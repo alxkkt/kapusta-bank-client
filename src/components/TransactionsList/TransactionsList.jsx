@@ -1,9 +1,9 @@
-import { createContext, useEffect, useState, useContext } from 'react';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-
-import styles from './TransactionsList.module.scss';
-import Icon from 'shared/components/Icon';
+import { useMediaQuery } from 'react-responsive';
+import DesktopTransactionList from './DesktopTransactionList';
 import Modal from 'shared/components/Modal';
+import MobileTransactionList from './MobileTransactionList';
 
 import {
   useGetTransactionsQuery,
@@ -11,11 +11,10 @@ import {
 } from '../../redux/transactions/transactions';
 
 const TransactionsList = ({ date }) => {
-  const { data, error, isLoading } = useGetTransactionsQuery();
+  const { data } = useGetTransactionsQuery();
   const [deleteTransaction] = useDeleteTransactionMutation();
   const [modalDelete, setModalDelete] = useState(false);
   const [transaction, setTransaction] = useState('');
-
   const dispatch = useDispatch();
 
   const handleDeleteClick = transaction => {
@@ -35,6 +34,28 @@ const TransactionsList = ({ date }) => {
     setTransaction('');
   };
 
+  function pad(value) {
+    return value.toString().padStart(2, 0);
+  }
+  const newDate = new Date(date);
+  const day = pad(newDate.getDate());
+  const month = pad(newDate.getMonth() + 1);
+  const year = newDate.getFullYear();
+  const calendarDate = `${day}.${month}.${year}`;
+  const filteredTransactions = data?.filter(item => {
+    const newTransactionDate = new Date(item.date);
+    const transactionDay = pad(newTransactionDate.getDate());
+    const transactionMonth = pad(newTransactionDate.getMonth() + 1);
+    const transactionYear = newTransactionDate.getFullYear();
+    const transactionDate = `${transactionDay}.${transactionMonth}.${transactionYear}`;
+    return calendarDate === transactionDate;
+  });
+
+  const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
+  const isTablet = useMediaQuery({
+    query: '(min-width: 768px) and (max-width: 1279px)',
+  });
+  const isDesktop = useMediaQuery({ query: '(min-width: 1280px)' });
   return (
     <>
       {' '}
@@ -45,72 +66,30 @@ const TransactionsList = ({ date }) => {
           onNo={onDeleteCancel}
         />
       )}
-      <div className={styles.table_container}>
-        <table className={styles.table}>
-          <thead className={styles.table_header}>
-            <tr>
-              <th className={`${styles.table_th} ${styles.table_date}`}>
-                Date
-              </th>
-              <th className={`${styles.table_th} ${styles.table_description}`}>
-                Description
-              </th>
-              <th className={`${styles.table_th} ${styles.table_category}`}>
-                Category
-              </th>
-              <th className={`${styles.table_th} ${styles.table_sum}`}>Sum</th>
-              <th className={`${styles.table_th} ${styles.table_icon}`}></th>
-            </tr>
-          </thead>
-        </table>
-        <div className={styles.table_scroll}>
-          <table
-            className={`${styles.table} ${styles.table_body_transactions}`}
-          >
-            <tbody className={styles.table_body}>
-              {data?.map(transaction => {
-                function pad(value) {
-                  return value.toString().padStart(2, 0);
-                }
-                const newDate = new Date(transaction.date);
-                const day = pad(newDate.getDate());
-                const month = pad(newDate.getMonth());
-                const year = newDate.getFullYear();
-                return (
-                  <tr
-                    key={transaction._id}
-                    className={styles.table_transaction}
-                  >
-                    <td className={styles.table_date}>
-                      {day}.{month}.{year}
-                    </td>
-                    <td className={styles.table_description}>
-                      {transaction.description}
-                    </td>
-                    <td className={styles.table_category}>
-                      {transaction.category}
-                    </td>
-                    <td className={styles.table_sum}>{transaction.sum}</td>
-                    <td className={styles.table_icon}>
-                      <button
-                        className={styles.delete_btn}
-                        onClick={() => handleDeleteClick(transaction)}
-                      >
-                        <Icon
-                          name={`icon-delete`}
-                          width={18}
-                          height={18}
-                          className={`table_delete_icon`}
-                        />
-                      </button>
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </div>
-      </div>
+      {isMobile && (
+        <MobileTransactionList
+          filteredTransactions={filteredTransactions}
+          handleDeleteClick={handleDeleteClick}
+        />
+      )}
+      {isTablet && (
+        <DesktopTransactionList
+          filteredTransactions={filteredTransactions}
+          handleDeleteClick={handleDeleteClick}
+          day={day}
+          month={month}
+          year={year}
+        />
+      )}
+      {isDesktop && (
+        <DesktopTransactionList
+          filteredTransactions={filteredTransactions}
+          handleDeleteClick={handleDeleteClick}
+          day={day}
+          month={month}
+          year={year}
+        />
+      )}
     </>
   );
 };

@@ -10,6 +10,7 @@ import moment from 'moment';
 import { useState, useEffect } from 'react';
 import { transactions } from '../../redux/transactionsByDate/selectors';
 import Expenses from '../../components/Expenses';
+import Wrapper from 'shared/components/Wrapper';
 import { useMediaQuery } from 'react-responsive';
 
 const ReportsPage = () => {
@@ -28,44 +29,51 @@ const ReportsPage = () => {
   }, [dispatch, period]);
   if (transactionsInfo.incomeTransactions) {
     return (
-      <section className={styles.section}>
+      <>
         <Header />
-        <div className="container">
-          <div className={styles.divReturnCurrent}>
-            <ReturnBackButton />
-            <CurrentPeriod period={period} setPeriod={setPeriod} />
-          </div>
+        <Wrapper>
+          <section>
+            <div className="container">
+              <div className={styles.divReturnCurrent}>
+                <ReturnBackButton />
+                <CurrentPeriod period={period} setPeriod={setPeriod} />
+              </div>
 
-          <ExpensesIncome
-            totalIncome={transactionsInfo.totalIncome}
-            totalExpenses={transactionsInfo.totalExpense}
-          />
-          {!isTabOrPc && (
-            <ExpensesIncomeSwitch
-              areExpensesOpen={areExpensesOpen}
-              switchExpenses={setAreExpensesOpen}
-            />
-          )}
+              <ExpensesIncome
+                totalIncome={transactionsInfo.totalIncome}
+                totalExpenses={transactionsInfo.totalExpense}
+              />
 
-          {areExpensesOpen ? (
-            <Expenses
-              expenseTransactions={transactionsInfo.expenseTransactions}
-            >
-              <ExpensesIncomeSwitch
-                areExpensesOpen={areExpensesOpen}
-                switchExpenses={setAreExpensesOpen}
-              />
-            </Expenses>
-          ) : (
-            <Expenses expenseTransactions={transactionsInfo.incomeTransactions}>
-              <ExpensesIncomeSwitch
-                areExpensesOpen={areExpensesOpen}
-                switchExpenses={setAreExpensesOpen}
-              />
-            </Expenses>
-          )}
-        </div>
-      </section>
+              {!isTabOrPc && (
+                <ExpensesIncomeSwitch
+                  areExpensesOpen={areExpensesOpen}
+                  switchExpenses={setAreExpensesOpen}
+                />
+              )}
+
+              {areExpensesOpen ? (
+                <Expenses
+                  expenseTransactions={transactionsInfo.expenseTransactions}
+                >
+                  <ExpensesIncomeSwitch
+                    areExpensesOpen={areExpensesOpen}
+                    switchExpenses={setAreExpensesOpen}
+                  />
+                </Expenses>
+              ) : (
+                <Expenses
+                  expenseTransactions={transactionsInfo.incomeTransactions}
+                >
+                  <ExpensesIncomeSwitch
+                    areExpensesOpen={areExpensesOpen}
+                    switchExpenses={setAreExpensesOpen}
+                  />
+                </Expenses>
+              )}
+            </div>
+          </section>
+        </Wrapper>
+      </>
     );
   }
 };

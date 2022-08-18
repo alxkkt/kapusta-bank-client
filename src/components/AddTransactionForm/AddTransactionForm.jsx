@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import NumberFormat from 'react-number-format';
 import { useMediaQuery } from 'react-responsive';
+import { useNavigate } from 'react-router-dom';
 
 import Icon from 'shared/components/Icon';
 import Calendar from 'components/Calendar';
 import CategoriesList from './CategoriesList';
+import TransactionsList from 'components/TransactionsList';
 
 import { usePostTransactionMutation } from 'redux/transactions/transactions';
 
@@ -19,6 +21,7 @@ const AddTransactionForm = () => {
   const [date, setDate] = useState(Date.now());
 
   const [postTransaction, { isSuccess }] = usePostTransactionMutation();
+  const navigate = useNavigate();
 
   const handleChange = ({ target }) => {
     const { name, value } = target;
@@ -27,14 +30,15 @@ const AddTransactionForm = () => {
   };
 
   const handleSubmit = e => {
-    e.preventDefault();
+    // e.preventDefault();
 
     const dataType =
-      e.target.elements.category.value === 'income' ||
-      e.target.elements.category.value === 'wages'
+      e.target.elements.category.value.toLowerCase() === 'income' ||
+      e.target.elements.category.value.toLowerCase() === 'wages'
         ? 'income'
         : 'expense';
     const dataSum = Number.parseFloat(e.target.elements.sum.value);
+
     postTransaction({
       date,
       category: e.target.elements.category.value.toLowerCase(),
@@ -49,6 +53,7 @@ const AddTransactionForm = () => {
         category: '',
         sum: '',
       });
+    navigate('/');
   };
 
   const handleClear = () => {
@@ -116,6 +121,7 @@ const AddTransactionForm = () => {
           </button>
         </div>
       </form>
+      <TransactionsList date={date} />
     </>
   );
 };

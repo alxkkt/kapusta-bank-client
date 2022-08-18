@@ -6,6 +6,7 @@ import toast, { Toaster } from 'react-hot-toast';
 import s from './AuthForm.module.scss';
 
 // const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
+
 const clientId =
   '2996877303-j7ihpaskfovb4k023h83sfg5rj5tjosm.apps.googleusercontent.com';
 

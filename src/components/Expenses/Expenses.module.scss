@@ -72,14 +72,13 @@
 
 .divPc {
   margin: 0 auto;
-  padding: 0 10px;
-  width: 704px;
+  max-width: 704px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 
   @media screen and (min-width: 1280px) {
-    width: 650px;
+    max-width: 650px;
   }
 }
 .mainDivPc {
