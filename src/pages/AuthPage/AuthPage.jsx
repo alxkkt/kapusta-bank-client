@@ -73,7 +73,7 @@ const AuthPage = () => {
       <Header />
       <div className={s.authPage}>
         <div className={s.wrap}>
-          <h1 className={s.title}>Kapusta</h1>
+          <h1 className={s.title}>Kapu$ta</h1>
           <p className={s.text}>Smart Finance</p>
         </div>
         <AuthForm

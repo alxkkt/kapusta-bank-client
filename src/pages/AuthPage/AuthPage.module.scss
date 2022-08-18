@@ -1,53 +1,64 @@
 .bg {
-  background-image: url(../../shared/images/svg/cabbage-line.svg),
-    url(../../shared/images/svg/cabbage-bottom.svg),
-    linear-gradient(180deg, (#f5f6fb 60%), (#ffffff 60%));
+  background: #ffffff;
+  background-image: linear-gradient(180deg, (#f5f6fb 30%), (#f5f6fb 30%));
   background-repeat: no-repeat;
-  background-position: top 84px left 10px, bottom 56px left 103px, center;
+  background-position: center;
 
   @media screen and (min-width: 768px) {
-    background-position: top 84px left 10px, bottom 56px left 103px, center;
+    background-image: linear-gradient(180deg, (#f5f6fb 70%), (#ffffff 70%));
+    background-position: center;
   }
   @media screen and (min-width: 1280px) {
-    background-position: top 84px left 560px, bottom 220px left 680px, center;
+    background-position: center;
   }
 }
 .authPage {
   min-width: 320px;
-  height: 90vh;
+  height: 80vh;
   margin: 0 auto;
-  padding: 40px 20px 34px;
+  // padding: 40px 20px 34px;
+
+  background-image: url(../../shared/images/svg/cabbage-line.svg),
+    url(../../shared/images/svg/cabbage-bottom.svg);
+  background-repeat: no-repeat;
+  background-position: top 10px left 10px, bottom 70px left 103px;
 
   @media screen and (min-width: 480px) {
     width: 480px;
   }
   @media screen and (min-width: 768px) {
     width: 768px;
-    padding: 80px 115px 70px;
+    // padding: 80px 115px 70px;
+    background-position: top 84px left 10px, left 0px bottom 20px;
   }
   @media screen and (min-width: 1280px) {
     display: flex;
     align-items: center;
 
     width: 1280px;
-    height: 100vh;
-    padding: 100px 125px;
+    height: 90vh;
+    // padding: 100px 125px;
+
+    background-position: top 25px left 10px, left 120px bottom 30px;
   }
 }
 
 .wrap {
   display: block;
+  margin-right: auto;
+  margin-bottom: 20px;
+  padding-top: 20px;
   @media screen and (min-width: 1280px) {
     width: 420px;
-    margin-right: 112px;
+    margin-right: auto;
   }
 }
 .title {
   margin-bottom: 8px;
 
-  font-size: 34px;
+  font-size: 32px;
   font-weight: 900;
-  font-size: 78px;
+
   line-height: 1.17;
   color: #000;
 
