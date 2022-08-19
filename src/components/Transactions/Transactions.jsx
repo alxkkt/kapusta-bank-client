@@ -12,7 +12,7 @@ import AddTransactionForm from 'components/AddTransactionForm';
 
 const Transactions = () => {
   const [date, setDate] = useState(Date.now());
-  const [transactionType, setTransactionType] = useState('expenses');
+  const [transactionType, setTransactionType] = useState('expense');
   const handleClick = e => {
     setTransactionType(e.target.dataset.type);
   };
@@ -57,7 +57,7 @@ const Transactions = () => {
           />
           <div className={styles.containerTable}>
             {isMobile && <Calendar startDate={date} onChange={handleChange} />}
-            <AddTransactionForm />
+            <AddTransactionForm transactionType={transactionType} />
           </div>
           <img className={styles.cabages} src={Cabbages} alt="Cabages" />
         </>
@@ -76,7 +76,7 @@ const Transactions = () => {
           />
           <div className={styles.containerTable}>
             {isMobile && <Calendar startDate={date} onChange={handleChange} />}
-            <AddTransactionForm />
+            <AddTransactionForm transactionType={transactionType} />
           </div>
         </>
       )}

@@ -2,23 +2,33 @@ import { useState } from 'react';
 import NumberFormat from 'react-number-format';
 import { useMediaQuery } from 'react-responsive';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 import Icon from 'shared/components/Icon';
 import Calendar from 'components/Calendar';
 import CategoriesList from './CategoriesList';
 import TransactionsList from 'components/TransactionsList';
-
+import { updateBalance } from 'redux/balance/balance-operations';
+import useBalance from 'shared/hooks/useBalance';
 import { usePostTransactionMutation } from 'redux/transactions/transactions';
 
 import styles from './AddTransactionForm.module.scss';
 
-const AddTransactionForm = () => {
+const AddTransactionForm = ({ transactionType }) => {
   const [formData, setFormData] = useState({
     description: '',
     category: '',
     sum: '',
   });
   const [date, setDate] = useState(Date.now());
+
+  const dispatch = useDispatch();
+  const balance = useBalance();
+
+  const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
+  // useEffect(() => {
+  //   dispatch(getBalance());
+  // }, [formData, dispatch]);
 
   const [postTransaction, { isSuccess }] = usePostTransactionMutation();
   const navigate = useNavigate();
@@ -46,6 +56,10 @@ const AddTransactionForm = () => {
       type: dataType,
       sum: dataSum,
     });
+    // const newBalance =
+    //   dataType === 'income' ? +balance + dataSum : +balance - dataSum;
+    // console.log(newBalance);
+    // dispatch(updateBalance(+newBalance));
 
     isSuccess &&
       setFormData({
@@ -53,7 +67,7 @@ const AddTransactionForm = () => {
         category: '',
         sum: '',
       });
-    navigate('/');
+    if (isMobile) navigate('/');
   };
 
   const handleClear = () => {
@@ -87,6 +101,7 @@ const AddTransactionForm = () => {
             value={description}
             type="text"
             placeholder="Product description"
+            required
           />
           <CategoriesList onChange={handleChange} />
           <div className={styles.containerForm}>
@@ -121,7 +136,7 @@ const AddTransactionForm = () => {
           </button>
         </div>
       </form>
-      <TransactionsList date={date} />
+      <TransactionsList date={date} transactionType={transactionType} />
     </>
   );
 };
