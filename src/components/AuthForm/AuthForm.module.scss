@@ -3,61 +3,117 @@
 }
 
 .wrap {
-  min-width: 280px;
-  min-height: 400px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 280px;
+  height: 496px;
   margin: 0 auto;
-  padding: 30px 20px 40px 20px;
+  // padding: 30px 20px 40px 20px;
 
   background-color: #fff;
   box-shadow: 0px 4px 15px rgba(2, 23, 42, 0.1);
   border-radius: 15px;
   @media screen and (min-width: 480px) {
-    width: 440px;
+    width: 426px;
   }
 
   @media screen and (min-width: 768px) {
-    width: 500px;
-    padding: 60px 32px 50px;
   }
 }
 .login {
   display: flex;
 
   align-items: center;
-  justify-content: flex-start;
-  margin: 20px;
+  justify-content: center;
+  margin: 0 auto 32px;
 }
-.title {
-  margin: 0 auto;
-  font-size: 12px;
-  line-height: 1.17;
-  letter-spacing: 0.04em;
-  @media screen and (min-width: 1280px) {
-    font-size: 16px;
+.google {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 40px;
+
+  text-align: center;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.14;
+  letter-spacing: 0.02em;
+
+  background: #f6f7fb;
+  border: 1px solid #f6f7fb;
+  border-radius: 26px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+
+  cursor: pointer;
+  transition: all 400ms cubic-bezier(0.37, 0.6, 0.82, 0.41);
+
+  &:hover {
+    color: #fff;
+    background: var(--accent-color);
+    border: 1px solid #f6f7fb;
   }
 
-  &:last-of-type {
-    margin-bottom: 20px;
-    @media screen and (min-width: 768px) {
-      margin-bottom: 32px;
-    }
+  &::before {
+    content: '';
+    background-image: url(../../shared/images/svg/G_Logo.svg);
+    background-repeat: no-repeat;
+
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    // border-top: 10px solid transparent;
+    // border-bottom: 10px solid transparent;
+    // border-right: 10px solid #f6f7fb;
   }
+}
+
+.title {
+  width: 238px;
+  margin: 0 auto 16px;
+
+  font-size: 12px;
+  line-height: 1.17;
+
+  letter-spacing: 0.04em;
+
+  color: #52555f;
+
+  @media screen and (min-width: 480px) {
+    width: 260px;
+    margin: 0 auto 20px;
+  }
+  @media screen and (min-width: 768px) {
+  }
+}
+
+.wrapInput {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
 }
 
 .text {
+  width: 238px;
+  margin: 0 auto 12px;
+
   font-size: 12px;
   line-height: 1.17;
   letter-spacing: 0.04em;
+
   @media screen and (min-width: 1280px) {
     font-size: 14px;
   }
 }
 
 .input {
-  width: 100%;
-  height: 56px;
-  margin-top: 12px;
-  margin-bottom: 20px;
+  width: 240px;
+  height: 52px;
+  // margin-top: 12px;
+  // margin-bottom: 20px;
+  margin: 0 auto 20px;
   padding: 20px;
   background-color: #f6f7fb;
 
@@ -66,11 +122,12 @@
   border: 1px solid #f6f7fb;
 
   @media screen and (min-width: 768px) {
-    width: 425px;
+    width: 260px;
+    margin: 0 auto 32px;
   }
 
   @media screen and (min-width: 1280px) {
-    width: 425px;
+    width: 260px;
   }
 
   &::placeholder {
@@ -79,11 +136,22 @@
     letter-spacing: 0.04em;
     color: #a6abb9;
   }
+
+  &:last-child {
+    margin-bottom: 40px;
+  }
 }
 
 .wrapButton {
   display: flex;
   justify-content: space-evenly;
+
+  @media screen and (min-width: 480px) {
+    justify-content: center;
+    &:first-child {
+      margin-right: 15px;
+    }
+  }
 }
 .buttonSignIn {
   width: 115px;
@@ -101,8 +169,20 @@
   background-color: var(--accent-color);
   border: none;
   border-radius: 15px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
 
   cursor: pointer;
+  transition: all 400ms cubic-bezier(0.37, 0.6, 0.82, 0.41);
+
+  &:hover {
+    background-color: #fff;
+    color: var(--accent-color);
+    border: 1px solid var(--accent-color);
+  }
+  @media screen and (min-width: 480px) {
+    margin-right: 15px;
+  }
+
   @media screen and (min-width: 768px) {
     width: 125px;
   }
@@ -127,8 +207,17 @@
   background-color: #f6f7fb;
   border: 1px solid #f6f7fb;
   border-radius: 15px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
 
   cursor: pointer;
+  transition: all 400ms cubic-bezier(0.37, 0.6, 0.82, 0.41);
+
+  &:hover {
+    color: #fff;
+    background: var(--accent-color);
+    border: 1px solid #f6f7fb;
+  }
+
   @media screen and (min-width: 768px) {
     width: 125px;
   }

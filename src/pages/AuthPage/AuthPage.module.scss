@@ -1,5 +1,5 @@
 .bg {
-  padding: 10px;
+  // padding: 10px;
   max-height: 90vh;
   background: #ffffff;
   background-image: url(../../shared/images/svg/cabbage-line.svg),
@@ -55,6 +55,7 @@
   padding-top: 20px;
   @media screen and (min-width: 1280px) {
     width: 420px;
+    margin-left: 120px;
     margin-right: auto;
   }
 }

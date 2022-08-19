@@ -69,17 +69,35 @@ const AuthForm = ({ register, login, onSuccess, onFailure }) => {
 
   return (
     <div className={s.wrap}>
+      <h2 className={s.title}>You can log in with your Google Account:</h2>
       <div className={s.login}>
+        {/* <GoogleLogin
+          clientId="2996877303-j7ihpaskfovb4k023h83sfg5rj5tjosm.apps.googleusercontent.com"
+          buttonText="Google"
+          // className={s.google}
+          onSuccess={resSuccessGoogle}
+          onFailure={resFailureGoogle}
+          cookiePolicy={'single_host_origin'}
+        /> */}
         <GoogleLogin
           clientId="2996877303-j7ihpaskfovb4k023h83sfg5rj5tjosm.apps.googleusercontent.com"
-          buttonText="Login by Google"
+          render={renderProps => (
+            <button
+              onClick={renderProps.onClick}
+              disabled={renderProps.disabled}
+              className={s.google}
+            >
+              Google
+            </button>
+          )}
+          buttonText="Google"
           onSuccess={resSuccessGoogle}
           onFailure={resFailureGoogle}
           cookiePolicy={'single_host_origin'}
         />
       </div>
       <h2 className={s.title}>
-        or You can login using an email and password, after registering:
+        or login using an email and password, after registering:
       </h2>
       <form action="" className={s.form}>
         <div className={s.wrapInput}>
