@@ -17,6 +17,7 @@ const Balance = () => {
 
   useEffect(() => {
     dispatch(getBalance());
+    console.log(balance);
     setBalanceState(balance);
   }, [dispatch, balance]);
 

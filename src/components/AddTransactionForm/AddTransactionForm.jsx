@@ -1,15 +1,13 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import NumberFormat from 'react-number-format';
 import { useMediaQuery } from 'react-responsive';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import Icon from 'shared/components/Icon';
 import Calendar from 'components/Calendar';
 import CategoriesList from './CategoriesList';
 import TransactionsList from 'components/TransactionsList';
-import { updateBalance } from 'redux/balance/balance-operations';
-import useBalance from 'shared/hooks/useBalance';
 import { usePostTransactionMutation } from 'redux/transactions/transactions';
 
 import styles from './AddTransactionForm.module.scss';
@@ -22,15 +20,11 @@ const AddTransactionForm = ({ transactionType }) => {
   });
   const [date, setDate] = useState(Date.now());
 
-  const dispatch = useDispatch();
-  const balance = useBalance();
-
   const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
-  // useEffect(() => {
-  //   dispatch(getBalance());
-  // }, [formData, dispatch]);
 
-  const [postTransaction, { isSuccess }] = usePostTransactionMutation();
+  useEffect(() => {}, []);
+
+  const [postTransaction] = usePostTransactionMutation();
   const navigate = useNavigate();
 
   const handleChange = ({ target }) => {
@@ -40,33 +34,30 @@ const AddTransactionForm = ({ transactionType }) => {
   };
 
   const handleSubmit = e => {
-    // e.preventDefault();
+    e.preventDefault();
+
+    const formElements = e.target.elements;
 
     const dataType =
-      e.target.elements.category.value.toLowerCase() === 'income' ||
-      e.target.elements.category.value.toLowerCase() === 'wages'
+      formElements.category.value.toLowerCase() === 'income' ||
+      formElements.category.value.toLowerCase() === 'wages'
         ? 'income'
         : 'expense';
-    const dataSum = Number.parseFloat(e.target.elements.sum.value);
+    const dataSum = Number.parseFloat(formElements.sum.value);
 
     postTransaction({
       date,
-      category: e.target.elements.category.value.toLowerCase(),
-      description: e.target.elements.description.value,
+      category: formElements.category.value.toLowerCase(),
+      description: formElements.description.value,
       type: dataType,
       sum: dataSum,
     });
-    // const newBalance =
-    //   dataType === 'income' ? +balance + dataSum : +balance - dataSum;
-    // console.log(newBalance);
-    // dispatch(updateBalance(+newBalance));
 
-    isSuccess &&
-      setFormData({
-        description: '',
-        category: '',
-        sum: '',
-      });
+    setFormData({
+      description: '',
+      category: '',
+      sum: '',
+    });
     if (isMobile) navigate('/');
   };
 
@@ -142,3 +133,7 @@ const AddTransactionForm = ({ transactionType }) => {
 };
 
 export default AddTransactionForm;
+
+AddTransactionForm.propTypes = {
+  transactionType: PropTypes.string.isRequired,
+};
