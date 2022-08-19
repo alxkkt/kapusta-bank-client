@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
 
 import ExpensesAndIncomesButtons from 'components/ExpensesAndIncomesButtons';
@@ -8,12 +9,30 @@ import Balance from 'components/Balance';
 import AddTransactionForm from 'components/AddTransactionForm';
 import ReportsIcon from 'shared/components/ReportsIcon';
 import Cabbages from '../../shared/images/svg/Cabages.svg';
+import { usePostTransactionMutation } from 'redux/transactions/transactions';
+import useBalance from 'shared/hooks/useBalance';
 
 import styles from './transactions.module.scss';
 
 const Transactions = () => {
   const [date, setDate] = useState(Date.now());
   const [transactionType, setTransactionType] = useState('expense');
+  const [balanceState, setBalanceState] = useState('');
+
+  const [postTransaction] = usePostTransactionMutation();
+
+  const dispatch = useDispatch();
+  const balance = useBalance();
+
+  useEffect(() => {
+    setBalanceState(balance);
+  }, [dispatch, balance]);
+
+  const onFormSubmit = async transaction => {
+    const { data } = await postTransaction(transaction);
+
+    setBalanceState(data.totalBalance);
+  };
 
   const handleClick = e => {
     setTransactionType(e.target.dataset.type);
@@ -35,7 +54,7 @@ const Transactions = () => {
           <Link className={styles.reports} to="/reports">
             <ReportsIcon />
           </Link>
-          <Balance />
+          <Balance state={balance} setNewState={setBalanceState} />
           <Link className={styles.link} to="/addtransaction">
             ADD TRANSACTION
           </Link>
@@ -49,7 +68,7 @@ const Transactions = () => {
       {isTablet && (
         <>
           <div className={styles.containerTablet}>
-            <Balance />
+            <Balance state={balance} setNewState={setBalanceState} />
             <Link className={styles.reports} to="/reports">
               <ReportsIcon />
             </Link>
@@ -60,7 +79,10 @@ const Transactions = () => {
           />
           <div className={styles.containerTable}>
             {isMobile && <Calendar startDate={date} onChange={handleChange} />}
-            <AddTransactionForm transactionType={transactionType} />
+            <AddTransactionForm
+              transactionType={transactionType}
+              sendData={onFormSubmit}
+            />
           </div>
           <img className={styles.cabages} src={Cabbages} alt="Cabages" />
         </>
@@ -68,7 +90,7 @@ const Transactions = () => {
       {isDesktop && (
         <>
           <div className={styles.containerTablet}>
-            <Balance />
+            <Balance state={balance} setNewState={setBalanceState} />
             <Link className={styles.reports} to="/reports">
               <ReportsIcon />
             </Link>
@@ -79,7 +101,10 @@ const Transactions = () => {
           />
           <div className={styles.containerTable}>
             {isMobile && <Calendar startDate={date} onChange={handleChange} />}
-            <AddTransactionForm transactionType={transactionType} />
+            <AddTransactionForm
+              transactionType={transactionType}
+              sendData={onFormSubmit}
+            />
           </div>
         </>
       )}

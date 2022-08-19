@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import NumberFormat from 'react-number-format';
 import { useMediaQuery } from 'react-responsive';
 import { useNavigate } from 'react-router-dom';
@@ -8,11 +8,10 @@ import Icon from 'shared/components/Icon';
 import Calendar from 'components/Calendar';
 import CategoriesList from './CategoriesList';
 import TransactionsList from 'components/TransactionsList';
-import { usePostTransactionMutation } from 'redux/transactions/transactions';
 
 import styles from './AddTransactionForm.module.scss';
 
-const AddTransactionForm = ({ transactionType }) => {
+const AddTransactionForm = ({ transactionType, sendData }) => {
   const [formData, setFormData] = useState({
     description: '',
     category: '',
@@ -21,10 +20,6 @@ const AddTransactionForm = ({ transactionType }) => {
   const [date, setDate] = useState(Date.now());
 
   const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
-
-  useEffect(() => {}, []);
-
-  const [postTransaction] = usePostTransactionMutation();
   const navigate = useNavigate();
 
   const handleChange = ({ target }) => {
@@ -37,7 +32,6 @@ const AddTransactionForm = ({ transactionType }) => {
     e.preventDefault();
 
     const formElements = e.target.elements;
-
     const dataType =
       formElements.category.value.toLowerCase() === 'income' ||
       formElements.category.value.toLowerCase() === 'wages'
@@ -45,7 +39,7 @@ const AddTransactionForm = ({ transactionType }) => {
         : 'expense';
     const dataSum = Number.parseFloat(formElements.sum.value);
 
-    postTransaction({
+    sendData({
       date,
       category: formElements.category.value.toLowerCase(),
       description: formElements.description.value,
