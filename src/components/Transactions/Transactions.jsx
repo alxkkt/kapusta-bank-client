@@ -28,7 +28,11 @@ const Transactions = () => {
     setBalanceState(balance);
   }, [dispatch, balance]);
 
-  const onFormSubmit = async transaction => {
+  const onFormSubmit = async (transaction, isDelete, newBalance) => {
+    if (isDelete) {
+      setBalanceState(newBalance);
+      return;
+    }
     const { data } = await postTransaction(transaction);
 
     setBalanceState(data.totalBalance);
@@ -54,7 +58,7 @@ const Transactions = () => {
           <Link className={styles.reports} to="/reports">
             <ReportsIcon />
           </Link>
-          <Balance state={balance} setNewState={setBalanceState} />
+          <Balance state={balanceState} setNewState={setBalanceState} />
           <Link className={styles.link} to="/addtransaction">
             ADD TRANSACTION
           </Link>
@@ -68,7 +72,7 @@ const Transactions = () => {
       {isTablet && (
         <>
           <div className={styles.containerTablet}>
-            <Balance state={balance} setNewState={setBalanceState} />
+            <Balance state={balanceState} />
             <Link className={styles.reports} to="/reports">
               <ReportsIcon />
             </Link>
@@ -90,7 +94,7 @@ const Transactions = () => {
       {isDesktop && (
         <>
           <div className={styles.containerTablet}>
-            <Balance state={balance} setNewState={setBalanceState} />
+            <Balance state={balanceState} />
             <Link className={styles.reports} to="/reports">
               <ReportsIcon />
             </Link>

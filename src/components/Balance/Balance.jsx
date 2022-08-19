@@ -7,20 +7,30 @@ import { updateBalance } from 'redux/balance/balance-operations';
 import ModalBalance from './ModalBalance';
 
 import styles from './balance.module.scss';
+import { useEffect } from 'react';
+import useBalance from 'shared/hooks/useBalance';
+import { getBalance } from 'redux/balance/balance-operations';
 
 const Balance = ({ state }) => {
   const [balanceState, setBalanceState] = useState('');
 
-  const handleChange = ({ target }) => {
-    setBalanceState(target.value);
-  };
-
   const dispatch = useDispatch();
+  const balance = useBalance();
+
+  useEffect(() => {
+    dispatch(getBalance());
+
+    setBalanceState(state);
+  }, [state, dispatch]);
 
   const handleSubmit = e => {
     e.preventDefault();
 
     dispatch(updateBalance(Number.parseFloat(balanceState)));
+  };
+
+  const handleChange = ({ target }) => {
+    setBalanceState(target.value);
   };
 
   return (
@@ -32,7 +42,7 @@ const Balance = ({ state }) => {
             className={styles.input}
             name="balance"
             type="text"
-            value={state}
+            value={balanceState}
             onChange={handleChange}
             // thousandSeparator=""
             decimalSeparator="."
@@ -51,7 +61,7 @@ const Balance = ({ state }) => {
             CONFIRM
           </button>
         </form>
-        <ModalBalance balance={state} />
+        <ModalBalance balance={balance} />
       </div>
     </div>
   );

@@ -39,13 +39,16 @@ const AddTransactionForm = ({ transactionType, sendData }) => {
         : 'expense';
     const dataSum = Number.parseFloat(formElements.sum.value);
 
-    sendData({
-      date,
-      category: formElements.category.value.toLowerCase(),
-      description: formElements.description.value,
-      type: dataType,
-      sum: dataSum,
-    });
+    sendData(
+      {
+        date,
+        category: formElements.category.value.toLowerCase(),
+        description: formElements.description.value,
+        type: dataType,
+        sum: dataSum,
+      },
+      false
+    );
 
     setFormData({
       description: '',
@@ -121,7 +124,11 @@ const AddTransactionForm = ({ transactionType, sendData }) => {
           </button>
         </div>
       </form>
-      <TransactionsList date={date} transactionType={transactionType} />
+      <TransactionsList
+        date={date}
+        transactionType={transactionType}
+        updateBalance={sendData}
+      />
     </>
   );
 };
@@ -130,4 +137,5 @@ export default AddTransactionForm;
 
 AddTransactionForm.propTypes = {
   transactionType: PropTypes.string.isRequired,
+  sendData: PropTypes.func.isRequired,
 };

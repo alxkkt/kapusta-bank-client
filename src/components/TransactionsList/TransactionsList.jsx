@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
 import DesktopTransactionList from './DesktopTransactionList';
 import Modal from 'shared/components/Modal';
@@ -10,26 +9,31 @@ import {
   useDeleteTransactionMutation,
 } from '../../redux/transactions/transactions';
 
-const TransactionsList = ({ date, transactionType }) => {
-  const { data } = useGetTransactionsQuery();
-  const [deleteTransaction] = useDeleteTransactionMutation();
+const TransactionsList = ({ date, transactionType, updateBalance }) => {
   const [modalDelete, setModalDelete] = useState(false);
   const [transaction, setTransaction] = useState('');
-  // const dispatch = useDispatch();
+
   const handleDeleteClick = transaction => {
     setModalDelete(true);
     setTransaction(transaction._id);
   };
+
+  const { data } = useGetTransactionsQuery();
+  const [deleteTransaction] = useDeleteTransactionMutation();
 
   const onDeleteCancel = () => {
     setModalDelete(false);
     setTransaction('');
   };
 
-  const onDeleteOk = () => {
+  const onDeleteOk = async () => {
     setModalDelete(false);
+
     const transactionToDel = data.find(item => item._id === transaction);
-    deleteTransaction(transactionToDel._id);
+    const { data: result } = await deleteTransaction(transactionToDel._id);
+
+    updateBalance(null, true, result.newBalance);
+
     setTransaction('');
   };
 
