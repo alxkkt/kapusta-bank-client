@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import NumberFormat from 'react-number-format';
 import { useMediaQuery } from 'react-responsive';
-import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import Icon from 'shared/components/Icon';
@@ -11,7 +10,7 @@ import TransactionsList from 'components/TransactionsList/TransactionsList';
 
 import styles from './AddTransactionForm.module.scss';
 
-const AddTransactionForm = ({ transactionType, sendData }) => {
+const AddTransactionForm = ({ transactionType, sendData, closeModal }) => {
   const [formData, setFormData] = useState({
     description: '',
     category: '',
@@ -20,7 +19,6 @@ const AddTransactionForm = ({ transactionType, sendData }) => {
   const [date, setDate] = useState(Date.now());
 
   const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
-  const navigate = useNavigate();
 
   const handleChange = ({ target }) => {
     const { name, value } = target;
@@ -55,7 +53,7 @@ const AddTransactionForm = ({ transactionType, sendData }) => {
       category: '',
       sum: '',
     });
-    if (isMobile) navigate('/');
+    if (isMobile) closeModal();
   };
 
   const handleClear = () => {
@@ -124,11 +122,20 @@ const AddTransactionForm = ({ transactionType, sendData }) => {
           </button>
         </div>
       </form>
-      <TransactionsList
-        date={date}
-        transactionType={transactionType}
-        updateBalance={sendData}
-      />
+      {isTablet && (
+        <TransactionsList
+          date={date}
+          transactionType={transactionType}
+          updateBalance={sendData}
+        />
+      )}
+      {isDesktop && (
+        <TransactionsList
+          date={date}
+          transactionType={transactionType}
+          updateBalance={sendData}
+        />
+      )}
     </>
   );
 };

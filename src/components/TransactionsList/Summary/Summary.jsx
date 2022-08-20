@@ -14,7 +14,6 @@ const Summary = ({ type }) => {
       <h2 className={styles.title}>Summary</h2>
       <ul className={styles.list}>
         {data?.map(item => {
-          console.log(item);
           return (
             <li className={styles.element}>
               <p className={styles.month}>

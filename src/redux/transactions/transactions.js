@@ -3,8 +3,8 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 export const transactionsApi = createApi({
   reducerPath: 'transactionsApi',
   baseQuery: fetchBaseQuery({
-    // baseUrl: 'https://kapusta-backend-proj.herokuapp.com/api/transactions',
-    baseUrl: 'http://localhost:3030/api/transactions',
+    baseUrl: 'https://kapusta-backend-proj.herokuapp.com/api/transactions',
+    // baseUrl: 'http://localhost:3030/api/transactions',
     prepareHeaders: (headers, { getState }) => {
       const token = getState().auth.token;
 

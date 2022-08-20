@@ -1,13 +1,19 @@
 @import '../../sass/main.scss';
 
+.overlay {
+  position: relative;
+}
+
 .containerTablet {
   @include tablet {
   display: flex;
   align-items: baseline;
   margin-bottom: 60px;
+  margin-left: 25px;
 }
 @include desktop {
   margin-bottom: 8px;
+  margin-left: 0;
 }
 }
 
@@ -42,7 +48,7 @@
 
    color: white;
    background-color: var(--accent-color);
-
+  border: transparent;
    border-radius: 22px 22px 22px 22px;
    cursor: pointer;
  }

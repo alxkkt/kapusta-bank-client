@@ -13,11 +13,13 @@ import { usePostTransactionMutation } from 'redux/transactions/transactions';
 import useBalance from 'shared/hooks/useBalance';
 
 import styles from './transactions.module.scss';
+import AddTransactionModal from 'components/AddTransactionModal';
 
 const Transactions = () => {
   const [date, setDate] = useState(Date.now());
   const [transactionType, setTransactionType] = useState('expense');
   const [balanceState, setBalanceState] = useState('');
+  const [modalOpen, setModalOpen] = useState(false);
 
   const [postTransaction] = usePostTransactionMutation();
 
@@ -46,6 +48,10 @@ const Transactions = () => {
     setDate(date);
   };
 
+  const openAddTransactionModal = () => {
+    setModalOpen(prev => !prev);
+  };
+
   const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
   const isTablet = useMediaQuery({
     query: '(min-width: 768px) and (max-width: 1279px)',
@@ -55,13 +61,20 @@ const Transactions = () => {
     <>
       {isMobile && (
         <>
+          {modalOpen && (
+            <AddTransactionModal
+              closeModal={openAddTransactionModal}
+              transactionType={transactionType}
+              sendData={onFormSubmit}
+            />
+          )}
           <Link className={styles.reports} to="/reports">
             <ReportsIcon />
           </Link>
           <Balance state={balanceState} setNewState={setBalanceState} />
-          <Link className={styles.link} to="/addtransaction">
+          <button className={styles.link} onClick={openAddTransactionModal}>
             ADD TRANSACTION
-          </Link>
+          </button>
           <Calendar startDate={date} onChange={handleChange} />
           <ExpensesAndIncomesButtons
             isActive={transactionType}
