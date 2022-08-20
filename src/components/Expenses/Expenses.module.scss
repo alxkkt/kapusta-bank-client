@@ -6,9 +6,6 @@
   flex-direction: column;
   align-items: center;
   margin-bottom: 40px;
-  &:hover .svg {
-    fill: #ff751d;
-  }
 }
 
 .categoryDiv:nth-last-child(-n + 6) {
@@ -88,11 +85,25 @@
   padding: 20px 0;
   background: #ffffff;
   /* shadow 1 */
-
+  margin-bottom: 32px;
   box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
   border-radius: 30px;
   @media screen and (min-width: 1280px) {
     width: 1034px;
     padding: 30px 0;
+    margin-bottom: 40px;
   }
+}
+.button {
+  border: none;
+  background-color: transparent;
+  &:hover {
+    cursor: pointer;
+  }
+  &:hover .svg {
+    fill: #ff751d;
+  }
+}
+.svgActive {
+  fill: #ff751d;
 }
