@@ -51,18 +51,16 @@ const Chart = ({ transactions, openCategory }) => {
     },
 
     plugins: {
-      plugins: {
-        datalabels: {
-          color: 'blue',
-          labels: {
-            title: {
-              font: {
-                weight: 'bold',
-              },
+      datalabels: {
+        color: 'blue',
+        labels: {
+          title: {
+            font: {
+              weight: 'bold',
             },
-            value: {
-              color: 'green',
-            },
+          },
+          value: {
+            color: 'green',
           },
         },
       },
@@ -74,7 +72,7 @@ const Chart = ({ transactions, openCategory }) => {
       },
     },
   };
-
+  console.log(isTabOrPc);
   const data = {
     datasets: [
       {
@@ -85,7 +83,7 @@ const Chart = ({ transactions, openCategory }) => {
         backgroundColor: '#FF751D',
         data: dataForChart,
         borderRadius: 10,
-        barThickness: 40,
+        barThickness: isTabOrPc ? 40 : 15,
       },
     ],
   };
