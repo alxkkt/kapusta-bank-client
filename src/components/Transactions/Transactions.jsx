@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
 
+import AddTransactionModal from 'components/AddTransactionModal';
 import ExpensesAndIncomesButtons from 'components/ExpensesAndIncomesButtons';
 import Calendar from 'components/Calendar';
 import Balance from 'components/Balance';
@@ -10,10 +11,11 @@ import AddTransactionForm from 'components/AddTransactionForm/AddTransactionForm
 import ReportsIcon from 'shared/components/ReportsIcon';
 import Cabbages from '../../shared/images/svg/Cabages.svg';
 import { usePostTransactionMutation } from 'redux/transactions/transactions';
+
 import useBalance from 'shared/hooks/useBalance';
+import useWindowDimensions from 'shared/hooks/useWindowDimensions';
 
 import styles from './transactions.module.scss';
-import AddTransactionModal from 'components/AddTransactionModal';
 
 const Transactions = () => {
   const [date, setDate] = useState(Date.now());
@@ -53,7 +55,7 @@ const Transactions = () => {
   };
 
   const isMobile = useMediaQuery({
-    query: '(min-width: 320px) and (max-width: 767px)',
+    query: '(max-width: 767px)',
   });
   const isTablet = useMediaQuery({
     query: '(min-width: 768px) and (max-width: 1279px)',
