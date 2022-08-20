@@ -12,11 +12,13 @@ import { transactions } from '../../redux/transactionsByDate/selectors';
 import Expenses from '../../components/Expenses';
 import Wrapper from 'shared/components/Wrapper';
 import { useMediaQuery } from 'react-responsive';
+import Chart from '../../components/Chart';
 
 const ReportsPage = () => {
   const isTabOrPc = useMediaQuery({ query: '(min-width:768px)' });
   const [period, setPeriod] = useState(moment().month());
   const [areExpensesOpen, setAreExpensesOpen] = useState(true);
+  const [openCategory, setOpenCategory] = useState('');
   const transactionsInfo = useSelector(transactions);
   const dispatch = useDispatch();
   useEffect(() => {
@@ -52,6 +54,8 @@ const ReportsPage = () => {
 
               {areExpensesOpen ? (
                 <Expenses
+                  setOpenCategory={setOpenCategory}
+                  openCategory={openCategory}
                   expenseTransactions={transactionsInfo.expenseTransactions}
                 >
                   <ExpensesIncomeSwitch
@@ -61,6 +65,8 @@ const ReportsPage = () => {
                 </Expenses>
               ) : (
                 <Expenses
+                  setOpenCategory={setOpenCategory}
+                  openCategory={openCategory}
                   expenseTransactions={transactionsInfo.incomeTransactions}
                 >
                   <ExpensesIncomeSwitch
@@ -69,6 +75,14 @@ const ReportsPage = () => {
                   />
                 </Expenses>
               )}
+              <Chart
+                openCategory={openCategory}
+                transactions={
+                  areExpensesOpen
+                    ? transactionsInfo.expenseTransactions
+                    : transactionsInfo.incomeTransactions
+                }
+              />
             </div>
           </section>
         </Wrapper>
