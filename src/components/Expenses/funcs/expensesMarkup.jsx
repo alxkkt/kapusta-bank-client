@@ -29,7 +29,27 @@ const expensesMarkup = (
             <p className={styles.category}>TRANSPORT</p>
           </li>
         );
-
+      case 'products':
+        return (
+          <li key={nanoid()} className={styles.categoryDiv}>
+            <p className={styles.sum}>{sum}</p>
+            <button
+              className={styles.button}
+              onClick={() => clickOnCategoryButton('products')}
+            >
+              <svg
+                className={
+                  openCategory === 'transport' ? styles.svgActive : styles.svg
+                }
+                height="56"
+                width="65"
+              >
+                <use href={`${sprite}#icon-products`}></use>
+              </svg>
+            </button>
+            <p className={styles.category}>PRODUCTS</p>
+          </li>
+        );
       case 'health':
         return (
           <li key={nanoid()} className={styles.categoryDiv}>
