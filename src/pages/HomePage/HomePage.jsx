@@ -1,5 +1,5 @@
 import styles from './HomePage.module.scss';
-import Transactions from 'components/Transactions';
+import Transactions from 'components/Transactions/Transactions';
 import Header from '../../components/Header';
 // import TransactionsList from 'components/TransactionsList';
 import Wrapper from 'shared/components/Wrapper';

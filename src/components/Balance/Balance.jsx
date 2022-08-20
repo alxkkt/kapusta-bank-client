@@ -1,15 +1,17 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import NumberFormat from 'react-number-format';
 
-import { getBalance, updateBalance } from 'redux/balance/balance-operations';
-import useBalance from 'shared/hooks/useBalance';
+import { updateBalance } from 'redux/balance/balance-operations';
 
 import ModalBalance from './ModalBalance';
 
 import styles from './balance.module.scss';
+import { useEffect } from 'react';
+import useBalance from 'shared/hooks/useBalance';
+import { getBalance } from 'redux/balance/balance-operations';
 
-const Balance = () => {
+const Balance = ({ state }) => {
   const [balanceState, setBalanceState] = useState('');
 
   const dispatch = useDispatch();
@@ -17,16 +19,18 @@ const Balance = () => {
 
   useEffect(() => {
     dispatch(getBalance());
-    setBalanceState(balance);
-  }, [dispatch, balance]);
+
+    setBalanceState(state);
+  }, [state, dispatch]);
+
+  const handleSubmit = e => {
+    e.preventDefault();
+
+    dispatch(updateBalance(Number.parseFloat(balanceState)));
+  };
 
   const handleChange = ({ target }) => {
     setBalanceState(target.value);
-  };
-
-  const handleSubmit = async e => {
-    e.preventDefault();
-    dispatch(updateBalance(Number.parseFloat(balanceState)));
   };
 
   return (

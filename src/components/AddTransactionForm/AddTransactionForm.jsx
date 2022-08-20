@@ -2,17 +2,16 @@ import { useState } from 'react';
 import NumberFormat from 'react-number-format';
 import { useMediaQuery } from 'react-responsive';
 import { useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import Icon from 'shared/components/Icon';
 import Calendar from 'components/Calendar';
 import CategoriesList from './CategoriesList';
-import TransactionsList from 'components/TransactionsList';
-
-import { usePostTransactionMutation } from 'redux/transactions/transactions';
+import TransactionsList from 'components/TransactionsList/TransactionsList';
 
 import styles from './AddTransactionForm.module.scss';
 
-const AddTransactionForm = () => {
+const AddTransactionForm = ({ transactionType, sendData }) => {
   const [formData, setFormData] = useState({
     description: '',
     category: '',
@@ -20,7 +19,7 @@ const AddTransactionForm = () => {
   });
   const [date, setDate] = useState(Date.now());
 
-  const [postTransaction, { isSuccess }] = usePostTransactionMutation();
+  const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
   const navigate = useNavigate();
 
   const handleChange = ({ target }) => {
@@ -30,30 +29,33 @@ const AddTransactionForm = () => {
   };
 
   const handleSubmit = e => {
-    // e.preventDefault();
+    e.preventDefault();
 
+    const formElements = e.target.elements;
     const dataType =
-      e.target.elements.category.value.toLowerCase() === 'income' ||
-      e.target.elements.category.value.toLowerCase() === 'wages'
+      formElements.category.value.toLowerCase() === 'income' ||
+      formElements.category.value.toLowerCase() === 'wages'
         ? 'income'
         : 'expense';
-    const dataSum = Number.parseFloat(e.target.elements.sum.value);
+    const dataSum = Number.parseFloat(formElements.sum.value);
 
-    postTransaction({
-      date,
-      category: e.target.elements.category.value.toLowerCase(),
-      description: e.target.elements.description.value,
-      type: dataType,
-      sum: dataSum,
+    sendData(
+      {
+        date,
+        category: formElements.category.value.toLowerCase(),
+        description: formElements.description.value,
+        type: dataType,
+        sum: dataSum,
+      },
+      false
+    );
+
+    setFormData({
+      description: '',
+      category: '',
+      sum: '',
     });
-
-    isSuccess &&
-      setFormData({
-        description: '',
-        category: '',
-        sum: '',
-      });
-    navigate('/');
+    if (isMobile) navigate('/');
   };
 
   const handleClear = () => {
@@ -87,6 +89,7 @@ const AddTransactionForm = () => {
             value={description}
             type="text"
             placeholder="Product description"
+            required
           />
           <CategoriesList onChange={handleChange} />
           <div className={styles.containerForm}>
@@ -121,9 +124,18 @@ const AddTransactionForm = () => {
           </button>
         </div>
       </form>
-      <TransactionsList date={date} />
+      <TransactionsList
+        date={date}
+        transactionType={transactionType}
+        updateBalance={sendData}
+      />
     </>
   );
 };
 
 export default AddTransactionForm;
+
+AddTransactionForm.propTypes = {
+  transactionType: PropTypes.string.isRequired,
+  sendData: PropTypes.func.isRequired,
+};

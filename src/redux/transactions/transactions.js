@@ -3,7 +3,8 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 export const transactionsApi = createApi({
   reducerPath: 'transactionsApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://kapusta-backend-proj.herokuapp.com/api/transactions',
+    // baseUrl: 'https://kapusta-backend-proj.herokuapp.com/api/transactions',
+    baseUrl: 'http://localhost:3030/api/transactions',
     prepareHeaders: (headers, { getState }) => {
       const token = getState().auth.token;
 
@@ -20,6 +21,10 @@ export const transactionsApi = createApi({
       query: () => '/',
       providesTags: ['transactions'],
     }),
+    getSummaryByMonth: builder.query({
+      query: type => `/summary/${type}`,
+      providesTags: ['transactions'],
+    }),
     postTransaction: builder.mutation({
       query: data => ({
         url: '/',
@@ -28,6 +33,7 @@ export const transactionsApi = createApi({
       }),
       invalidatesTags: ['transactions'],
     }),
+
     deleteTransaction: builder.mutation({
       query: id => ({
         url: `/${id}`,
@@ -40,6 +46,7 @@ export const transactionsApi = createApi({
 
 export const {
   useGetTransactionsQuery,
+  useGetSummaryByMonthQuery,
   usePostTransactionMutation,
   useDeleteTransactionMutation,
 } = transactionsApi;

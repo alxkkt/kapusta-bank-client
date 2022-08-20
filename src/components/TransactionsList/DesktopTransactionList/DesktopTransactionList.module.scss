@@ -16,7 +16,6 @@
     }
 
     &_container {
-        width: 97%;
         // table-layout: fixed;
         border: none;
         // overflow-x: hidden;margin: 0;
@@ -50,7 +49,6 @@
 
         &::-webkit-scrollbar-thumb {
             border-radius: 4px;
-            height: 130px;
             background-color: rgba(255, 117, 29, 1);
         }
 
@@ -114,8 +112,10 @@
     height: 32px;
     border-style: none;
     background-color: #fff;
+    cursor: pointer;
 
     &:hover {
         background-color: rgba(245, 246, 251, 1);
     }
+
 }

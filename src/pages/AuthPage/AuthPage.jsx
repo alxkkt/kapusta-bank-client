@@ -64,7 +64,6 @@ const AuthPage = () => {
     }
   };
   const googleFailure = async res => {
-    console.log(res);
     toast.error('Something went wrong, please try again later');
   };
 

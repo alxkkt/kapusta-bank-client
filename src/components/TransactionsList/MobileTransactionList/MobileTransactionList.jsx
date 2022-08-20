@@ -11,7 +11,7 @@ const MobileTransactionList = ({ filteredTransactions, handleDeleteClick }) => {
             <li>
               <div>
                 <p>TransName</p>
-                <p>date</p>
+                <p>{transaction.date}</p>
               </div>
               <p>category</p>
               <p>sum</p>

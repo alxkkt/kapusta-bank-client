@@ -6,8 +6,8 @@ const ExpensesAndIncomesButtons = ({ isActive, onClick }) => {
       <button
         onClick={onClick}
         // className={styles.button}
-        className={`${isActive === 'expenses' ? styles.active : styles.button}`}
-        data-type="expenses"
+        className={`${isActive === 'expense' ? styles.active : styles.button}`}
+        data-type="expense"
         type="button"
       >
         Expenses
@@ -15,7 +15,7 @@ const ExpensesAndIncomesButtons = ({ isActive, onClick }) => {
       <button
         onClick={onClick}
         // className={styles.button}
-        className={`${isActive !== 'expenses' ? styles.active : styles.button}`}
+        className={`${isActive !== 'expense' ? styles.active : styles.button}`}
         data-type="income"
         type="button"
       >

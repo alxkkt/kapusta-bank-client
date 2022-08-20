@@ -45,7 +45,6 @@ const ReportsPage = () => {
                 totalIncome={transactionsInfo.totalIncome}
                 totalExpenses={transactionsInfo.totalExpense}
               />
-
               {!isTabOrPc && (
                 <ExpensesIncomeSwitch
                   areExpensesOpen={areExpensesOpen}
