@@ -1,0 +1,103 @@
+@import '../../../sass/main.scss';
+
+.container {
+    margin-top: 40px;
+    margin-bottom: 60px;
+    padding: 0;
+    margin-left: -40px;
+    width: 230px;
+
+   
+    
+    @include desktop{
+        margin: 0;
+        margin-left: 75px;
+        width: 213px;
+    }
+}
+
+.title{
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 1.17;
+    text-align: center;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    background-color: #F5F6FB;
+    color: #000000;
+    border-radius: 20px 20px 0 0;
+}
+
+.list{ 
+    height: 242px;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column-reverse;
+        &::-webkit-scrollbar {
+                width: 6px;
+                background-color: #f9f9fd;
+            }
+        
+            &::-webkit-scrollbar-thumb {
+                border-radius: 4px;
+                background-color: rgba(255, 117, 29, 1);
+            }
+        
+            &::-webkit-scrollbar-track {
+                -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+                border-radius: 0;
+                background-color: rgba(245, 246, 251, 1);
+            }
+
+    
+}
+
+.element{
+    
+    margin-top: 2px;
+    padding-right: 20px;
+    padding-left: 22px;
+    display: flex;
+    justify-content: space-between;
+    background-color: #F5F6FB;
+    &:first-child {
+        border-radius: 0 0 20px 0;
+    }
+    
+}
+
+.month{
+    height: 38px;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.17;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    
+    color: #52555F;
+}
+.sum{
+font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.17;
+    display: flex;
+    align-items: center;
+    text-align: right;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    
+    color: #52555F;
+}

@@ -21,6 +21,10 @@ export const transactionsApi = createApi({
       query: () => '/',
       providesTags: ['transactions'],
     }),
+    getSummaryByMonth: builder.query({
+      query: type => `/summary/${type}`,
+      providesTags: ['transactions'],
+    }),
     postTransaction: builder.mutation({
       query: data => ({
         url: '/',
@@ -29,6 +33,7 @@ export const transactionsApi = createApi({
       }),
       invalidatesTags: ['transactions'],
     }),
+
     deleteTransaction: builder.mutation({
       query: id => ({
         url: `/${id}`,
@@ -41,6 +46,7 @@ export const transactionsApi = createApi({
 
 export const {
   useGetTransactionsQuery,
+  useGetSummaryByMonthQuery,
   usePostTransactionMutation,
   useDeleteTransactionMutation,
 } = transactionsApi;
