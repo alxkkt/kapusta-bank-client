@@ -78,6 +78,7 @@ const TransactionsList = ({ date, transactionType, updateBalance }) => {
           day={day}
           month={month}
           year={year}
+          type={transactionType}
         />
         <Summary type={transactionType} />
       </div>

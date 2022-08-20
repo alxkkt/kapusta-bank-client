@@ -8,14 +8,13 @@ import { useGetSummaryByMonthQuery } from 'redux/transactions/transactions';
 
 const Summary = ({ type }) => {
   const { data } = useGetSummaryByMonthQuery(type);
-
   return (
     <div className={styles.container}>
       <h2 className={styles.title}>Summary</h2>
       <ul className={styles.list}>
-        {data?.map(item => {
+        {data?.slice(-6).map(item => {
           return (
-            <li className={styles.element}>
+            <li className={styles.element} key={item.id}>
               <p className={styles.month}>
                 {moment().month(item.month).format('MMMM')}
               </p>
