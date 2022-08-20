@@ -82,7 +82,7 @@ const Transactions = () => {
             onClick={handleClick}
           />
           <div className={styles.containerTable}>
-            {isMobile && <Calendar startDate={date} onChange={handleChange} />}
+            {/* {isMobile && <Calendar startDate={date} onChange={handleChange} />} */}
             <AddTransactionForm
               transactionType={transactionType}
               sendData={onFormSubmit}
@@ -104,7 +104,7 @@ const Transactions = () => {
             onClick={handleClick}
           />
           <div className={styles.containerTable}>
-            {isMobile && <Calendar startDate={date} onChange={handleChange} />}
+            {/* {isMobile && <Calendar startDate={date} onChange={handleChange} />} */}
             <AddTransactionForm
               transactionType={transactionType}
               sendData={onFormSubmit}
