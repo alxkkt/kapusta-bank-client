@@ -1,0 +1,92 @@
+.container {
+padding:  20px 0 12px 0;
+}
+
+.list {
+
+}
+
+.transaction {
+    display: flex;
+    min-width: 283px;
+    height: 42px;
+    border-bottom: 1px solid #f5f6fb;
+
+    &_container{
+padding: 8px 0;
+    }
+}
+
+.description {
+    margin-bottom: 3px;
+    font-family: 'Roboto';
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 1.17;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.04em;
+
+    color: #52555F;
+}
+
+.date {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 8px;
+    line-height: 1.13;
+    letter-spacing: 0.04em;
+    color: #52555F;
+}
+
+.category {
+    margin-bottom: 8px;
+    display: flex;
+    align-items: flex-end;
+    margin-left: 20px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 8px;
+    line-height: 1.13;
+    letter-spacing: 0.04em;
+    color: #52555F;
+}
+
+.sumDelete{
+    display: flex;
+    align-items: center;
+    margin-right: 0;
+    margin-left: auto;
+}
+
+.sum {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 1.17;
+    display: flex;
+    align-items: center;
+    text-align: right;
+    letter-spacing: 0.04em;
+    color: #407946;
+}
+
+.expense {
+color: #E7192E;
+}
+
+.delete_btn {
+    margin-left: 20px;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    border-style: none;
+    background-color: #fff;
+    cursor: pointer;
+        &:hover {
+            background-color: rgba(245, 246, 251, 1);
+    }
+}
