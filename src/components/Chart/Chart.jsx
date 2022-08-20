@@ -72,7 +72,6 @@ const Chart = ({ transactions, openCategory }) => {
       },
     },
   };
-  console.log(isTabOrPc);
   const data = {
     datasets: [
       {
