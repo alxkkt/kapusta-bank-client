@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import Icon from 'shared/components/Icon';
 import Calendar from 'components/Calendar';
 import CategoriesList from './CategoriesList';
-import TransactionsList from 'components/TransactionsList';
+import TransactionsList from 'components/TransactionsList/TransactionsList';
 
 import styles from './AddTransactionForm.module.scss';
 

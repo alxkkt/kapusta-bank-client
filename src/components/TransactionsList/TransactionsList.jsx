@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { useMediaQuery } from 'react-responsive';
+import styles from './TransactionsList.module.scss';
+import Summary from './Summary';
 import DesktopTransactionList from './DesktopTransactionList';
 import Modal from 'shared/components/Modal';
 import MobileTransactionList from './MobileTransactionList';
@@ -56,11 +57,6 @@ const TransactionsList = ({ date, transactionType, updateBalance }) => {
     return calendarDate === transactionDate;
   });
 
-  const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
-  const isTablet = useMediaQuery({
-    query: '(min-width: 768px) and (max-width: 1279px)',
-  });
-  const isDesktop = useMediaQuery({ query: '(min-width: 1280px)' });
   return (
     <>
       {' '}
@@ -71,13 +67,11 @@ const TransactionsList = ({ date, transactionType, updateBalance }) => {
           onNo={onDeleteCancel}
         />
       )}
-      {isMobile && (
-        <MobileTransactionList
-          filteredTransactions={filteredTransactions}
-          handleDeleteClick={handleDeleteClick}
-        />
-      )}
-      {isTablet && (
+      {/* <MobileTransactionList
+        filteredTransactions={filteredTransactions}
+        handleDeleteClick={handleDeleteClick}
+      /> */}
+      <div className={styles.container}>
         <DesktopTransactionList
           filteredTransactions={filteredTransactions}
           handleDeleteClick={handleDeleteClick}
@@ -85,16 +79,8 @@ const TransactionsList = ({ date, transactionType, updateBalance }) => {
           month={month}
           year={year}
         />
-      )}
-      {isDesktop && (
-        <DesktopTransactionList
-          filteredTransactions={filteredTransactions}
-          handleDeleteClick={handleDeleteClick}
-          day={day}
-          month={month}
-          year={year}
-        />
-      )}
+        <Summary type={transactionType} />
+      </div>
     </>
   );
 };

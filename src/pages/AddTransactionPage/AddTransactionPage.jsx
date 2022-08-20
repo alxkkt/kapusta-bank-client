@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 
 import Header from '../../components/Header';
-import AddTransactionForm from '../../components/AddTransactionForm';
+import AddTransactionForm from '../../components/AddTransactionForm/AddTransactionForm';
 import Wrapper from 'shared/components/Wrapper';
 import Calendar from 'components/Calendar';
 import Icon from 'shared/components/Icon';

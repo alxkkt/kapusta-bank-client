@@ -6,7 +6,7 @@ import { useMediaQuery } from 'react-responsive';
 import ExpensesAndIncomesButtons from 'components/ExpensesAndIncomesButtons';
 import Calendar from 'components/Calendar';
 import Balance from 'components/Balance';
-import AddTransactionForm from 'components/AddTransactionForm';
+import AddTransactionForm from 'components/AddTransactionForm/AddTransactionForm';
 import ReportsIcon from 'shared/components/ReportsIcon';
 import Cabbages from '../../shared/images/svg/Cabages.svg';
 import { usePostTransactionMutation } from 'redux/transactions/transactions';

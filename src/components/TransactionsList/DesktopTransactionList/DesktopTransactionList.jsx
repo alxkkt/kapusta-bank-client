@@ -40,7 +40,9 @@ const DesktopTransactionList = ({
                   <td className={styles.table_category}>
                     {transaction.category}
                   </td>
-                  <td className={styles.table_sum}>{transaction.sum}</td>
+                  <td className={styles.table_sum}>
+                    {parseFloat(transaction.sum).toFixed(2)}
+                  </td>
                   <td className={styles.table_icon}>
                     <button
                       className={styles.delete_btn}

@@ -1,0 +1,15 @@
+@import '../../sass/main.scss';
+
+.container {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    @include desktop{
+        flex-direction: row;
+    }
+    &_mobile {
+        @include desktop {
+            display: none;
+        }
+    }
+}
