@@ -11,9 +11,11 @@
   letter-spacing: 0.02em;
   @include tablet-only {
     margin-right: 21px;
+    margin-bottom: 0;
   }
   @include desktop {
     margin-right: 20px;
+    margin-bottom: 0;
   }
 }
 
