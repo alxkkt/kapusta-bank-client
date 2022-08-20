@@ -36,24 +36,10 @@
 
 .list{ 
     height: 242px;
-    overflow-y: scroll;
+
     display: flex;
     flex-direction: column-reverse;
-        &::-webkit-scrollbar {
-                width: 6px;
-                background-color: #f9f9fd;
-            }
-        
-            &::-webkit-scrollbar-thumb {
-                border-radius: 4px;
-                background-color: rgba(255, 117, 29, 1);
-            }
-        
-            &::-webkit-scrollbar-track {
-                -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
-                border-radius: 0;
-                background-color: rgba(245, 246, 251, 1);
-            }
+
 
     
 }

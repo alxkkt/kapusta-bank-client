@@ -98,6 +98,18 @@
 
     &_sum {
         width: 130px;
+
+        &_income{
+            color: #407946;
+        width: 130px;
+        font-weight: 700;
+        }
+        
+    }
+
+    &_expense {
+        font-weight: bold;
+        color: #e7192e;
     }
 
     &_icon {

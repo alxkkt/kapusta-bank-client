@@ -7,6 +7,7 @@ const DesktopTransactionList = ({
   day,
   month,
   year,
+  type,
 }) => {
   return (
     <div className={styles.table_container}>
@@ -35,13 +36,21 @@ const DesktopTransactionList = ({
                     {day}.{month}.{year}
                   </td>
                   <td className={styles.table_description}>
-                    {transaction.description}
+                    {transaction.description.charAt(0).toUpperCase() +
+                      transaction.description.slice(1)}
                   </td>
                   <td className={styles.table_category}>
-                    {transaction.category}
+                    {transaction.category.charAt(0).toUpperCase() +
+                      transaction.category.slice(1)}
                   </td>
-                  <td className={styles.table_sum}>
-                    {parseFloat(transaction.sum).toFixed(2)}
+                  <td
+                    className={`${styles.table_sum_income} ${
+                      type !== 'income' && styles.table_expense
+                    }`}
+                  >
+                    {type === 'income'
+                      ? `${parseFloat(transaction.sum).toFixed(2)} грн.`
+                      : `-${parseFloat(transaction.sum).toFixed(2)} грн.`}
                   </td>
                   <td className={styles.table_icon}>
                     <button
