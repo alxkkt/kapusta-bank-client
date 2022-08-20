@@ -49,3 +49,9 @@
     cursor: pointer;
   }
 }
+.nextButton:disabled {
+  color: gray;
+  &:hover {
+    cursor: default;
+  }
+}

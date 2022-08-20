@@ -1,14 +1,19 @@
 import moment from 'moment';
 import styles from './CurrentPeriod.module.scss';
 // import icons from '../../images/icons.svg';
-// import { useState } from 'react';
+import { useState, useEffect } from 'react';
 const CurrentPeriod = ({ period, setPeriod }) => {
+  const [isCurrentMonth, setIsCurrentMonth] = useState(true);
   const onPrevClick = () => {
     setPeriod(period - 1);
   };
   const onNextClick = () => {
     setPeriod(period + 1);
   };
+  useEffect(() => {
+    if (period === moment().month()) setIsCurrentMonth(true);
+    if (period < moment().month()) setIsCurrentMonth(false);
+  }, [period]);
   return (
     <div>
       <p className={styles.writing}>Current period:</p>
@@ -20,7 +25,11 @@ const CurrentPeriod = ({ period, setPeriod }) => {
           {moment().month(period).format('MMMM')}{' '}
           {moment().month(period).format('YYYY')}
         </p>
-        <button className={styles.button} onClick={onNextClick}>
+        <button
+          disabled={isCurrentMonth}
+          className={[styles.button, styles.nextButton].join(" ")}
+          onClick={onNextClick}
+        >
           &#62;
         </button>
       </div>
