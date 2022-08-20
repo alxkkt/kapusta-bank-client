@@ -52,14 +52,16 @@ const Transactions = () => {
     setModalOpen(prev => !prev);
   };
 
-  const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
+  const isMobile = useMediaQuery({
+    query: '(min-width: 320px) and (max-width: 767px)',
+  });
   const isTablet = useMediaQuery({
     query: '(min-width: 768px) and (max-width: 1279px)',
   });
   const isDesktop = useMediaQuery({ query: '(min-width: 1280px)' });
   return (
     <>
-      {isMobile && (
+      {isMobile && !isTablet && !isDesktop && (
         <>
           {modalOpen && (
             <AddTransactionModal
@@ -82,7 +84,7 @@ const Transactions = () => {
           />
         </>
       )}
-      {isTablet && (
+      {isTablet && !isMobile && !isDesktop && (
         <>
           <div className={styles.containerTablet}>
             <Balance state={balanceState} />
@@ -104,7 +106,7 @@ const Transactions = () => {
           <img className={styles.cabages} src={Cabbages} alt="Cabages" />
         </>
       )}
-      {isDesktop && (
+      {isDesktop && !isMobile && !isTablet && (
         <>
           <div className={styles.containerTablet}>
             <Balance state={balanceState} />
