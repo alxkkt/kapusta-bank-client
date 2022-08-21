@@ -123,5 +123,5 @@ export default AddTransactionForm;
 
 AddTransactionForm.propTypes = {
   sendData: PropTypes.func.isRequired,
-  closeModal: PropTypes.func.isRequired,
+  closeModal: PropTypes.func,
 };

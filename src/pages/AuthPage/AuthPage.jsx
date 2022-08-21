@@ -73,7 +73,7 @@ const AuthPage = () => {
     [dispatch]
   );
 
-  const googleFailure = useCallback(async res => {
+  const googleFailure = useCallback(async () => {
     toast.error('Something went wrong, please try again later');
   }, []);
 

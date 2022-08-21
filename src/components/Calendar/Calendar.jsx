@@ -36,5 +36,5 @@ export default Calendar;
 
 Calendar.propTypes = {
   onChange: PropTypes.func.isRequired,
-  startDate: PropTypes.string.isRequired,
+  startDate: PropTypes.number.isRequired,
 };

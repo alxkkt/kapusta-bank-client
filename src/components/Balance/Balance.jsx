@@ -71,5 +71,5 @@ const Balance = ({ state }) => {
 export default Balance;
 
 Balance.propTypes = {
-  state: PropTypes.string.isRequired,
+  state: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
