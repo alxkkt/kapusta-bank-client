@@ -5,6 +5,7 @@
 }
 
 .containerTablet {
+
   @include tablet {
     display: flex;
     align-items: baseline;
@@ -17,11 +18,23 @@
   }
 }
 
+.reportsMobile {
+    display: flex;
+      justify-content: center;
+      // align-items: baseline;
+      margin-bottom: 43px;
+      @include tablet {
+        display: none;
+      }
+}
+
 .reports {
   display: flex;
   justify-content: center;
   // align-items: baseline;
-  margin-bottom: 33px;
+  @include mobile {
+    display: none;
+  }
   @include tablet {
     margin-left: auto;
     margin-bottom: 0;
@@ -52,17 +65,22 @@
   cursor: pointer;
 }
 
-@media screen and (min-width: 768px) {
-  .link {
-    display: none;
-  }
-}
+ @include tablet {
+   .link {
+     display: none;
+   }
+ }
 
 .link:visited {
   color: #ffff;
 }
 
-.containerTable {
+
+ .containerTable {
+  @include mobile {
+    display: none;
+  }
+
   @include tablet {
     padding: 24px 40px;
     width: 100%;
@@ -81,7 +99,21 @@
 }
 
 .cabages {
-  position: absolute;
-  right: 15%;
-  margin-top: 172px;
+  @include mobile {
+    display: none;
+  }
+  @include tablet-only {
+ position: absolute;
+ right: 15%;
+ margin-top: 172px;
+}
+@include desktop {
+  display: none;
+}
+}
+
+.containerCalendar {
+  @include tablet {
+    display: none;
+  }
 }
