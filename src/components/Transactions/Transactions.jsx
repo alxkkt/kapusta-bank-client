@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { useMediaQuery } from 'react-responsive';
 
 import AddTransactionModal from 'components/AddTransactionModal';
 import ExpensesAndIncomesButtons from 'components/ExpensesAndIncomesButtons';
-import TransactionsList from 'components/TransactionsList';
+// import TransactionsList from 'components/TransactionsList';
 import Calendar from 'components/Calendar';
 import Balance from 'components/Balance';
 import AddTransactionForm from 'components/AddTransactionForm/AddTransactionForm';
@@ -54,40 +53,45 @@ const Transactions = () => {
     setModalOpen(prev => !prev);
   };
 
-  const isMobile = useMediaQuery({
-    query: '(max-width: 767px)',
-  });
-  const isTablet = useMediaQuery({
-    query: '(min-width: 768px) and (max-width: 1279px)',
-  });
-  const isDesktop = useMediaQuery({ query: '(min-width: 1280px)' });
   return (
     <>
-      {isMobile && !isTablet && !isDesktop && (
-        <>
-          {modalOpen && (
-            <AddTransactionModal
-              closeModal={openAddTransactionModal}
-              transactionType={transactionType}
-              sendData={onFormSubmit}
-            />
-          )}
+      <>
+        {modalOpen && (
+          <AddTransactionModal
+            closeModal={openAddTransactionModal}
+            transactionType={transactionType}
+            sendData={onFormSubmit}
+          />
+        )}
+        <div className={styles.containerTablet}>
+          <Link className={styles.reportsMobile} to="/reports">
+            <ReportsIcon />
+          </Link>
+          <Balance state={balanceState} />
           <Link className={styles.reports} to="/reports">
             <ReportsIcon />
           </Link>
-          <Balance state={balanceState} setNewState={setBalanceState} />
-          <button className={styles.link} onClick={openAddTransactionModal}>
-            ADD TRANSACTION
-          </button>
+        </div>
+        <button className={styles.link} onClick={openAddTransactionModal}>
+          ADD TRANSACTION
+        </button>
+        <div className={styles.containerCalendar}>
           <Calendar startDate={date} onChange={handleChange} />
-          <TransactionsList date={date} transactionType={transactionType} />
-          <ExpensesAndIncomesButtons
-            isActive={transactionType}
-            onClick={handleClick}
+        </div>
+        <ExpensesAndIncomesButtons
+          isActive={transactionType}
+          onClick={handleClick}
+        />
+        <div className={styles.containerTable}>
+          <AddTransactionForm
+            transactionType={transactionType}
+            sendData={onFormSubmit}
           />
-        </>
-      )}
-      {isTablet && !isMobile && !isDesktop && (
+        </div>
+        <img className={styles.cabages} src={Cabbages} alt="Cabages" />
+      </>
+
+      {/* {isDesktop && !isMobile && !isTablet && (
         <>
           <div className={styles.containerTablet}>
             <Balance state={balanceState} />
@@ -100,35 +104,14 @@ const Transactions = () => {
             onClick={handleClick}
           />
           <div className={styles.containerTable}>
-            <AddTransactionForm
-              transactionType={transactionType}
-              sendData={onFormSubmit}
-            />
-          </div>
-          <img className={styles.cabages} src={Cabbages} alt="Cabages" />
-        </>
-      )}
-      {isDesktop && !isMobile && !isTablet && (
-        <>
-          <div className={styles.containerTablet}>
-            <Balance state={balanceState} />
-            <Link className={styles.reports} to="/reports">
-              <ReportsIcon />
-            </Link>
-          </div>
-          <ExpensesAndIncomesButtons
-            isActive={transactionType}
-            onClick={handleClick}
-          />
-          <div className={styles.containerTable}>
-            {/* {isMobile && <Calendar startDate={date} onChange={handleChange} />} */}
+        
             <AddTransactionForm
               transactionType={transactionType}
               sendData={onFormSubmit}
             />
           </div>
         </>
-      )}
+      )} */}
     </>
   );
 };

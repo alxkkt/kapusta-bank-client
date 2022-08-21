@@ -68,18 +68,12 @@ const AddTransactionForm = ({ transactionType, sendData, closeModal }) => {
     setDate(date);
   };
 
-  const isTablet = useMediaQuery({
-    query: '(min-width: 768px) and (max-width: 1279px)',
-  });
-  const isDesktop = useMediaQuery({ query: '(min-width: 1280px)' });
-
   const { description, sum } = formData;
   return (
     <>
       <form className={styles.form} onSubmit={handleSubmit}>
         <div className={styles.tablet}>
-          {isTablet && <Calendar startDate={date} onChange={onChange} />}
-          {isDesktop && <Calendar startDate={date} onChange={onChange} />}
+          <Calendar startDate={date} onChange={onChange} />
           <input
             className={styles.input}
             onChange={handleChange}
@@ -122,20 +116,12 @@ const AddTransactionForm = ({ transactionType, sendData, closeModal }) => {
           </button>
         </div>
       </form>
-      {isTablet && (
-        <TransactionsList
-          date={date}
-          transactionType={transactionType}
-          updateBalance={sendData}
-        />
-      )}
-      {isDesktop && (
-        <TransactionsList
-          date={date}
-          transactionType={transactionType}
-          updateBalance={sendData}
-        />
-      )}
+
+      <TransactionsList
+        date={date}
+        transactionType={transactionType}
+        updateBalance={sendData}
+      />
     </>
   );
 };
