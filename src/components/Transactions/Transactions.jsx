@@ -13,7 +13,6 @@ import Cabbages from '../../shared/images/svg/Cabages.svg';
 import { usePostTransactionMutation } from 'redux/transactions/transactions';
 
 import useBalance from 'shared/hooks/useBalance';
-import useWindowDimensions from 'shared/hooks/useWindowDimensions';
 
 import styles from './transactions.module.scss';
 

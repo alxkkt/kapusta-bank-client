@@ -67,10 +67,14 @@ const TransactionsList = ({ date, transactionType, updateBalance }) => {
           onNo={onDeleteCancel}
         />
       )}
-      {/* <MobileTransactionList
+      <MobileTransactionList
         filteredTransactions={filteredTransactions}
         handleDeleteClick={handleDeleteClick}
-      /> */}
+        day={day}
+        month={month}
+        year={year}
+        type={transactionType}
+      />
       <div className={styles.container}>
         <DesktopTransactionList
           filteredTransactions={filteredTransactions}
