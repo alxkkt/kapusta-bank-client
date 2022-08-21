@@ -7,10 +7,7 @@ import PropType from 'prop-types';
 
 import s from './AuthForm.module.scss';
 
-// const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
-
-const clientId =
-  '2996877303-j7ihpaskfovb4k023h83sfg5rj5tjosm.apps.googleusercontent.com';
+const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
 
 const initialState = {
   email: '',
@@ -24,7 +21,7 @@ const AuthForm = ({ register, login, onSuccess, onFailure }) => {
     // global google
     function startGapi() {
       gapi.client.init({
-        clientId,
+        clientId: clientId,
         scope: 'openid profile email',
       });
     }
@@ -79,16 +76,8 @@ const AuthForm = ({ register, login, onSuccess, onFailure }) => {
     <div className={s.wrap}>
       <h2 className={s.title}>You can log in with your Google Account:</h2>
       <div className={s.login}>
-        {/* <GoogleLogin
-          clientId="2996877303-j7ihpaskfovb4k023h83sfg5rj5tjosm.apps.googleusercontent.com"
-          buttonText="Google"
-          // className={s.google}
-          onSuccess={resSuccessGoogle}
-          onFailure={resFailureGoogle}
-          cookiePolicy={'single_host_origin'}
-        /> */}
         <GoogleLogin
-          clientId="2996877303-j7ihpaskfovb4k023h83sfg5rj5tjosm.apps.googleusercontent.com"
+          clientId={clientId}
           render={renderProps => (
             <button
               onClick={renderProps.onClick}
