@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 
 import AddTransactionModal from 'components/AddTransactionModal';
 import ExpensesAndIncomesButtons from 'components/ExpensesAndIncomesButtons';
-// import TransactionsList from 'components/TransactionsList';
+import TransactionsList from 'components/TransactionsList';
 import Calendar from 'components/Calendar';
 import Balance from 'components/Balance';
 import AddTransactionForm from 'components/AddTransactionForm/AddTransactionForm';
@@ -56,62 +56,51 @@ const Transactions = () => {
 
   return (
     <>
-      <>
-        {modalOpen && (
-          <AddTransactionModal
-            closeModal={openAddTransactionModal}
-            transactionType={transactionType}
-            sendData={onFormSubmit}
-          />
-        )}
-        <div className={styles.containerTablet}>
-          <Link className={styles.reportsMobile} to="/reports">
-            <ReportsIcon />
-          </Link>
-          <Balance state={balanceState} />
-          <Link className={styles.reports} to="/reports">
-            <ReportsIcon />
-          </Link>
-        </div>
-        <button className={styles.link} onClick={openAddTransactionModal}>
-          ADD TRANSACTION
-        </button>
-        <div className={styles.containerCalendar}>
-          <Calendar startDate={date} onChange={handleChange} />
-        </div>
-        <ExpensesAndIncomesButtons
-          isActive={transactionType}
-          onClick={handleClick}
+      {modalOpen && (
+        <AddTransactionModal
+          closeModal={openAddTransactionModal}
+          transactionType={transactionType}
+          sendData={onFormSubmit}
         />
-        <div className={styles.containerTable}>
-          <AddTransactionForm
-            transactionType={transactionType}
-            sendData={onFormSubmit}
-          />
-        </div>
-        <img className={styles.cabages} src={Cabbages} alt="Cabages" />
-      </>
-
-      {/* {isDesktop && !isMobile && !isTablet && (
-        <>
-          <div className={styles.containerTablet}>
-            <Balance state={balanceState} />
-            <Link className={styles.reports} to="/reports">
-              <ReportsIcon />
-            </Link>
-          </div>
-          <ExpensesAndIncomesButtons
-            isActive={transactionType}
-            onClick={handleClick}
-          />
-          <div className={styles.containerTable}>
-            <AddTransactionForm
-              transactionType={transactionType}
-              sendData={onFormSubmit}
-            />
-          </div>
-        </>
-      )} */}
+      )}
+      <div className={styles.containerTablet}>
+        <Link className={styles.reportsMobile} to="/reports">
+          <ReportsIcon />
+        </Link>
+        <Balance state={balanceState} />
+        <Link className={styles.reports} to="/reports">
+          <ReportsIcon />
+        </Link>
+      </div>
+      <button className={styles.link} onClick={openAddTransactionModal}>
+        ADD TRANSACTION
+      </button>
+      <div className={styles.containerCalendar}>
+        <Calendar startDate={date} onChange={handleChange} />
+      </div>
+      <ExpensesAndIncomesButtons
+        isActive={transactionType}
+        onClick={handleClick}
+      />
+      <div className={styles.containerTable}>
+        <AddTransactionForm
+          transactionType={transactionType}
+          sendData={onFormSubmit}
+        />
+        <TransactionsList
+          date={date}
+          transactionType={transactionType}
+          updateBalance={onFormSubmit}
+        />
+      </div>
+      <div className={styles.listMobile}>
+        <TransactionsList
+          date={date}
+          transactionType={transactionType}
+          updateBalance={onFormSubmit}
+        />
+      </div>
+      <img className={styles.cabages} src={Cabbages} alt="Cabages" />
     </>
   );
 };
