@@ -8029,7 +8029,7 @@ react-fast-compare@^3.0.1:
 
 react-google-login@^5.2.2:
   version "5.2.2"
-  resolved "https://registry.npmjs.org/react-google-login/-/react-google-login-5.2.2.tgz"
+  resolved "https://registry.yarnpkg.com/react-google-login/-/react-google-login-5.2.2.tgz#a20b46440c6c1610175ef75baf427118ff0e9859"
   integrity sha512-JUngfvaSMcOuV0lFff7+SzJ2qviuNMQdqlsDJkUM145xkGPVIfqWXq9Ui+2Dr6jdJWH5KYdynz9+4CzKjI5u6g==
   dependencies:
     "@types/react" "*"
@@ -8920,6 +8920,11 @@ spdy@^4.0.2:
     http-deceiver "^1.2.7"
     select-hose "^2.0.0"
     spdy-transport "^3.0.0"
+
+spinners-react@^1.0.7:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/spinners-react/-/spinners-react-1.0.7.tgz#237e3e6f5fe2e6319083eb8703372e728eb2a304"
+  integrity sha512-Xcgpc7Ybm6HOrpCVJjbH1G/NV852HaV4Zc9T1sJ2+S2hn05lGiBZS1dBOKGLc1kp8wv2sd3wtt94I/NNqDjs3Q==
 
 sprintf-js@~1.0.2:
   version "1.0.3"

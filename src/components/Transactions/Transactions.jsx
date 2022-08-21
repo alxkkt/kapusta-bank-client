@@ -41,6 +41,7 @@ const Transactions = () => {
     setBalanceState(data.totalBalance);
   };
 
+  console.log(modalOpen);
   const handleClick = e => {
     setTransactionType(e.target.dataset.type);
   };
@@ -104,7 +105,6 @@ const Transactions = () => {
             onClick={handleClick}
           />
           <div className={styles.containerTable}>
-        
             <AddTransactionForm
               transactionType={transactionType}
               sendData={onFormSubmit}

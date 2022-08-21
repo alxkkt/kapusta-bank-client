@@ -1,0 +1,14 @@
+@import '~spinners-react/lib/SpinnerCircular.css';
+
+.Loader {
+  position: fixed;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+
+  block-size: 100vh;
+  width: 100%;
+  background-color: var(--main-background-color);
+  opacity: 0.8;
+  z-index: 9999;
+}
