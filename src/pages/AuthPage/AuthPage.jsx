@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useCallback } from 'react';
 
 import useLogin from '../../shared/hooks/isUserLogin';
 import {
@@ -30,42 +30,52 @@ const AuthPage = () => {
     if (isLogin) navigate('/');
   }, [isLogin, navigate]);
 
-  const registrNewUser = async data => {
-    const { meta } = await dispatch(signUp(data));
-    const { requestStatus } = meta;
+  const registrNewUser = useCallback(
+    async data => {
+      const { meta } = await dispatch(signUp(data));
+      const { requestStatus } = meta;
 
-    if (requestStatus === 'fulfilled') {
-      toast.success(
-        ' You will receive an email in a few minutes, please verify your email to continue.'
-      );
-    }
-    if (requestStatus === 'rejected') {
-      toast.error('Something went wrong, please try again.');
-    }
-  };
+      if (requestStatus === 'fulfilled') {
+        toast.success(
+          ' You will receive an email in a few minutes, please verify your email to continue.'
+        );
+      }
+      if (requestStatus === 'rejected') {
+        toast.error('Something went wrong, please try again.');
+      }
+    },
+    [dispatch]
+  );
 
-  const loginUser = async data => {
-    const { meta } = await dispatch(signIn(data));
-    const { requestStatus } = meta;
+  const loginUser = useCallback(
+    async data => {
+      const { meta } = await dispatch(signIn(data));
+      const { requestStatus } = meta;
 
-    if (requestStatus === 'fulfilled') {
-      toast.success('Welcome back!');
-    }
-    if (requestStatus === 'rejected') {
-      toast.error('Something went wrong, please try again.');
-    }
-  };
+      if (requestStatus === 'fulfilled') {
+        toast.success('Welcome back!');
+      }
+      if (requestStatus === 'rejected') {
+        toast.error('Something went wrong, please try again.');
+      }
+    },
+    [dispatch]
+  );
 
-  const googleSuccess = async data => {
-    const { meta } = await dispatch(logInByGoogle(data));
-    const { requestStatus } = meta;
-    if (requestStatus === 'fulfilled') {
-      toast.success('Welcome back!');
-    }
-  };
-  const googleFailure = async res => {
+  const googleSuccess = useCallback(
+    async data => {
+      const { meta } = await dispatch(logInByGoogle(data));
+      const { requestStatus } = meta;
+      if (requestStatus === 'fulfilled') {
+        toast.success('Welcome back!');
+      }
+    },
+    [dispatch]
+  );
+
+  const googleFailure = useCallback(async res => {
     toast.error('Something went wrong, please try again later');
-  };
+  }, []);
 
   return (
     <div className={s.bg}>
