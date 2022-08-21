@@ -1,97 +1,97 @@
 @import '../../../sass/main.scss';
 
 .container {
-padding:  20px 0 12px 0;
-@include tablet {
-display: none;
-}
-}
-
-.list {
-
+  padding: 20px 0 12px 0;
+  @include tablet {
+    display: none;
+  }
 }
 
 .transaction {
-    display: flex;
-    width: 283px;
-    height: 42px;
-    border-bottom: 1px solid #f5f6fb;
+  display: flex;
+  width: 283px;
+  min-height: fit-content;
+  border-bottom: 1px solid #f5f6fb;
 
-    &_container{
-padding: 8px 0;
+  &_container {
+    @include mobile {
+      width: 65px;
+      min-height: 100%;
     }
+    padding: 8px 0;
+  }
 }
 
 .description {
-    margin-bottom: 3px;
-    font-family: 'Roboto';
-    font-weight: 700;
-    font-size: 12px;
-    line-height: 1.17;
-    display: flex;
-    align-items: center;
-    letter-spacing: 0.04em;
+  margin-bottom: 3px;
+  font-family: 'Roboto';
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.17;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.04em;
 
-    color: #52555F;
+  color: #52555f;
 }
 
 .date {
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 8px;
-    line-height: 1.13;
-    letter-spacing: 0.04em;
-    color: #52555F;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 8px;
+  line-height: 1.13;
+  letter-spacing: 0.04em;
+  color: #52555f;
 }
 
 .category {
-    margin-bottom: 8px;
-    display: flex;
-    align-items: flex-end;
-    margin-left: 20px;
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 8px;
-    line-height: 1.13;
-    letter-spacing: 0.04em;
-    color: #52555F;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: flex-end;
+  margin-left: 20px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 8px;
+  line-height: 1.13;
+  letter-spacing: 0.04em;
+  color: #52555f;
 }
 
-.sumDelete{
-    display: flex;
-    align-items: center;
-    margin-right: 0;
-    margin-left: auto;
+.sumDelete {
+  display: flex;
+  align-items: center;
+  margin-right: 0;
+  margin-left: auto;
 }
 
 .sum {
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 12px;
-    line-height: 1.17;
-    display: flex;
-    align-items: center;
-    text-align: right;
-    letter-spacing: 0.04em;
-    color: #407946;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.17;
+  display: flex;
+  align-items: center;
+  text-align: right;
+  letter-spacing: 0.04em;
+  color: #407946;
 }
 
 .expense {
-color: #E7192E;
+  color: #e7192e;
 }
 
 .delete_btn {
-    margin-left: 20px;
-    border-radius: 50%;
-    width: 32px;
-    height: 32px;
-    border-style: none;
-    background-color: #fff;
-    cursor: pointer;
-        &:hover {
-            background-color: rgba(245, 246, 251, 1);
-    }
+  margin-left: 20px;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  border-style: none;
+  background-color: #fff;
+  cursor: pointer;
+  &:hover {
+    background-color: rgba(245, 246, 251, 1);
+  }
 }

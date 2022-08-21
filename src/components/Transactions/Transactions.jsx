@@ -5,6 +5,7 @@ import { useMediaQuery } from 'react-responsive';
 
 import AddTransactionModal from 'components/AddTransactionModal';
 import ExpensesAndIncomesButtons from 'components/ExpensesAndIncomesButtons';
+import TransactionsList from 'components/TransactionsList';
 import Calendar from 'components/Calendar';
 import Balance from 'components/Balance';
 import AddTransactionForm from 'components/AddTransactionForm/AddTransactionForm';
@@ -79,6 +80,7 @@ const Transactions = () => {
             ADD TRANSACTION
           </button>
           <Calendar startDate={date} onChange={handleChange} />
+          <TransactionsList date={date} transactionType={transactionType} />
           <ExpensesAndIncomesButtons
             isActive={transactionType}
             onClick={handleClick}
@@ -98,7 +100,6 @@ const Transactions = () => {
             onClick={handleClick}
           />
           <div className={styles.containerTable}>
-            {/* {isMobile && <Calendar startDate={date} onChange={handleChange} />} */}
             <AddTransactionForm
               transactionType={transactionType}
               sendData={onFormSubmit}

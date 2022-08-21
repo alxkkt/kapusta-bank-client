@@ -1,5 +1,4 @@
 import styles from './Expenses.module.scss';
-import sprite from '../../images/icons.svg';
 import categoriesObject from './funcs/categories';
 import expensesMarkup from './funcs/expensesMarkup';
 import { useMemo, useCallback } from 'react';
