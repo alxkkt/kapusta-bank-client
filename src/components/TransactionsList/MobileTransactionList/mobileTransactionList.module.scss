@@ -1,5 +1,10 @@
+@import '../../../sass/main.scss';
+
 .container {
 padding:  20px 0 12px 0;
+@include tablet {
+display: none;
+}
 }
 
 .list {
@@ -8,7 +13,7 @@ padding:  20px 0 12px 0;
 
 .transaction {
     display: flex;
-    min-width: 283px;
+    width: 283px;
     height: 42px;
     border-bottom: 1px solid #f5f6fb;
 
