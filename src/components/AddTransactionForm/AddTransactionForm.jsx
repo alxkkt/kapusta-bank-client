@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import Icon from 'shared/components/Icon';
 import Calendar from 'components/Calendar';
 import CategoriesList from './CategoriesList';
-import TransactionsList from 'components/TransactionsList/TransactionsList';
+// import TransactionsList from 'components/TransactionsList/TransactionsList';
 
 import styles from './AddTransactionForm.module.scss';
 
@@ -116,12 +116,6 @@ const AddTransactionForm = ({ transactionType, sendData, closeModal }) => {
           </button>
         </div>
       </form>
-
-      <TransactionsList
-        date={date}
-        transactionType={transactionType}
-        updateBalance={sendData}
-      />
     </>
   );
 };
