@@ -1,7 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback, memo } from 'react';
 import { GoogleLogin } from 'react-google-login';
 import { gapi } from 'gapi-script';
+
 import toast, { Toaster } from 'react-hot-toast';
+import PropType from 'prop-types';
 
 import s from './AuthForm.module.scss';
 
@@ -30,15 +32,15 @@ const AuthForm = ({ register, login, onSuccess, onFailure }) => {
     gapi.load('client:auth2', startGapi);
   }, []);
 
-  const handleChange = ({ target }) => {
+  const handleChange = useCallback(({ target }) => {
     const { name, value } = target;
     setForm(prevState => ({
       ...prevState,
       [name]: value,
     }));
-  };
+  }, []);
 
-  const onSignIn = () => {
+  const onSignIn = useCallback(() => {
     const { email, password } = form;
     if (!email.trim().length || !password.trim().length) {
       toast.error('Please fill all fields');
@@ -47,7 +49,7 @@ const AuthForm = ({ register, login, onSuccess, onFailure }) => {
 
     login({ ...form });
     setForm({ ...initialState });
-  };
+  }, [form, login]);
   const onSignUp = () => {
     const { email, password } = form;
     if (!email.trim().length || !password.trim().length) {
@@ -57,13 +59,19 @@ const AuthForm = ({ register, login, onSuccess, onFailure }) => {
     register({ ...form });
     setForm({ ...initialState });
   };
-  const resSuccessGoogle = async res => {
-    onSuccess({ tokenId: res.tokenId });
-  };
+  const resSuccessGoogle = useCallback(
+    async res => {
+      onSuccess({ tokenId: res.tokenId });
+    },
+    [onSuccess]
+  );
 
-  const resFailureGoogle = async res => {
-    onFailure(res);
-  };
+  const resFailureGoogle = useCallback(
+    async res => {
+      onFailure(res);
+    },
+    [onFailure]
+  );
 
   const { email, password } = form;
 
@@ -145,4 +153,12 @@ const AuthForm = ({ register, login, onSuccess, onFailure }) => {
     </div>
   );
 };
-export default AuthForm;
+
+AuthForm.propTypes = {
+  register: PropType.func.isRequired,
+  login: PropType.func.isRequired,
+  onSuccess: PropType.func.isRequired,
+  onFailure: PropType.func.isRequired,
+};
+
+export default memo(AuthForm);
