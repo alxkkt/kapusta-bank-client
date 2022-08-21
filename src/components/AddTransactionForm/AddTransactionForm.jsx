@@ -6,11 +6,10 @@ import PropTypes from 'prop-types';
 import Icon from 'shared/components/Icon';
 import Calendar from 'components/Calendar';
 import CategoriesList from './CategoriesList';
-// import TransactionsList from 'components/TransactionsList/TransactionsList';
 
 import styles from './AddTransactionForm.module.scss';
 
-const AddTransactionForm = ({ transactionType, sendData, closeModal }) => {
+const AddTransactionForm = ({ sendData, closeModal }) => {
   const [formData, setFormData] = useState({
     description: '',
     category: '',
@@ -123,6 +122,6 @@ const AddTransactionForm = ({ transactionType, sendData, closeModal }) => {
 export default AddTransactionForm;
 
 AddTransactionForm.propTypes = {
-  transactionType: PropTypes.string.isRequired,
   sendData: PropTypes.func.isRequired,
+  closeModal: PropTypes.func.isRequired,
 };

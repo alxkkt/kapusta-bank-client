@@ -1,4 +1,5 @@
 import DatePicker from 'react-datepicker';
+import PropTypes from 'prop-types';
 
 import Icon from 'shared/components/Icon';
 
@@ -32,3 +33,8 @@ const Calendar = ({ onChange, startDate }) => {
 };
 
 export default Calendar;
+
+Calendar.propTypes = {
+  onChange: PropTypes.func.isRequired,
+  startDate: PropTypes.string.isRequired,
+};

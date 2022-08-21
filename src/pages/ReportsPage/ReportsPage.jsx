@@ -1,18 +1,21 @@
-import styles from './ReportsPage.module.scss';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import moment from 'moment';
+import { useMediaQuery } from 'react-responsive';
+
 import CurrentPeriod from '../../components/CurrentPeriod';
 import ExpensesIncomeSwitch from '../../components/ExpensesIncomeSwitch';
 import ExpensesIncome from '../../components/ExpensesIncome';
 import ReturnBackButton from '../../components/ReturnBackButton';
 import Header from '../../components/Header';
-import { useDispatch, useSelector } from 'react-redux';
-import { getTransactionsByDate } from '../../redux/transactionsByDate/operations';
-import moment from 'moment';
-import { useState, useEffect } from 'react';
-import { transactions } from '../../redux/transactionsByDate/selectors';
 import Expenses from '../../components/Expenses';
-import Wrapper from 'shared/components/Wrapper';
-import { useMediaQuery } from 'react-responsive';
 import Chart from '../../components/Chart';
+import Wrapper from 'shared/components/Wrapper';
+
+import { getTransactionsByDate } from '../../redux/transactionsByDate/operations';
+import { transactions } from '../../redux/transactionsByDate/selectors';
+
+import styles from './ReportsPage.module.scss';
 
 const ReportsPage = () => {
   const isTabOrPc = useMediaQuery({ query: '(min-width:768px)' });

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { createPortal } from 'react-dom';
+import PropTypes from 'prop-types';
 
 import Header from '../Header';
 import AddTransactionForm from '../AddTransactionForm';
@@ -10,7 +11,7 @@ import styles from './AddTransactionModal.module.scss';
 
 const modal = document.getElementById('modal');
 
-const AddTransactionModal = ({ closeModal, transactionType, sendData }) => {
+const AddTransactionModal = ({ closeModal, sendData }) => {
   return createPortal(
     <div className={styles.overlay}>
       <Header />
@@ -25,11 +26,7 @@ const AddTransactionModal = ({ closeModal, transactionType, sendData }) => {
                 name={`icon-backspace`}
               />
             </Link>
-            <AddTransactionForm
-              transactionType={transactionType}
-              sendData={sendData}
-              closeModal={closeModal}
-            />
+            <AddTransactionForm sendData={sendData} closeModal={closeModal} />
           </div>
         </section>
       </Wrapper>
@@ -39,3 +36,8 @@ const AddTransactionModal = ({ closeModal, transactionType, sendData }) => {
 };
 
 export default AddTransactionModal;
+
+AddTransactionModal.propTypes = {
+  closeModal: PropTypes.func.isRequired,
+  sendData: PropTypes.func.isRequired,
+};

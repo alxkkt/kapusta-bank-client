@@ -1,7 +1,8 @@
 import moment from 'moment';
-import styles from './CurrentPeriod.module.scss';
-// import icons from '../../images/icons.svg';
 import { useState, useEffect } from 'react';
+
+import styles from './CurrentPeriod.module.scss';
+
 const CurrentPeriod = ({ period, setPeriod }) => {
   const [isCurrentMonth, setIsCurrentMonth] = useState(true);
   const onPrevClick = () => {
@@ -27,7 +28,7 @@ const CurrentPeriod = ({ period, setPeriod }) => {
         </p>
         <button
           disabled={isCurrentMonth}
-          className={[styles.button, styles.nextButton].join(" ")}
+          className={[styles.button, styles.nextButton].join(' ')}
           onClick={onNextClick}
         >
           &#62;

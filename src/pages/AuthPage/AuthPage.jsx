@@ -32,7 +32,7 @@ const AuthPage = () => {
 
   const registrNewUser = useCallback(
     async data => {
-      const { meta } = await dispatch(signUp(data));
+      const { meta } = dispatch(signUp(data));
       const { requestStatus } = meta;
 
       if (requestStatus === 'fulfilled') {
@@ -49,7 +49,7 @@ const AuthPage = () => {
 
   const loginUser = useCallback(
     async data => {
-      const { meta } = await dispatch(signIn(data));
+      const { meta } = dispatch(signIn(data));
       const { requestStatus } = meta;
 
       if (requestStatus === 'fulfilled') {
@@ -64,7 +64,7 @@ const AuthPage = () => {
 
   const googleSuccess = useCallback(
     async data => {
-      const { meta } = await dispatch(logInByGoogle(data));
+      const { meta } = dispatch(logInByGoogle(data));
       const { requestStatus } = meta;
       if (requestStatus === 'fulfilled') {
         toast.success('Welcome back!');
