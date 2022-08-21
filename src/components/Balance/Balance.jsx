@@ -28,6 +28,7 @@ const Balance = ({ state }) => {
     e.preventDefault();
 
     dispatch(updateBalance(Number.parseFloat(balanceState)));
+    dispatch(getBalance());
   };
 
   const handleChange = ({ target }) => {
