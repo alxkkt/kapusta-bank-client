@@ -42,6 +42,7 @@ const Transactions = () => {
     setBalanceState(data.totalBalance);
   };
 
+  console.log(modalOpen);
   const handleClick = e => {
     setTransactionType(e.target.dataset.type);
   };
@@ -63,7 +64,7 @@ const Transactions = () => {
   const isDesktop = useMediaQuery({ query: '(min-width: 1280px)' });
   return (
     <>
-      {isMobile && !isTablet && !isDesktop && (
+      {isMobile && (
         <>
           {modalOpen && (
             <AddTransactionModal
@@ -80,14 +81,18 @@ const Transactions = () => {
             ADD TRANSACTION
           </button>
           <Calendar startDate={date} onChange={handleChange} />
-          <TransactionsList date={date} transactionType={transactionType} />
+          <TransactionsList
+            date={date}
+            transactionType={transactionType}
+            updateBalance={onFormSubmit}
+          />
           <ExpensesAndIncomesButtons
             isActive={transactionType}
             onClick={handleClick}
           />
         </>
       )}
-      {isTablet && !isMobile && !isDesktop && (
+      {isTablet && (
         <>
           <div className={styles.containerTablet}>
             <Balance state={balanceState} />
@@ -108,7 +113,7 @@ const Transactions = () => {
           <img className={styles.cabages} src={Cabbages} alt="Cabages" />
         </>
       )}
-      {isDesktop && !isMobile && !isTablet && (
+      {isDesktop && (
         <>
           <div className={styles.containerTablet}>
             <Balance state={balanceState} />
@@ -121,7 +126,6 @@ const Transactions = () => {
             onClick={handleClick}
           />
           <div className={styles.containerTable}>
-            {/* {isMobile && <Calendar startDate={date} onChange={handleChange} />} */}
             <AddTransactionForm
               transactionType={transactionType}
               sendData={onFormSubmit}

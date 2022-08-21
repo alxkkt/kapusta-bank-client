@@ -6,17 +6,16 @@
 
 .containerTablet {
   @include tablet {
-  display: flex;
-  align-items: baseline;
-  margin-bottom: 60px;
-  margin-left: 25px;
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 60px;
+    margin-left: 25px;
+  }
+  @include desktop {
+    margin-bottom: 8px;
+    margin-left: 0;
+  }
 }
-@include desktop {
-  margin-bottom: 8px;
-  margin-left: 0;
-}
-}
-
 
 .reports {
   display: flex;
@@ -29,60 +28,60 @@
   }
 }
 
- .link {
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   margin-left: auto;
-   margin-right: auto;
-   margin-top: 23px;
-   margin-bottom: 27px;
-   text-align: center;
-   width: 200px;
-   height: 44px;
+.link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 23px;
+  margin-bottom: 27px;
+  text-align: center;
+  width: 200px;
+  height: 44px;
 
-   font-weight: 700;
-   font-size: 12px;
-   line-height: 14px;
-   letter-spacing: 0.02em;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.02em;
 
-   color: white;
-   background-color: var(--accent-color);
+  color: white;
+  background-color: var(--accent-color);
   border: transparent;
-   border-radius: 22px 22px 22px 22px;
-   cursor: pointer;
- }
+  border-radius: 22px 22px 22px 22px;
+  cursor: pointer;
+}
 
- @media screen and (min-width: 768px) {
-   .link {
-     display: none;
-   }
- }
+@media screen and (min-width: 768px) {
+  .link {
+    display: none;
+  }
+}
 
- .link:visited {
-   color: #ffff;
- }
+.link:visited {
+  color: #ffff;
+}
 
- .containerTable {
+.containerTable {
   @include tablet {
     padding: 24px 40px;
-  width: 100%;
-  height: 600px;
-  
-  background-color: #ffff;
-  box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
+    width: 100%;
+    height: 600px;
+
+    background-color: #ffff;
+    box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
     border-radius: 0px 30px 30px 30px;
- }
- @include desktop {
-  margin: 0 auto;
-  padding: 32px 32px;
-  width: 100%;
-  height: 580px;
- }
+  }
+  @include desktop {
+    margin: 0 auto;
+    padding: 32px 32px;
+    width: 100%;
+    height: 580px;
+  }
 }
 
 .cabages {
- position: absolute;
- right: 15%;
- margin-top: 172px;
+  position: absolute;
+  right: 15%;
+  margin-top: 172px;
 }
