@@ -41,7 +41,6 @@ const Transactions = () => {
     setBalanceState(data.totalBalance);
   };
 
-  console.log(modalOpen);
   const handleClick = e => {
     setTransactionType(e.target.dataset.type);
   };
