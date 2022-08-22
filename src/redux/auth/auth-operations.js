@@ -1,4 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 import * as services from 'shared/api/auth';
 
@@ -8,9 +9,12 @@ export const signUp = createAsyncThunk(
   async (data, { rejectWithValue }) => {
     try {
       const newUser = await services.signUp(data);
-
+      Notify.success(
+        ' You will receive an email in a few minutes, please verify your email to continue.'
+      );
       return newUser;
     } catch (error) {
+      Notify.failure('Something went wrong, please try again later');
       return rejectWithValue(error);
     }
   }
@@ -22,8 +26,10 @@ export const logInByGoogle = createAsyncThunk(
   async (data, { rejectWithValue }) => {
     try {
       const res = await services.logInByGoogle(data);
+      Notify.success('Welcome!');
       return res;
     } catch (error) {
+      Notify.failure('Something went wrong, please try again later');
       return rejectWithValue(error);
     }
   }
@@ -35,9 +41,10 @@ export const signIn = createAsyncThunk(
   async (data, { rejectWithValue }) => {
     try {
       const user = await services.signIn(data);
-
+      Notify.success('Welcome!');
       return user;
     } catch (error) {
+      Notify.failure('Something went wrong, please try again later');
       return rejectWithValue(error);
     }
   }
@@ -70,8 +77,10 @@ export const logOut = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const user = await services.logOut();
+      Notify.success('We hope to see you again!');
       return user;
     } catch (error) {
+      Notify.failure('Something went wrong, please try again later');
       return rejectWithValue(error);
     }
   }
