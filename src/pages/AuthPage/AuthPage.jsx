@@ -29,27 +29,27 @@ const AuthPage = () => {
   }, [isLogin, navigate]);
 
   const registrNewUser = useCallback(
-    async data => {
-      await dispatch(signUp(data));
+    data => {
+      dispatch(signUp(data));
     },
     [dispatch]
   );
 
   const loginUser = useCallback(
-    async data => {
-      await dispatch(signIn(data));
+    data => {
+      dispatch(signIn(data));
     },
     [dispatch]
   );
 
   const googleSuccess = useCallback(
-    async data => {
-      await dispatch(logInByGoogle(data));
+    data => {
+      dispatch(logInByGoogle(data));
     },
     [dispatch]
   );
 
-  const googleFailure = useCallback(async res => {
+  const googleFailure = useCallback(res => {
     console.log(res); // ! need to see in case of rejection
   }, []);
 

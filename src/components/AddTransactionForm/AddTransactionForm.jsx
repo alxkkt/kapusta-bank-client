@@ -6,11 +6,10 @@ import PropTypes from 'prop-types';
 import Icon from 'shared/components/Icon';
 import Calendar from 'components/Calendar';
 import CategoriesList from './CategoriesList';
-import TransactionsList from 'components/TransactionsList/TransactionsList';
 
 import styles from './AddTransactionForm.module.scss';
 
-const AddTransactionForm = ({ transactionType, sendData, closeModal }) => {
+const AddTransactionForm = ({ sendData, closeModal }) => {
   const [formData, setFormData] = useState({
     description: '',
     category: '',
@@ -68,18 +67,12 @@ const AddTransactionForm = ({ transactionType, sendData, closeModal }) => {
     setDate(date);
   };
 
-  const isTablet = useMediaQuery({
-    query: '(min-width: 768px) and (max-width: 1279px)',
-  });
-  const isDesktop = useMediaQuery({ query: '(min-width: 1280px)' });
-
   const { description, sum } = formData;
   return (
     <>
       <form className={styles.form} onSubmit={handleSubmit}>
         <div className={styles.tablet}>
-          {isTablet && <Calendar startDate={date} onChange={onChange} />}
-          {isDesktop && <Calendar startDate={date} onChange={onChange} />}
+          <Calendar startDate={date} onChange={onChange} />
           <input
             className={styles.input}
             onChange={handleChange}
@@ -122,20 +115,6 @@ const AddTransactionForm = ({ transactionType, sendData, closeModal }) => {
           </button>
         </div>
       </form>
-      {isTablet && (
-        <TransactionsList
-          date={date}
-          transactionType={transactionType}
-          updateBalance={sendData}
-        />
-      )}
-      {isDesktop && (
-        <TransactionsList
-          date={date}
-          transactionType={transactionType}
-          updateBalance={sendData}
-        />
-      )}
     </>
   );
 };
@@ -143,6 +122,6 @@ const AddTransactionForm = ({ transactionType, sendData, closeModal }) => {
 export default AddTransactionForm;
 
 AddTransactionForm.propTypes = {
-  transactionType: PropTypes.string.isRequired,
   sendData: PropTypes.func.isRequired,
+  closeModal: PropTypes.func,
 };

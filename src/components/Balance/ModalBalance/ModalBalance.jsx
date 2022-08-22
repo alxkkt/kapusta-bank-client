@@ -52,6 +52,6 @@ const ModalBalance = ({ balance }) => {
 
 export default ModalBalance;
 
-// ModalBalance.propTypes = {
-//   balance: PropTypes.number.isRequired,
-// };
+ModalBalance.propTypes = {
+  balance: PropTypes.number.isRequired,
+};

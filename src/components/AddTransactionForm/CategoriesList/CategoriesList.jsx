@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 import { getCategoriesList } from 'shared/api/categories';
 
@@ -52,30 +53,21 @@ const CategoriesList = ({ onChange }) => {
       className={styles.select}
       onChange={onChange}
       name="category"
-      // value={category}
       required
     >
       <option value="">Product category</option>
       <optgroup label="Expense" name="type">
         {expenseElements}
-        {/* <option value="Health">Health</option>
-        <option value="Alcohol">Alcohol</option>
-        <option value="Entertainment">Entertainment</option>
-        <option value="Housing">Housing</option>
-        <option value="Technique">Technique</option>
-        <option value="Communal, Communications">
-          Communal, Communications
-        </option>
-        <option value="Sports, Hobbies">Sports, Hobbies</option>
-        <option value="Education">Education</option>
-        <option value="Other">Other</option> */}
       </optgroup>
       <optgroup label="Income" name="type">
         {incomeElements}
-        {/* <option value="Sallary">Sallary</option> */}
       </optgroup>
     </select>
   );
 };
 
 export default CategoriesList;
+
+CategoriesList.propTypes = {
+  onChange: PropTypes.func.isRequired,
+};

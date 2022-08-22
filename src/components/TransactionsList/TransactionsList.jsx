@@ -59,7 +59,6 @@ const TransactionsList = ({ date, transactionType, updateBalance }) => {
 
   return (
     <>
-      {' '}
       {modalDelete && (
         <Modal
           title="Are you sure you want to delete this transaction?"

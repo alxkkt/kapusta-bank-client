@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import NumberFormat from 'react-number-format';
+import PropTypes from 'prop-types';
 
 import { updateBalance } from 'redux/balance/balance-operations';
 
@@ -27,6 +28,7 @@ const Balance = ({ state }) => {
     e.preventDefault();
 
     dispatch(updateBalance(Number.parseFloat(balanceState)));
+    dispatch(getBalance());
   };
 
   const handleChange = ({ target }) => {
@@ -68,3 +70,7 @@ const Balance = ({ state }) => {
 };
 
 export default Balance;
+
+Balance.propTypes = {
+  state: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+};

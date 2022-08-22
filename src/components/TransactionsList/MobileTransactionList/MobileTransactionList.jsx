@@ -14,6 +14,7 @@ const MobileTransactionList = ({
     <div className={styles.container}>
       <ul className={styles.list}>
         {filteredTransactions?.map(transaction => {
+          // console.log(transaction.sum);
           return (
             <li key={transaction._id} className={styles.transaction}>
               <div className={styles.transaction_container}>

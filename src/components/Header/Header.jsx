@@ -10,7 +10,6 @@ const Header = () => {
       <div className={s.headerWrapper}>
         <Logo />
         {isLogin && <UserMenu />}
-        {/* <UserMenu /> */}
       </div>
     </div>
   );
