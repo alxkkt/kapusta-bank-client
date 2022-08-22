@@ -10,8 +10,6 @@ import {
   logInByGoogle,
 } from '../../redux/auth/auth-operations';
 
-import toast, { Toaster } from 'react-hot-toast';
-
 import s from './AuthPage.module.scss';
 
 import Header from '../../components/Header';
@@ -31,50 +29,28 @@ const AuthPage = () => {
   }, [isLogin, navigate]);
 
   const registrNewUser = useCallback(
-    async data => {
-      const { meta } = dispatch(signUp(data));
-      const { requestStatus } = meta;
-
-      if (requestStatus === 'fulfilled') {
-        toast.success(
-          ' You will receive an email in a few minutes, please verify your email to continue.'
-        );
-      }
-      if (requestStatus === 'rejected') {
-        toast.error('Something went wrong, please try again.');
-      }
+    data => {
+      dispatch(signUp(data));
     },
     [dispatch]
   );
 
   const loginUser = useCallback(
-    async data => {
-      const { meta } = dispatch(signIn(data));
-      const { requestStatus } = meta;
-
-      if (requestStatus === 'fulfilled') {
-        toast.success('Welcome back!');
-      }
-      if (requestStatus === 'rejected') {
-        toast.error('Something went wrong, please try again.');
-      }
+    data => {
+      dispatch(signIn(data));
     },
     [dispatch]
   );
 
   const googleSuccess = useCallback(
-    async data => {
-      const { meta } = dispatch(logInByGoogle(data));
-      const { requestStatus } = meta;
-      if (requestStatus === 'fulfilled') {
-        toast.success('Welcome back!');
-      }
+    data => {
+      dispatch(logInByGoogle(data));
     },
     [dispatch]
   );
 
-  const googleFailure = useCallback(async () => {
-    toast.error('Something went wrong, please try again later');
+  const googleFailure = useCallback(res => {
+    console.log(res); // ! need to see in case of rejection
   }, []);
 
   return (
@@ -92,7 +68,6 @@ const AuthPage = () => {
           onFailure={googleFailure}
         />
       </div>
-      <Toaster />
     </div>
   );
 };
