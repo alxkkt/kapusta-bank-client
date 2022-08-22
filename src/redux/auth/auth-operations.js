@@ -41,7 +41,7 @@ export const signIn = createAsyncThunk(
   async (data, { rejectWithValue }) => {
     try {
       const user = await services.signIn(data);
-      Notify.success('Welcome!');
+      Notify.success('Welcome back!');
       return user;
     } catch (error) {
       Notify.failure('Something went wrong, please try again later');
