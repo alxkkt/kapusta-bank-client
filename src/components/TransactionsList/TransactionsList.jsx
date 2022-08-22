@@ -19,7 +19,8 @@ const TransactionsList = ({ date, transactionType, updateBalance }) => {
     setTransaction(transaction._id);
   };
 
-  const { data } = useGetTransactionsQuery();
+  const { data, isSuccess } = useGetTransactionsQuery();
+  console.log(data);
   const [deleteTransaction] = useDeleteTransactionMutation();
 
   const onDeleteCancel = () => {
@@ -75,14 +76,16 @@ const TransactionsList = ({ date, transactionType, updateBalance }) => {
         type={transactionType}
       />
       <div className={styles.container}>
-        <DesktopTransactionList
-          filteredTransactions={filteredTransactions}
-          handleDeleteClick={handleDeleteClick}
-          day={day}
-          month={month}
-          year={year}
-          type={transactionType}
-        />
+        {isSuccess && (
+          <DesktopTransactionList
+            filteredTransactions={filteredTransactions}
+            handleDeleteClick={handleDeleteClick}
+            day={day}
+            month={month}
+            year={year}
+            type={transactionType}
+          />
+        )}
         <Summary type={transactionType} />
       </div>
     </>
