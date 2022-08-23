@@ -53,6 +53,7 @@ const Transactions = () => {
     setModalOpen(prev => !prev);
   };
 
+  // console.log(date);
   return (
     <>
       {modalOpen && (
@@ -85,11 +86,6 @@ const Transactions = () => {
         <AddTransactionForm
           transactionType={transactionType}
           sendData={onFormSubmit}
-        />
-        <TransactionsList
-          date={date}
-          transactionType={transactionType}
-          updateBalance={onFormSubmit}
         />
       </div>
       <div className={styles.listMobile}>

@@ -6,10 +6,11 @@ import PropTypes from 'prop-types';
 import Icon from 'shared/components/Icon';
 import Calendar from 'components/Calendar';
 import CategoriesList from './CategoriesList';
+import TransactionsList from 'components/TransactionsList';
 
 import styles from './AddTransactionForm.module.scss';
 
-const AddTransactionForm = ({ sendData, closeModal }) => {
+const AddTransactionForm = ({ sendData, closeModal, transactionType }) => {
   const [formData, setFormData] = useState({
     description: '',
     category: '',
@@ -71,49 +72,56 @@ const AddTransactionForm = ({ sendData, closeModal }) => {
   return (
     <>
       <form className={styles.form} onSubmit={handleSubmit}>
-        <div className={styles.tablet}>
-          <Calendar startDate={date} onChange={onChange} />
-          <input
-            className={styles.input}
-            onChange={handleChange}
-            name="description"
-            value={description}
-            type="text"
-            placeholder="Product description"
-            required
-          />
-          <CategoriesList onChange={handleChange} />
-          <div className={styles.containerForm}>
-            <NumberFormat
-              className={styles.sum}
+        <div className={styles.desktop}>
+          <div className={styles.tablet}>
+            <Calendar startDate={date} onChange={onChange} />
+            <input
+              className={styles.input}
               onChange={handleChange}
-              name="sum"
-              value={sum}
+              name="description"
+              value={description}
               type="text"
-              decimalSeparator="."
-              decimalScale={2}
-              fixedDecimalScale={true}
-              suffix=" UAH"
-              placeholder="0.00"
-              minLength={1}
+              placeholder="Product description"
+              required
             />
-            <div className={styles.decoration}>
-              <Icon width={20} height={20} name={`icon-calculator`} />
+            <CategoriesList onChange={handleChange} />
+            <div className={styles.containerForm}>
+              <NumberFormat
+                className={styles.sum}
+                onChange={handleChange}
+                name="sum"
+                value={sum}
+                type="text"
+                decimalSeparator="."
+                decimalScale={2}
+                fixedDecimalScale={true}
+                suffix=" UAH"
+                placeholder="0.00"
+                minLength={1}
+              />
+              <div className={styles.decoration}>
+                <Icon width={20} height={20} name={`icon-calculator`} />
+              </div>
             </div>
           </div>
+          <div className={styles.containerBtn}>
+            <button className={styles.inputBtn} type="submit">
+              INPUT
+            </button>
+            <button
+              className={styles.clearBtn}
+              onClick={handleClear}
+              type="button"
+            >
+              CLEAR
+            </button>
+          </div>
         </div>
-        <div className={styles.containerBtn}>
-          <button className={styles.inputBtn} type="submit">
-            INPUT
-          </button>
-          <button
-            className={styles.clearBtn}
-            onClick={handleClear}
-            type="button"
-          >
-            CLEAR
-          </button>
-        </div>
+        <TransactionsList
+          date={date}
+          transactionType={transactionType}
+          updateBalance={sendData}
+        />
       </form>
     </>
   );
