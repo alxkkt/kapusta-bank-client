@@ -13,14 +13,13 @@ import {
 const TransactionsList = ({ date, transactionType, updateBalance }) => {
   const [modalDelete, setModalDelete] = useState(false);
   const [transaction, setTransaction] = useState('');
-
   const handleDeleteClick = transaction => {
     setModalDelete(true);
     setTransaction(transaction._id);
   };
 
   const { data, isSuccess } = useGetTransactionsQuery();
-  console.log(data);
+
   const [deleteTransaction] = useDeleteTransactionMutation();
 
   const onDeleteCancel = () => {
@@ -38,7 +37,6 @@ const TransactionsList = ({ date, transactionType, updateBalance }) => {
 
     setTransaction('');
   };
-
   const filterType = data?.filter(item => item.type === transactionType);
 
   function pad(value) {
